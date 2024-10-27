@@ -1,5 +1,5 @@
 import '../styles/index.css';
-import { Ball, Obstacle, Paddle, clearCanvas, getRandomIntegerFromRange } from './utility.js';
+import { Ball, Obstacle, Paddle, clearCanvas, getRandomIntegerFromRange, getDistance } from './utility.js';
 
 const canvas = document.getElementById('game-canvas');
 const ctx = canvas.getContext('2d');
@@ -99,13 +99,21 @@ function setPaddle() {
 // Obstacle
 let obstacles = [];
 function setObstacle() {
+    obstacles = [];
     const obstacleRadius = 30;
     const canvasPadding = 200;
+    const maxObstacles = 5;
 
-    for (let i = 0; i < 5; i++) {
-        const x = getRandomIntegerFromRange((canvas.width - obstacleRadius - canvasPadding), (0 + canvasPadding));
-        const y = getRandomIntegerFromRange((canvas.height - obstacleRadius - canvasPadding), (0 + canvasPadding));
-        obstacles.push(new Obstacle(x, y, obstacleRadius));
+    while (obstacles.length < maxObstacles) {
+        let x = getRandomIntegerFromRange(obstacleRadius + canvasPadding, canvas.width - obstacleRadius - canvasPadding);
+        let y = getRandomIntegerFromRange(obstacleRadius + canvasPadding, canvas.height - obstacleRadius - canvasPadding);
+        let dy = getRandomIntegerFromRange(-3, 3);
+
+        const isOverlapping = obstacles.some(obstacle => getDistance({ x, y }, obstacle) < obstacleRadius * 2);
+        const dyIsZero = dy === 0;
+        if (!isOverlapping && !dyIsZero) {
+            obstacles.push(new Obstacle(x, y, obstacleRadius, dy));
+        }
     }
 }
 
@@ -116,7 +124,7 @@ function animate() {
     updateUserPaddle(playerPaddle);
     updateAiPaddle();
     ball.update(playerPaddle, aiPaddle, obstacles);
-    obstacles.forEach(obstacle => obstacle.draw());
+    obstacles.forEach(obstacle => obstacle.update());
     checkGoal();
 }
 
@@ -126,12 +134,12 @@ function startGame() {
     setPaddle();
     setBall();
     setObstacle();
-    animate();
 }
 
 // Event listeners
 window.onload = () => { // Start game when window is loaded
     startGame();
+    animate();
 };
 
 window.addEventListener('resize', () => { // Resize canvas when window is resized

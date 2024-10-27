@@ -45,21 +45,7 @@ class Ball {
     }
 }
 
-function isMovingTowards(ball, object) {
-    const xVelocityDiff = ball.dx - (object.dx || 0);
-    const yVelocityDiff = ball.dy - (object.dy || 0);
-    const xPositionDiff = object.x - ball.x;
-    const yPositionDiff = object.y - ball.y;
-
-    const isMovingHorizontally = (xVelocityDiff > 0 && xPositionDiff > 0) || (xVelocityDiff < 0 && xPositionDiff < 0);
-    const isMovingVertically = (yVelocityDiff > 0 && yPositionDiff > 0) || (yVelocityDiff < 0 && yPositionDiff < 0);
-
-    return isMovingHorizontally || isMovingVertically;
-}
-
 function checkCollision(ball, paddle) {
-    if (!isMovingTowards(ball, paddle)) return false;
-    
     const withinVerticalBounds = ball.y > paddle.y && ball.y < paddle.y + paddle.height;
     const horizontalCollision = ball.x + ball.radius > paddle.x && ball.x - ball.radius < paddle.x + paddle.width;
 
@@ -67,8 +53,14 @@ function checkCollision(ball, paddle) {
 }
 
 function resolveObstacleCollision(ball, obstacle) {
+    // Calculate velocity differences and position differences
+    const xVelocityDiff = ball.dx;
+    const yVelocityDiff = ball.dy - obstacle.dy;
+    const xPositionDiff = obstacle.x - ball.x;
+    const yPositionDiff = obstacle.y - ball.y;
+
     // Check if the ball is moving towards the obstacle
-    if (isMovingTowards(ball, obstacle)) {
+    if (xVelocityDiff * xPositionDiff + yVelocityDiff * yPositionDiff >= 0) {
         // Calculate angle between the ball and obstacle
         const angle = Math.atan2((obstacle.y - ball.y), (obstacle.x - ball.x));
 
@@ -126,11 +118,12 @@ class Paddle {
 }
 
 class Obstacle {
-    constructor(x, y, radius) {
+    constructor(x, y, radius, dy) {
         this.x = x;
         this.y = y;
         this.radius = radius;
         this.color = 'white';
+        this.dy = dy;
     }
 
     draw() {
@@ -139,6 +132,14 @@ class Obstacle {
         ctx.fillStyle = this.color;
         ctx.fill();
         ctx.closePath();
+    }
+
+    update() {
+        if (this.y + this.radius > canvas.height || this.y - this.radius < 0) {
+            this.dy *= -1;
+        }
+        this.y += this.dy;
+        this.draw();
     }
 }
 
@@ -154,4 +155,4 @@ function getRandomIntegerFromRange(min, max) {
     return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
-export { Ball, Paddle, Obstacle, clearCanvas, getRandomIntegerFromRange };
+export { Ball, Paddle, Obstacle, clearCanvas, getRandomIntegerFromRange, getDistance };

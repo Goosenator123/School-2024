@@ -4,8 +4,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pong</title>
+
+    <!-- Link to google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">\
+    
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=settings" />
 </head>
 <body>
     <canvas id="game-canvas"></canvas>
+    <main>
+        <section id="main-section">
+            <header>
+                <h1>Pong</h1>
+            </header>
+            <section id="button-section">
+                <button id="start-button">Player vs Computer</button>
+                <button id="start-button-2">Player vs Player</button>
+            </section>
+            <footer>
+                <p>press esc for settings</p>
+            </footer>
+        </section>
+        <button id="setting-button">
+            <span class="material-symbols-outlined" id="setting-icon">settings</span>
+        </button>
+    </main>
 </body>
 </html>

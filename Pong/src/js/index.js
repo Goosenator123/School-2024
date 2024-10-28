@@ -83,7 +83,11 @@ function setBall() {
         ballDy = getRandomIntegerFromRange(-10, 10);
     } while (Math.abs(ballDy) < 5);
 
-    ball = new Ball(window.innerWidth / 2, window.innerHeight / 2, ballRadius, ballDx, ballDy);
+    ball = new Ball(canvas.width / 2, canvas.height / 2, ballRadius, 0, 0);
+
+    setTimeout(() => {
+        ball = new Ball(canvas.width / 2, canvas.height / 2, ballRadius, ballDx, ballDy);
+    }, 1000);
 }
 
 // Set paddle properties

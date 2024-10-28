@@ -26,9 +26,16 @@ class Ball {
             this.dy *= -1; // Reverse direction
         }
 
-        // Check if the ball is colliding with a paddle
-        if (checkCollision(this, playerPaddle) || checkCollision(this, aiPaddle)) {
+        // Check if the ball is colliding with the left and right of a paddle
+        if (checkHorizontalCollision(this, playerPaddle) || checkHorizontalCollision(this, aiPaddle)) {
             this.dx *= -1; // Reverse direction
+            this.x += this.dx * 1;
+        }
+
+        // Check if the ball is colliding with the top and bottom of a paddle
+        if (checkVerticalCollision(this, playerPaddle) || checkVerticalCollision(this, aiPaddle)) {
+            this.dy *= -1;
+            this.y += this.dy * 1;
         }
 
         // Check if the ball is colliding with an obstacle
@@ -45,11 +52,18 @@ class Ball {
     }
 }
 
-function checkCollision(ball, paddle) {
+function checkHorizontalCollision(ball, paddle) {
     const withinVerticalBounds = ball.y > paddle.y && ball.y < paddle.y + paddle.height;
     const horizontalCollision = ball.x + ball.radius > paddle.x && ball.x - ball.radius < paddle.x + paddle.width;
 
     return withinVerticalBounds && horizontalCollision;
+}
+
+function checkVerticalCollision(ball, paddle) {
+    const withinHorizontalBound = ball.x > paddle.x && ball.x < paddle.x + paddle.width;
+    const verticalCollision = ball.y + ball.radius > paddle.y && ball.y - ball.radius < paddle.y + paddle.height;
+
+    return withinHorizontalBound && verticalCollision;
 }
 
 function resolveObstacleCollision(ball, obstacle) {

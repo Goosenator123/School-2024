@@ -1,5 +1,4 @@
 /******/ (() => { // webpackBootstrap
-/******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
 /***/ "./node_modules/css-loader/dist/cjs.js!./src/styles/index.css":
@@ -8,6 +7,7 @@
   \********************************************************************/
 /***/ ((module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
@@ -26,6 +26,11 @@ ___CSS_LOADER_EXPORT___.push([module.id, `* {
     padding: 0;
     box-sizing: border-box;
     font-size: 10px;
+    color: white;
+    font-family: 'Press Start 2P', system-ui;
+    font-weight: 400;
+    font-style: normal;  
+    user-select: none;
 }
 
 body {
@@ -33,8 +38,321 @@ body {
 }
 
 #game-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
     background-color: black;
-}`, "",{"version":3,"sources":["webpack://./src/styles/index.css"],"names":[],"mappings":"AAAA;IACI,SAAS;IACT,UAAU;IACV,sBAAsB;IACtB,eAAe;AACnB;;AAEA;IACI,gBAAgB;AACpB;;AAEA;IACI,uBAAuB;AAC3B","sourcesContent":["* {\r\n    margin: 0;\r\n    padding: 0;\r\n    box-sizing: border-box;\r\n    font-size: 10px;\r\n}\r\n\r\nbody {\r\n    overflow: hidden;\r\n}\r\n\r\n#game-canvas {\r\n    background-color: black;\r\n}"],"sourceRoot":""}]);
+    z-index: -1;
+}
+
+main {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(10px);
+    width: 100vw;
+    height: 100vh;
+    z-index: 0;
+}
+
+#main-section {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-rows: 5fr 20fr 1fr;
+}
+
+#main-section header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+h1 {
+    font-size: 10rem;
+}
+
+#button-section {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 80%;
+}
+
+#button-section button {
+    top: -100px;
+    background-color: transparent;
+    border: 5px solid white;
+    padding: 30px 20px;
+    color: white;
+    font-size: 3rem;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+#button-section button:hover {
+    background-color: rgba(255, 255, 255, 0.8);
+    color: black;
+    cursor: pointer;
+}`, "",{"version":3,"sources":["webpack://./src/styles/index.css"],"names":[],"mappings":"AAAA;IACI,SAAS;IACT,UAAU;IACV,sBAAsB;IACtB,eAAe;IACf,YAAY;IACZ,wCAAwC;IACxC,gBAAgB;IAChB,kBAAkB;IAClB,iBAAiB;AACrB;;AAEA;IACI,gBAAgB;AACpB;;AAEA;IACI,eAAe;IACf,MAAM;IACN,OAAO;IACP,uBAAuB;IACvB,WAAW;AACf;;AAEA;IACI,kBAAkB;IAClB,MAAM;IACN,OAAO;IACP,oCAAoC;IACpC,2BAA2B;IAC3B,YAAY;IACZ,aAAa;IACb,UAAU;AACd;;AAEA;IACI,WAAW;IACX,YAAY;IACZ,aAAa;IACb,gCAAgC;AACpC;;AAEA;IACI,aAAa;IACb,uBAAuB;IACvB,mBAAmB;AACvB;;AAEA;IACI,gBAAgB;AACpB;;AAEA;IACI,aAAa;IACb,6BAA6B;IAC7B,mBAAmB;IACnB,WAAW;AACf;;AAEA;IACI,WAAW;IACX,6BAA6B;IAC7B,uBAAuB;IACvB,kBAAkB;IAClB,YAAY;IACZ,eAAe;IACf,6CAA6C;AACjD;;AAEA;IACI,0CAA0C;IAC1C,YAAY;IACZ,eAAe;AACnB","sourcesContent":["* {\r\n    margin: 0;\r\n    padding: 0;\r\n    box-sizing: border-box;\r\n    font-size: 10px;\r\n    color: white;\r\n    font-family: 'Press Start 2P', system-ui;\r\n    font-weight: 400;\r\n    font-style: normal;  \r\n    user-select: none;\r\n}\r\n\r\nbody {\r\n    overflow: hidden;\r\n}\r\n\r\n#game-canvas {\r\n    position: fixed;\r\n    top: 0;\r\n    left: 0;\r\n    background-color: black;\r\n    z-index: -1;\r\n}\r\n\r\nmain {\r\n    position: absolute;\r\n    top: 0;\r\n    left: 0;\r\n    background-color: rgba(0, 0, 0, 0.8);\r\n    backdrop-filter: blur(10px);\r\n    width: 100vw;\r\n    height: 100vh;\r\n    z-index: 0;\r\n}\r\n\r\n#main-section {\r\n    width: 100%;\r\n    height: 100%;\r\n    display: grid;\r\n    grid-template-rows: 5fr 20fr 1fr;\r\n}\r\n\r\n#main-section header {\r\n    display: flex;\r\n    justify-content: center;\r\n    align-items: center;\r\n}\r\n\r\nh1 {\r\n    font-size: 10rem;\r\n}\r\n\r\n#button-section {\r\n    display: flex;\r\n    justify-content: space-evenly;\r\n    align-items: center;\r\n    height: 80%;\r\n}\r\n\r\n#button-section button {\r\n    top: -100px;\r\n    background-color: transparent;\r\n    border: 5px solid white;\r\n    padding: 30px 20px;\r\n    color: white;\r\n    font-size: 3rem;\r\n    transition: background-color 0.3s, color 0.3s;\r\n}\r\n\r\n#button-section button:hover {\r\n    background-color: rgba(255, 255, 255, 0.8);\r\n    color: black;\r\n    cursor: pointer;\r\n}"],"sourceRoot":""}]);
+// Exports
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/dist/cjs.js!./src/styles/setting.css":
+/*!**********************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js!./src/styles/setting.css ***!
+  \**********************************************************************/
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../node_modules/css-loader/dist/runtime/sourceMaps.js */ "./node_modules/css-loader/dist/runtime/sourceMaps.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__);
+// Imports
+
+
+var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
+// Module
+___CSS_LOADER_EXPORT___.push([module.id, `
+#setting-button {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    color: white;
+    z-index: 1000;
+    background-color: transparent;
+    border: none;
+    transition: transform 0.3s;
+    box-sizing: border-box;
+}
+
+#setting-button:hover {
+    transform: rotate(90deg);
+    cursor: pointer;
+}
+
+footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#setting-icon {
+    font-size: 4rem;
+}
+
+#setting-section {
+    width: 80%;
+    height: 80%;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: grid;
+    grid-template-rows: 1fr 5fr;
+    z-index: 1000;
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(10px);
+    border: 5px solid white;
+}
+
+#setting-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 3px solid white;
+    margin: 0 20px;
+}
+
+#setting-title {
+    font-size: 4rem;
+}
+
+#setting-section h2 {
+    font-size: 3rem;
+}
+
+#setting-content {
+    display: grid;
+    grid-template-rows: 2fr 3fr;
+    gap: 20px;
+    padding: 20px;
+}
+
+#difficulty-section header,
+#color-section header,
+#obstacle-section header {
+    display: flex;
+    align-items: center;
+}
+
+#difficulty-section {
+    display: grid;
+    grid-template-rows: 1fr 5fr;
+    border-bottom: 3px solid white;
+}
+
+#difficulty-option {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.difficulty-button {
+    background-color: transparent;
+    border: 5px solid white;
+    padding: 20px 10px;
+    color: white;
+    font-size: 2rem;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+#easy-button:hover, .easy-enabled {
+    background-color: rgba(0, 255, 72, 0.8);
+    color: black;
+    cursor: pointer;
+}
+
+#medium-button:hover, .medium-enabled {
+    background-color: rgba(255, 255, 0, 0.8);
+    color: black;
+    cursor: pointer;
+}
+
+#hard-button:hover, .hard-enabled {
+    background-color: rgba(255, 0, 0, 0.8);
+    color: black;
+    cursor: pointer;
+}
+
+#other-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+#color-section,
+#obstacle-section {
+    display: grid;
+    grid-template-rows: 1fr 5fr;
+}
+
+#color-section {
+    border-right: 3px solid white;
+}
+
+#color-section header,
+#obstacle-section header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#color-option-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+#color-option-container button {
+    width: 50%;
+    background-color: transparent;
+    border: 5px solid white;
+    padding: 20px 10px;
+    color: white;
+    font-size: 2rem;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+#color-option-container #red-option:hover, .red-enabled {
+    background-color: red;
+    color: black;
+    cursor: pointer;
+}
+
+#color-option-container #green-option:hover, .blue-enabled {
+    background-color: green;
+    color: black;
+    cursor: pointer;
+}
+
+#color-option-container #blue-option:hover, .green-enabled {
+    background-color: blue;
+    color: black;
+    cursor: pointer;
+}
+
+
+
+#obstacle-option-container {
+    display: grid;
+    grid-template-rows: 3fr 2fr;
+}
+
+#obstacle-presence-section {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+#obstacle-presence-section button {
+    width: 30%;
+    background-color: transparent;
+    border: 5px solid white;
+    padding: 20px 10px;
+    color: white;
+    font-size: 2rem;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+#obstacle-presence-section #obstacle-on-button:hover {
+    background-color: rgba(0, 255, 72, 0.8);
+    color: black;
+    cursor: pointer;
+}
+
+#obstacle-presence-section #obstacle-off-button:hover {
+    background-color: rgba(255, 0, 0, 0.8);
+    color: black;
+    cursor: pointer;
+}
+
+#obstacle-quantity-section {
+    position: relative;
+    width: 80%;
+    margin: auto;
+}
+
+#obstacle-quantity-section div {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#obstacle-quantity-section label, #obstacle-quantity-section span {
+    font-size: 2rem;
+    padding-bottom: 10px;
+}
+
+#obstacle-quantity-input {
+    width: 100%;
+}
+
+.active {
+    background-color: white;
+    color: black;
+}`, "",{"version":3,"sources":["webpack://./src/styles/setting.css"],"names":[],"mappings":";AACA;IACI,eAAe;IACf,YAAY;IACZ,UAAU;IACV,YAAY;IACZ,aAAa;IACb,6BAA6B;IAC7B,YAAY;IACZ,0BAA0B;IAC1B,sBAAsB;AAC1B;;AAEA;IACI,wBAAwB;IACxB,eAAe;AACnB;;AAEA;IACI,aAAa;IACb,uBAAuB;IACvB,mBAAmB;AACvB;;AAEA;IACI,eAAe;AACnB;;AAEA;IACI,UAAU;IACV,WAAW;IACX,eAAe;IACf,QAAQ;IACR,SAAS;IACT,gCAAgC;IAChC,aAAa;IACb,2BAA2B;IAC3B,aAAa;IACb,oCAAoC;IACpC,2BAA2B;IAC3B,uBAAuB;AAC3B;;AAEA;IACI,aAAa;IACb,uBAAuB;IACvB,mBAAmB;IACnB,8BAA8B;IAC9B,cAAc;AAClB;;AAEA;IACI,eAAe;AACnB;;AAEA;IACI,eAAe;AACnB;;AAEA;IACI,aAAa;IACb,2BAA2B;IAC3B,SAAS;IACT,aAAa;AACjB;;AAEA;;;IAGI,aAAa;IACb,mBAAmB;AACvB;;AAEA;IACI,aAAa;IACb,2BAA2B;IAC3B,8BAA8B;AAClC;;AAEA;IACI,aAAa;IACb,6BAA6B;IAC7B,mBAAmB;AACvB;;AAEA;IACI,6BAA6B;IAC7B,uBAAuB;IACvB,kBAAkB;IAClB,YAAY;IACZ,eAAe;IACf,6CAA6C;AACjD;;AAEA;IACI,uCAAuC;IACvC,YAAY;IACZ,eAAe;AACnB;;AAEA;IACI,wCAAwC;IACxC,YAAY;IACZ,eAAe;AACnB;;AAEA;IACI,sCAAsC;IACtC,YAAY;IACZ,eAAe;AACnB;;AAEA;IACI,aAAa;IACb,8BAA8B;AAClC;;AAEA;;IAEI,aAAa;IACb,2BAA2B;AAC/B;;AAEA;IACI,6BAA6B;AACjC;;AAEA;;IAEI,aAAa;IACb,mBAAmB;IACnB,uBAAuB;AAC3B;;AAEA;IACI,aAAa;IACb,sBAAsB;IACtB,6BAA6B;IAC7B,mBAAmB;AACvB;;AAEA;IACI,UAAU;IACV,6BAA6B;IAC7B,uBAAuB;IACvB,kBAAkB;IAClB,YAAY;IACZ,eAAe;IACf,6CAA6C;AACjD;;AAEA;IACI,qBAAqB;IACrB,YAAY;IACZ,eAAe;AACnB;;AAEA;IACI,uBAAuB;IACvB,YAAY;IACZ,eAAe;AACnB;;AAEA;IACI,sBAAsB;IACtB,YAAY;IACZ,eAAe;AACnB;;;;AAIA;IACI,aAAa;IACb,2BAA2B;AAC/B;;AAEA;IACI,aAAa;IACb,mBAAmB;IACnB,uBAAuB;IACvB,mBAAmB;IACnB,SAAS;AACb;;AAEA;IACI,UAAU;IACV,6BAA6B;IAC7B,uBAAuB;IACvB,kBAAkB;IAClB,YAAY;IACZ,eAAe;IACf,6CAA6C;AACjD;;AAEA;IACI,uCAAuC;IACvC,YAAY;IACZ,eAAe;AACnB;;AAEA;IACI,sCAAsC;IACtC,YAAY;IACZ,eAAe;AACnB;;AAEA;IACI,kBAAkB;IAClB,UAAU;IACV,YAAY;AAChB;;AAEA;IACI,WAAW;IACX,aAAa;IACb,8BAA8B;IAC9B,mBAAmB;AACvB;;AAEA;IACI,eAAe;IACf,oBAAoB;AACxB;;AAEA;IACI,WAAW;AACf;;AAEA;IACI,uBAAuB;IACvB,YAAY;AAChB","sourcesContent":["\r\n#setting-button {\r\n    position: fixed;\r\n    bottom: 20px;\r\n    left: 20px;\r\n    color: white;\r\n    z-index: 1000;\r\n    background-color: transparent;\r\n    border: none;\r\n    transition: transform 0.3s;\r\n    box-sizing: border-box;\r\n}\r\n\r\n#setting-button:hover {\r\n    transform: rotate(90deg);\r\n    cursor: pointer;\r\n}\r\n\r\nfooter {\r\n    display: flex;\r\n    justify-content: center;\r\n    align-items: center;\r\n}\r\n\r\n#setting-icon {\r\n    font-size: 4rem;\r\n}\r\n\r\n#setting-section {\r\n    width: 80%;\r\n    height: 80%;\r\n    position: fixed;\r\n    top: 50%;\r\n    left: 50%;\r\n    transform: translate(-50%, -50%);\r\n    display: grid;\r\n    grid-template-rows: 1fr 5fr;\r\n    z-index: 1000;\r\n    background-color: rgba(0, 0, 0, 0.6);\r\n    backdrop-filter: blur(10px);\r\n    border: 5px solid white;\r\n}\r\n\r\n#setting-header {\r\n    display: flex;\r\n    justify-content: center;\r\n    align-items: center;\r\n    border-bottom: 3px solid white;\r\n    margin: 0 20px;\r\n}\r\n\r\n#setting-title {\r\n    font-size: 4rem;\r\n}\r\n\r\n#setting-section h2 {\r\n    font-size: 3rem;\r\n}\r\n\r\n#setting-content {\r\n    display: grid;\r\n    grid-template-rows: 2fr 3fr;\r\n    gap: 20px;\r\n    padding: 20px;\r\n}\r\n\r\n#difficulty-section header,\r\n#color-section header,\r\n#obstacle-section header {\r\n    display: flex;\r\n    align-items: center;\r\n}\r\n\r\n#difficulty-section {\r\n    display: grid;\r\n    grid-template-rows: 1fr 5fr;\r\n    border-bottom: 3px solid white;\r\n}\r\n\r\n#difficulty-option {\r\n    display: flex;\r\n    justify-content: space-evenly;\r\n    align-items: center;\r\n}\r\n\r\n.difficulty-button {\r\n    background-color: transparent;\r\n    border: 5px solid white;\r\n    padding: 20px 10px;\r\n    color: white;\r\n    font-size: 2rem;\r\n    transition: background-color 0.3s, color 0.3s;\r\n}\r\n\r\n#easy-button:hover, .easy-enabled {\r\n    background-color: rgba(0, 255, 72, 0.8);\r\n    color: black;\r\n    cursor: pointer;\r\n}\r\n\r\n#medium-button:hover, .medium-enabled {\r\n    background-color: rgba(255, 255, 0, 0.8);\r\n    color: black;\r\n    cursor: pointer;\r\n}\r\n\r\n#hard-button:hover, .hard-enabled {\r\n    background-color: rgba(255, 0, 0, 0.8);\r\n    color: black;\r\n    cursor: pointer;\r\n}\r\n\r\n#other-section {\r\n    display: grid;\r\n    grid-template-columns: 1fr 1fr;\r\n}\r\n\r\n#color-section,\r\n#obstacle-section {\r\n    display: grid;\r\n    grid-template-rows: 1fr 5fr;\r\n}\r\n\r\n#color-section {\r\n    border-right: 3px solid white;\r\n}\r\n\r\n#color-section header,\r\n#obstacle-section header {\r\n    display: flex;\r\n    align-items: center;\r\n    justify-content: center;\r\n}\r\n\r\n#color-option-container {\r\n    display: flex;\r\n    flex-direction: column;\r\n    justify-content: space-evenly;\r\n    align-items: center;\r\n}\r\n\r\n#color-option-container button {\r\n    width: 50%;\r\n    background-color: transparent;\r\n    border: 5px solid white;\r\n    padding: 20px 10px;\r\n    color: white;\r\n    font-size: 2rem;\r\n    transition: background-color 0.3s, color 0.3s;\r\n}\r\n\r\n#color-option-container #red-option:hover, .red-enabled {\r\n    background-color: red;\r\n    color: black;\r\n    cursor: pointer;\r\n}\r\n\r\n#color-option-container #green-option:hover, .blue-enabled {\r\n    background-color: green;\r\n    color: black;\r\n    cursor: pointer;\r\n}\r\n\r\n#color-option-container #blue-option:hover, .green-enabled {\r\n    background-color: blue;\r\n    color: black;\r\n    cursor: pointer;\r\n}\r\n\r\n\r\n\r\n#obstacle-option-container {\r\n    display: grid;\r\n    grid-template-rows: 3fr 2fr;\r\n}\r\n\r\n#obstacle-presence-section {\r\n    display: flex;\r\n    flex-direction: row;\r\n    justify-content: center;\r\n    align-items: center;\r\n    gap: 20px;\r\n}\r\n\r\n#obstacle-presence-section button {\r\n    width: 30%;\r\n    background-color: transparent;\r\n    border: 5px solid white;\r\n    padding: 20px 10px;\r\n    color: white;\r\n    font-size: 2rem;\r\n    transition: background-color 0.3s, color 0.3s;\r\n}\r\n\r\n#obstacle-presence-section #obstacle-on-button:hover {\r\n    background-color: rgba(0, 255, 72, 0.8);\r\n    color: black;\r\n    cursor: pointer;\r\n}\r\n\r\n#obstacle-presence-section #obstacle-off-button:hover {\r\n    background-color: rgba(255, 0, 0, 0.8);\r\n    color: black;\r\n    cursor: pointer;\r\n}\r\n\r\n#obstacle-quantity-section {\r\n    position: relative;\r\n    width: 80%;\r\n    margin: auto;\r\n}\r\n\r\n#obstacle-quantity-section div {\r\n    width: 100%;\r\n    display: flex;\r\n    justify-content: space-between;\r\n    align-items: center;\r\n}\r\n\r\n#obstacle-quantity-section label, #obstacle-quantity-section span {\r\n    font-size: 2rem;\r\n    padding-bottom: 10px;\r\n}\r\n\r\n#obstacle-quantity-input {\r\n    width: 100%;\r\n}\r\n\r\n.active {\r\n    background-color: white;\r\n    color: black;\r\n}"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -47,6 +365,7 @@ body {
   \*****************************************************/
 /***/ ((module) => {
 
+"use strict";
 
 
 /*
@@ -141,6 +460,7 @@ module.exports = function (cssWithMappingToString) {
   \************************************************************/
 /***/ ((module) => {
 
+"use strict";
 
 
 module.exports = function (item) {
@@ -166,6 +486,7 @@ module.exports = function (item) {
   \******************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
@@ -212,12 +533,66 @@ var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js
 
 /***/ }),
 
+/***/ "./src/styles/setting.css":
+/*!********************************!*\
+  !*** ./src/styles/setting.css ***!
+  \********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _node_modules_style_loader_dist_runtime_styleDomAPI_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !../../node_modules/style-loader/dist/runtime/styleDomAPI.js */ "./node_modules/style-loader/dist/runtime/styleDomAPI.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_styleDomAPI_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_styleDomAPI_js__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _node_modules_style_loader_dist_runtime_insertBySelector_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../node_modules/style-loader/dist/runtime/insertBySelector.js */ "./node_modules/style-loader/dist/runtime/insertBySelector.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_insertBySelector_js__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_insertBySelector_js__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _node_modules_style_loader_dist_runtime_setAttributesWithoutAttributes_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! !../../node_modules/style-loader/dist/runtime/setAttributesWithoutAttributes.js */ "./node_modules/style-loader/dist/runtime/setAttributesWithoutAttributes.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_setAttributesWithoutAttributes_js__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_setAttributesWithoutAttributes_js__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _node_modules_style_loader_dist_runtime_insertStyleElement_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! !../../node_modules/style-loader/dist/runtime/insertStyleElement.js */ "./node_modules/style-loader/dist/runtime/insertStyleElement.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_insertStyleElement_js__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_insertStyleElement_js__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _node_modules_style_loader_dist_runtime_styleTagTransform_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! !../../node_modules/style-loader/dist/runtime/styleTagTransform.js */ "./node_modules/style-loader/dist/runtime/styleTagTransform.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_styleTagTransform_js__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_styleTagTransform_js__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _node_modules_css_loader_dist_cjs_js_setting_css__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! !!../../node_modules/css-loader/dist/cjs.js!./setting.css */ "./node_modules/css-loader/dist/cjs.js!./src/styles/setting.css");
+
+      
+      
+      
+      
+      
+      
+      
+      
+      
+
+var options = {};
+
+options.styleTagTransform = (_node_modules_style_loader_dist_runtime_styleTagTransform_js__WEBPACK_IMPORTED_MODULE_5___default());
+options.setAttributes = (_node_modules_style_loader_dist_runtime_setAttributesWithoutAttributes_js__WEBPACK_IMPORTED_MODULE_3___default());
+options.insert = _node_modules_style_loader_dist_runtime_insertBySelector_js__WEBPACK_IMPORTED_MODULE_2___default().bind(null, "head");
+options.domAPI = (_node_modules_style_loader_dist_runtime_styleDomAPI_js__WEBPACK_IMPORTED_MODULE_1___default());
+options.insertStyleElement = (_node_modules_style_loader_dist_runtime_insertStyleElement_js__WEBPACK_IMPORTED_MODULE_4___default());
+
+var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_setting_css__WEBPACK_IMPORTED_MODULE_6__["default"], options);
+
+
+
+
+       /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_setting_css__WEBPACK_IMPORTED_MODULE_6__["default"] && _node_modules_css_loader_dist_cjs_js_setting_css__WEBPACK_IMPORTED_MODULE_6__["default"].locals ? _node_modules_css_loader_dist_cjs_js_setting_css__WEBPACK_IMPORTED_MODULE_6__["default"].locals : undefined);
+
+
+/***/ }),
+
 /***/ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js":
 /*!****************************************************************************!*\
   !*** ./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js ***!
   \****************************************************************************/
 /***/ ((module) => {
 
+"use strict";
 
 
 var stylesInDOM = [];
@@ -311,6 +686,7 @@ module.exports = function (list, options) {
   \********************************************************************/
 /***/ ((module) => {
 
+"use strict";
 
 
 var memo = {};
@@ -354,6 +730,7 @@ module.exports = insertBySelector;
   \**********************************************************************/
 /***/ ((module) => {
 
+"use strict";
 
 
 /* istanbul ignore next  */
@@ -373,6 +750,7 @@ module.exports = insertStyleElement;
   \**********************************************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
+"use strict";
 
 
 /* istanbul ignore next  */
@@ -392,6 +770,7 @@ module.exports = setAttributesWithoutAttributes;
   \***************************************************************/
 /***/ ((module) => {
 
+"use strict";
 
 
 /* istanbul ignore next  */
@@ -462,6 +841,7 @@ module.exports = domAPI;
   \*********************************************************************/
 /***/ ((module) => {
 
+"use strict";
 
 
 /* istanbul ignore next  */
@@ -479,18 +859,69 @@ module.exports = styleTagTransform;
 
 /***/ }),
 
+/***/ "./src/js/setting.js":
+/*!***************************!*\
+  !*** ./src/js/setting.js ***!
+  \***************************/
+/***/ (() => {
+
+const defaultSettings = {
+    difficulty: 'medium',
+    color: 'red',
+    obstacle: 'on',
+    obstacleNumber: 5,
+};
+
+const easyButton = document.getElementById('easy-button');
+const mediumButton = document.getElementById('medium-button');
+const hardButton = document.getElementById('hard-button');
+
+const difficultyButtons = {
+    easy: document.getElementById('easy-button'),
+    medium: document.getElementById('medium-button'),
+    hard: document.getElementById('hard-button'),
+}
+
+function setDefaultSettings() {
+    console.log('setting default settings');
+    localStorage.setItem('pongSettings', JSON.stringify(defaultSettings));
+    loadSettings();
+}
+
+function enableDifficulty(difficulty) {
+    for (const key in difficultyButtons) {
+        difficultyButtons[key].classList.toggle(`${key}-enabled`, key === difficulty);
+    }
+}
+
+function loadSettings() {
+    const settings = JSON.parse(localStorage.getItem('pongSettings'));
+    console.log('loading settings', settings);
+    enableDifficulty(settings.difficulty);
+}
+
+window.onload = () => {
+    localStorage.getItem('pongSettings') ? loadSettings() : setDefaultSettings();
+}
+
+
+
+/***/ }),
+
 /***/ "./src/js/utility.js":
 /*!***************************!*\
   !*** ./src/js/utility.js ***!
   \***************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   Ball: () => (/* binding */ Ball),
 /* harmony export */   Obstacle: () => (/* binding */ Obstacle),
 /* harmony export */   Paddle: () => (/* binding */ Paddle),
 /* harmony export */   clearCanvas: () => (/* binding */ clearCanvas),
+/* harmony export */   getDistance: () => (/* binding */ getDistance),
 /* harmony export */   getRandomIntegerFromRange: () => (/* binding */ getRandomIntegerFromRange)
 /* harmony export */ });
 const canvas = document.getElementById('game-canvas');
@@ -540,21 +971,7 @@ class Ball {
     }
 }
 
-function isMovingTowards(ball, object) {
-    const xVelocityDiff = ball.dx - (object.dx || 0);
-    const yVelocityDiff = ball.dy - (object.dy || 0);
-    const xPositionDiff = object.x - ball.x;
-    const yPositionDiff = object.y - ball.y;
-
-    const isMovingHorizontally = (xVelocityDiff > 0 && xPositionDiff > 0) || (xVelocityDiff < 0 && xPositionDiff < 0);
-    const isMovingVertically = (yVelocityDiff > 0 && yPositionDiff > 0) || (yVelocityDiff < 0 && yPositionDiff < 0);
-
-    return isMovingHorizontally || isMovingVertically;
-}
-
 function checkCollision(ball, paddle) {
-    if (!isMovingTowards(ball, paddle)) return false;
-    
     const withinVerticalBounds = ball.y > paddle.y && ball.y < paddle.y + paddle.height;
     const horizontalCollision = ball.x + ball.radius > paddle.x && ball.x - ball.radius < paddle.x + paddle.width;
 
@@ -562,8 +979,14 @@ function checkCollision(ball, paddle) {
 }
 
 function resolveObstacleCollision(ball, obstacle) {
+    // Calculate velocity differences and position differences
+    const xVelocityDiff = ball.dx;
+    const yVelocityDiff = ball.dy - obstacle.dy;
+    const xPositionDiff = obstacle.x - ball.x;
+    const yPositionDiff = obstacle.y - ball.y;
+
     // Check if the ball is moving towards the obstacle
-    if (isMovingTowards(ball, obstacle)) {
+    if (xVelocityDiff * xPositionDiff + yVelocityDiff * yPositionDiff >= 0) {
         // Calculate angle between the ball and obstacle
         const angle = Math.atan2((obstacle.y - ball.y), (obstacle.x - ball.x));
 
@@ -621,11 +1044,12 @@ class Paddle {
 }
 
 class Obstacle {
-    constructor(x, y, radius) {
+    constructor(x, y, radius, dy) {
         this.x = x;
         this.y = y;
         this.radius = radius;
         this.color = 'white';
+        this.dy = dy;
     }
 
     draw() {
@@ -634,6 +1058,14 @@ class Obstacle {
         ctx.fillStyle = this.color;
         ctx.fill();
         ctx.closePath();
+    }
+
+    update() {
+        if (this.y + this.radius > canvas.height || this.y - this.radius < 0) {
+            this.dy *= -1;
+        }
+        this.y += this.dy;
+        this.draw();
     }
 }
 
@@ -727,14 +1159,20 @@ function getRandomIntegerFromRange(min, max) {
 /******/ 	
 /************************************************************************/
 var __webpack_exports__ = {};
-// This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
+// This entry need to be wrapped in an IIFE because it need to be in strict mode.
 (() => {
+"use strict";
 /*!*************************!*\
   !*** ./src/js/index.js ***!
   \*************************/
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _styles_index_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../styles/index.css */ "./src/styles/index.css");
-/* harmony import */ var _utility_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./utility.js */ "./src/js/utility.js");
+/* harmony import */ var _styles_setting_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../styles/setting.css */ "./src/styles/setting.css");
+/* harmony import */ var _setting_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./setting.js */ "./src/js/setting.js");
+/* harmony import */ var _setting_js__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_setting_js__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _utility_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./utility.js */ "./src/js/utility.js");
+
+
 
 
 
@@ -790,10 +1228,10 @@ function updateAiPaddle() { // AI paddle
 // Ball and game state management
 function checkGoal() {
     if (ball.x < 0) {
-        console.log('AI scores: ' + points.ai);
+        // console.log('AI scores: ' + points.ai);
         restartRound(false);
     } else if (ball.x > canvas.width) {
-        console.log('Player scores: ' + points.player);
+        // console.log('Player scores: ' + points.player);
         restartRound(true);
     }
 }
@@ -811,14 +1249,14 @@ function setBall() {
     let ballDx, ballDy;
 
     do {
-        ballDx = (0,_utility_js__WEBPACK_IMPORTED_MODULE_1__.getRandomIntegerFromRange)(-15, 15);
+        ballDx = (0,_utility_js__WEBPACK_IMPORTED_MODULE_3__.getRandomIntegerFromRange)(-15, 15);
     } while (Math.abs(ballDx) < 10);
     
     do {
-        ballDy = (0,_utility_js__WEBPACK_IMPORTED_MODULE_1__.getRandomIntegerFromRange)(-10, 10);
+        ballDy = (0,_utility_js__WEBPACK_IMPORTED_MODULE_3__.getRandomIntegerFromRange)(-10, 10);
     } while (Math.abs(ballDy) < 5);
 
-    ball = new _utility_js__WEBPACK_IMPORTED_MODULE_1__.Ball(window.innerWidth / 2, window.innerHeight / 2, ballRadius, ballDx, ballDy);
+    ball = new _utility_js__WEBPACK_IMPORTED_MODULE_3__.Ball(window.innerWidth / 2, window.innerHeight / 2, ballRadius, ballDx, ballDy);
 }
 
 // Set paddle properties
@@ -829,31 +1267,39 @@ function setPaddle() {
     const aiX = window.innerWidth - paddleWidth - 20;
     const y = window.innerHeight / 2 - paddleHeight / 2;
 
-    playerPaddle = new _utility_js__WEBPACK_IMPORTED_MODULE_1__.Paddle(playerX, y, paddleWidth, paddleHeight);
-    aiPaddle = new _utility_js__WEBPACK_IMPORTED_MODULE_1__.Paddle(aiX, y, paddleWidth, paddleHeight);
+    playerPaddle = new _utility_js__WEBPACK_IMPORTED_MODULE_3__.Paddle(playerX, y, paddleWidth, paddleHeight);
+    aiPaddle = new _utility_js__WEBPACK_IMPORTED_MODULE_3__.Paddle(aiX, y, paddleWidth, paddleHeight);
 }
 
 // Obstacle
 let obstacles = [];
 function setObstacle() {
+    obstacles = [];
     const obstacleRadius = 30;
     const canvasPadding = 200;
+    const maxObstacles = 5;
 
-    for (let i = 0; i < 5; i++) {
-        const x = (0,_utility_js__WEBPACK_IMPORTED_MODULE_1__.getRandomIntegerFromRange)((canvas.width - obstacleRadius - canvasPadding), (0 + canvasPadding));
-        const y = (0,_utility_js__WEBPACK_IMPORTED_MODULE_1__.getRandomIntegerFromRange)((canvas.height - obstacleRadius - canvasPadding), (0 + canvasPadding));
-        obstacles.push(new _utility_js__WEBPACK_IMPORTED_MODULE_1__.Obstacle(x, y, obstacleRadius));
+    while (obstacles.length < maxObstacles) {
+        let x = (0,_utility_js__WEBPACK_IMPORTED_MODULE_3__.getRandomIntegerFromRange)(obstacleRadius + canvasPadding, canvas.width - obstacleRadius - canvasPadding);
+        let y = (0,_utility_js__WEBPACK_IMPORTED_MODULE_3__.getRandomIntegerFromRange)(obstacleRadius + canvasPadding, canvas.height - obstacleRadius - canvasPadding);
+        let dy = (0,_utility_js__WEBPACK_IMPORTED_MODULE_3__.getRandomIntegerFromRange)(-3, 3);
+
+        const isOverlapping = obstacles.some(obstacle => (0,_utility_js__WEBPACK_IMPORTED_MODULE_3__.getDistance)({ x, y }, obstacle) < obstacleRadius * 2);
+        const dyIsZero = dy === 0;
+        if (!isOverlapping && !dyIsZero) {
+            obstacles.push(new _utility_js__WEBPACK_IMPORTED_MODULE_3__.Obstacle(x, y, obstacleRadius, dy));
+        }
     }
 }
 
 // Game loop
 function animate() {
     requestAnimationFrame(animate);
-    (0,_utility_js__WEBPACK_IMPORTED_MODULE_1__.clearCanvas)();
+    (0,_utility_js__WEBPACK_IMPORTED_MODULE_3__.clearCanvas)();
     updateUserPaddle(playerPaddle);
     updateAiPaddle();
     ball.update(playerPaddle, aiPaddle, obstacles);
-    obstacles.forEach(obstacle => obstacle.draw());
+    obstacles.forEach(obstacle => obstacle.update());
     checkGoal();
 }
 
@@ -863,12 +1309,12 @@ function startGame() {
     setPaddle();
     setBall();
     setObstacle();
-    animate();
 }
 
 // Event listeners
 window.onload = () => { // Start game when window is loaded
     startGame();
+    animate();
 };
 
 window.addEventListener('resize', () => { // Resize canvas when window is resized
@@ -880,4 +1326,4 @@ window.addEventListener('resize', () => { // Resize canvas when window is resize
 
 /******/ })()
 ;
-//# sourceMappingURL=bundle8688d786475bdaac364e.js.map
+//# sourceMappingURL=bundleb58629ccefcb28972768.js.map

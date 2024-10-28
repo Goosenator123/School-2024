@@ -24,12 +24,59 @@
                 <button id="start-button-2">Player vs Player</button>
             </section>
             <footer>
-                <p>press esc for settings</p>
+                <p>press Esc to open/close settings</p>
             </footer>
         </section>
         <button id="setting-button">
             <span class="material-symbols-outlined" id="setting-icon">settings</span>
         </button>
     </main>
+    <div id="setting-section">
+        <header id="setting-header">
+            <h1 id="setting-title">Settings</h1>
+        </header>
+        <article id="setting-content">
+            <section id="difficulty-section">
+                <header>
+                    <h2>Difficulty</h2>
+                </header>
+                <div id="difficulty-option">
+                    <button class="difficulty-button" id="easy-button" value="easy">Easy</button>
+                    <button class="difficulty-button" id="medium-button" value="medium">Medium</button>
+                    <button class="difficulty-button" id="hard-button" value="hard">Hard</button>
+                </div>
+            </section>
+            <section id="other-section">
+                <div id="color-section">
+                    <header>
+                        <h2>Color</h2>
+                    </header>
+                    <div id="color-option-container">
+                        <button id="red-option">Red</button>
+                        <button id="green-option">Green</button>
+                        <button id="blue-option">Blue</button>
+                    </div>
+                </div>
+                <div id="obstacle-section">
+                    <header>
+                        <h2>Obstacle</h2>
+                    </header>
+                    <div id="obstacle-option-container">
+                        <div id="obstacle-presence-section">
+                            <button id="obstacle-on-button">On</button>
+                            <button id="obstacle-off-button">Off</button>
+                        </div>
+                        <div id="obstacle-quantity-section">
+                            <div>
+                                <label for="obstacle-quantity">Quantity: </label>
+                                <span id="obstacle-quantity">1</span>
+                            </div>
+                            <input type="range" id="obstacle-quantity-input" max="9">
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </article>
+    </div>
 </body>
 </html>

@@ -1,4 +1,6 @@
 import '../styles/index.css';
+import '../styles/setting.css';
+import './setting.js';
 import { Ball, Obstacle, Paddle, clearCanvas, getRandomIntegerFromRange, getDistance } from './utility.js';
 
 const canvas = document.getElementById('game-canvas');
@@ -53,10 +55,10 @@ function updateAiPaddle() { // AI paddle
 // Ball and game state management
 function checkGoal() {
     if (ball.x < 0) {
-        console.log('AI scores: ' + points.ai);
+        // console.log('AI scores: ' + points.ai);
         restartRound(false);
     } else if (ball.x > canvas.width) {
-        console.log('Player scores: ' + points.player);
+        // console.log('Player scores: ' + points.player);
         restartRound(true);
     }
 }

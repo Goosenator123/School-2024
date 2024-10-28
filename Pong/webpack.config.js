@@ -5,6 +5,7 @@ module.exports = {
     mode: 'development',
     entry: {
         bundle: path.resolve(__dirname, 'src/js/index.js'),
+        setting: path.resolve(__dirname, 'src/js/setting.js'),
     },
     output : {
         path: path.resolve(__dirname, 'public'),
@@ -33,7 +34,7 @@ module.exports = {
     },
     plugins: [
         new HtmlWebpackPlugin({
-            chunks: ['bundle'],
+            chunks: ['bundle', 'setting'],
             filename: 'index.html',
             template: './src/index.html',
         }),

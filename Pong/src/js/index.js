@@ -1,6 +1,5 @@
 import '../styles/index.css';
 import '../styles/setting.css';
-import './setting.js';
 import { Ball, Obstacle, Paddle, clearCanvas, getRandomIntegerFromRange, getDistance } from './utility.js';
 
 const canvas = document.getElementById('game-canvas');
@@ -142,13 +141,12 @@ function startGame() {
     setObstacle();
 }
 
-// Event listeners
-window.onload = () => { // Start game when window is loaded
-    startGame();
-    animate();
-};
-
-window.addEventListener('resize', () => { // Resize canvas when window is resized
+// Resize canvas when window is resized
+window.addEventListener('resize', () => { 
     setCanvasSize();
     startGame();
 });
+
+// Run
+startGame();
+animate();

@@ -35,7 +35,7 @@ footer {
     transform: translate(-50%, -50%);
     display: grid;
     grid-template-rows: 1fr 5fr;
-    z-index: 1000;
+    z-index: -1000;
     background-color: rgba(0, 0, 0, 0.6);
     backdrop-filter: blur(10px);
     border: 5px solid white;
@@ -168,8 +168,6 @@ footer {
     color: black;
     cursor: pointer;
 }
-
-
 
 #obstacle-option-container {
     display: grid;

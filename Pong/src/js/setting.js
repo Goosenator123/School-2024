@@ -6,6 +6,9 @@ const defaultSettings = {
     obstacleNumber: 5,
 };
 
+// Zindex variable of setting
+let zIndex = -1000;
+
 // HTML elements grouped by settings type
 const settingButtonsObject = {
     difficulty: {
@@ -24,9 +27,11 @@ const settingButtonsObject = {
     }
 };
 
-// Other HTML elements
+// Other HTML elements cached
 const obstacleQuantityInput = document.getElementById('obstacle-quantity-input');
 const obstacleQuantityDisplay = document.getElementById('obstacle-quantity');
+const settingSection = document.getElementById('setting-section');
+const settingButton = document.getElementById('setting-button');
 
 // Set default settings in local storage
 function setDefaultSettings() {
@@ -87,6 +92,20 @@ function bindEventListeners() {
         }
     }
 }
+
+// Function to show/hide the setting menu
+function showHideSettingMenu() {
+    zIndex = -zIndex;
+    settingSection.style.zIndex = zIndex;
+}
+
+// Execute when ESC key is pressed or setting button is clicked
+window.addEventListener('keydown', (event) => {
+    if (event.key !== 'Escape') return;
+    showHideSettingMenu();
+});
+
+settingButton.addEventListener('click', showHideSettingMenu);
 
 // Initialize settings and event listeners on page load
 window.onload = () => {

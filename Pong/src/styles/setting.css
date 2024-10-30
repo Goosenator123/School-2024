@@ -84,6 +84,8 @@ footer {
 }
 
 .difficulty-button {
+    width: 20%;
+    min-width: fit-content;
     background-color: transparent;
     border: 5px solid white;
     padding: 20px 10px;
@@ -139,7 +141,7 @@ footer {
     align-items: center;
 }
 
-#color-option-container button {
+.color-button {
     width: 50%;
     background-color: transparent;
     border: 5px solid white;
@@ -155,13 +157,13 @@ footer {
     cursor: pointer;
 }
 
-#color-option-container #green-option:hover, .blue-enabled {
+#color-option-container #green-option:hover, .green-enabled {
     background-color: green;
     color: black;
     cursor: pointer;
 }
 
-#color-option-container #blue-option:hover, .green-enabled {
+#color-option-container #blue-option:hover, .blue-enabled {
     background-color: blue;
     color: black;
     cursor: pointer;
@@ -182,7 +184,7 @@ footer {
     gap: 20px;
 }
 
-#obstacle-presence-section button {
+.obstacle-button {
     width: 30%;
     background-color: transparent;
     border: 5px solid white;
@@ -192,13 +194,13 @@ footer {
     transition: background-color 0.3s, color 0.3s;
 }
 
-#obstacle-presence-section #obstacle-on-button:hover {
+#obstacle-presence-section #on-button:hover, .on-enabled {
     background-color: rgba(0, 255, 72, 0.8);
     color: black;
     cursor: pointer;
 }
 
-#obstacle-presence-section #obstacle-off-button:hover {
+#obstacle-presence-section #off-button:hover, .off-enabled {
     background-color: rgba(255, 0, 0, 0.8);
     color: black;
     cursor: pointer;

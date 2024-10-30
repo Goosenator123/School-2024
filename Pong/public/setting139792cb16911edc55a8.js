@@ -1,3 +1,7 @@
+/******/ (() => { // webpackBootstrap
+/*!***************************!*\
+  !*** ./src/js/setting.js ***!
+  \***************************/
 // Default settings for the game, used if no previous settings are found in local storage
 const defaultSettings = {
     difficulty: 'medium',
@@ -100,3 +104,6 @@ obstacleQuantityInput.addEventListener('input', (event) => {
     const value = Number(event.target.value) + 1;
     updateObstacleNumber(value);
 })
+/******/ })()
+;
+//# sourceMappingURL=setting139792cb16911edc55a8.js.map

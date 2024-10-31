@@ -2,11 +2,11 @@ const canvas = document.getElementById('game-canvas');
 const ctx = canvas.getContext('2d');
 
 class Ball {
-    constructor(x, y, radius, dx = 0, dy = 0) {
+    constructor(x, y, radius, dx = 0, dy = 0, color = 'white') {
         this.x = x;
         this.y = y;
         this.radius = radius;
-        this.color = 'white';
+        this.color = color;
         this.dx = dx;
         this.dy = dy;
     }
@@ -15,6 +15,9 @@ class Ball {
         ctx.beginPath();
         ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false);
         ctx.fillStyle = this.color;
+        ctx.strokeStyle = 'white';
+        ctx.lineWidth = 5;
+        ctx.stroke();
         ctx.fill();
         ctx.closePath();
     }
@@ -109,12 +112,12 @@ function getDistance(object1, object2) {
 }
 
 class Paddle {
-    constructor(x, y, width, height) {
+    constructor(x, y, width, height, color = 'white') {
         this.x = x;
         this.y = y;
         this.width = width;
         this.height = height;
-        this.color = 'white';
+        this.color = color;
     }
 
     draw() {
@@ -132,11 +135,11 @@ class Paddle {
 }
 
 class Obstacle {
-    constructor(x, y, radius, dy) {
+    constructor(x, y, radius, dy, color = 'white') {
         this.x = x;
         this.y = y;
         this.radius = radius;
-        this.color = 'white';
+        this.color = color;
         this.dy = dy;
     }
 

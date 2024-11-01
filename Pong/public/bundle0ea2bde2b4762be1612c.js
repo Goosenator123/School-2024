@@ -39,14 +39,39 @@ body {
     background-color: black;
 }
 
-#game-canvas {
+#fps {
     position: fixed;
-    top: 50%;
+    top: 0;
+    right: 0;
+    color: white;
+    z-index: 1000;
+    padding: 10px;
+    font-size: 1.5rem;
+}
+
+#canvas-container {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    background-color: black;
+}
+
+#game-canvas {
+    position: absolute;
+    top: 55%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: black;
     z-index: -1;
     border: 5px solid white;
+}
+
+#canvas-container h1 {
+    padding-top: 20px;
+    text-align: center;
+}
+
+#canvas-container span {
+    font-size: 10rem;
 }
 
 main {
@@ -100,7 +125,7 @@ h1 {
     background-color: rgba(255, 255, 255, 0.8);
     color: black;
     cursor: pointer;
-}`, "",{"version":3,"sources":["webpack://./src/styles/index.css"],"names":[],"mappings":"AAAA;IACI,SAAS;IACT,UAAU;IACV,sBAAsB;IACtB,eAAe;IACf,YAAY;IACZ,wCAAwC;IACxC,gBAAgB;IAChB,kBAAkB;IAClB,iBAAiB;IACjB,aAAa;AACjB;;AAEA;IACI,gBAAgB;IAChB,uBAAuB;AAC3B;;AAEA;IACI,eAAe;IACf,QAAQ;IACR,SAAS;IACT,gCAAgC;IAChC,uBAAuB;IACvB,WAAW;IACX,uBAAuB;AAC3B;;AAEA;IACI,kBAAkB;IAClB,MAAM;IACN,OAAO;IACP,oCAAoC;IACpC,2BAA2B;IAC3B,YAAY;IACZ,aAAa;IACb,aAAa;IACb,UAAU;AACd;;AAEA;IACI,WAAW;IACX,YAAY;IACZ,aAAa;IACb,gCAAgC;AACpC;;AAEA;IACI,aAAa;IACb,uBAAuB;IACvB,mBAAmB;AACvB;;AAEA;IACI,gBAAgB;IAChB,sBAAsB;AAC1B;;AAEA;IACI,aAAa;IACb,6BAA6B;IAC7B,mBAAmB;IACnB,WAAW;AACf;;AAEA;IACI,WAAW;IACX,6BAA6B;IAC7B,uBAAuB;IACvB,kBAAkB;IAClB,YAAY;IACZ,eAAe;IACf,gEAAgE;AACpE;;AAEA;IACI,0CAA0C;IAC1C,YAAY;IACZ,eAAe;AACnB","sourcesContent":["* {\r\n    margin: 0;\r\n    padding: 0;\r\n    box-sizing: border-box;\r\n    font-size: 10px;\r\n    color: white;\r\n    font-family: 'Press Start 2P', system-ui;\r\n    font-weight: 400;\r\n    font-style: normal;  \r\n    user-select: none;\r\n    outline: none;\r\n}\r\n\r\nbody {\r\n    overflow: hidden;\r\n    background-color: black;\r\n}\r\n\r\n#game-canvas {\r\n    position: fixed;\r\n    top: 50%;\r\n    left: 50%;\r\n    transform: translate(-50%, -50%);\r\n    background-color: black;\r\n    z-index: -1;\r\n    border: 5px solid white;\r\n}\r\n\r\nmain {\r\n    position: absolute;\r\n    top: 0;\r\n    left: 0;\r\n    background-color: rgba(0, 0, 0, 0.8);\r\n    backdrop-filter: blur(10px);\r\n    width: 100vw;\r\n    height: 100vh;\r\n    z-index: -100;\r\n    opacity: 0;\r\n}\r\n\r\n#main-section {\r\n    width: 100%;\r\n    height: 100%;\r\n    display: grid;\r\n    grid-template-rows: 5fr 20fr 1fr;\r\n}\r\n\r\n#main-section header {\r\n    display: flex;\r\n    justify-content: center;\r\n    align-items: center;\r\n}\r\n\r\nh1 {\r\n    font-size: 10rem;\r\n    transition: color 1.5s;\r\n}\r\n\r\n#button-section {\r\n    display: flex;\r\n    justify-content: space-evenly;\r\n    align-items: center;\r\n    height: 80%;\r\n}\r\n\r\n#button-section button {\r\n    top: -100px;\r\n    background-color: transparent;\r\n    border: 5px solid white;\r\n    padding: 30px 20px;\r\n    color: white;\r\n    font-size: 3rem;\r\n    transition: background-color 0.3s, color 0.3s, border-color 1.5s;\r\n}\r\n\r\n#button-section button:hover {\r\n    background-color: rgba(255, 255, 255, 0.8);\r\n    color: black;\r\n    cursor: pointer;\r\n}"],"sourceRoot":""}]);
+}`, "",{"version":3,"sources":["webpack://./src/styles/index.css"],"names":[],"mappings":"AAAA;IACI,SAAS;IACT,UAAU;IACV,sBAAsB;IACtB,eAAe;IACf,YAAY;IACZ,wCAAwC;IACxC,gBAAgB;IAChB,kBAAkB;IAClB,iBAAiB;IACjB,aAAa;AACjB;;AAEA;IACI,gBAAgB;IAChB,uBAAuB;AAC3B;;AAEA;IACI,eAAe;IACf,MAAM;IACN,QAAQ;IACR,YAAY;IACZ,aAAa;IACb,aAAa;IACb,iBAAiB;AACrB;;AAEA;IACI,eAAe;IACf,YAAY;IACZ,aAAa;IACb,uBAAuB;AAC3B;;AAEA;IACI,kBAAkB;IAClB,QAAQ;IACR,SAAS;IACT,gCAAgC;IAChC,WAAW;IACX,uBAAuB;AAC3B;;AAEA;IACI,iBAAiB;IACjB,kBAAkB;AACtB;;AAEA;IACI,gBAAgB;AACpB;;AAEA;IACI,kBAAkB;IAClB,MAAM;IACN,OAAO;IACP,oCAAoC;IACpC,2BAA2B;IAC3B,YAAY;IACZ,aAAa;IACb,aAAa;IACb,UAAU;AACd;;AAEA;IACI,WAAW;IACX,YAAY;IACZ,aAAa;IACb,gCAAgC;AACpC;;AAEA;IACI,aAAa;IACb,uBAAuB;IACvB,mBAAmB;AACvB;;AAEA;IACI,gBAAgB;IAChB,sBAAsB;AAC1B;;AAEA;IACI,aAAa;IACb,6BAA6B;IAC7B,mBAAmB;IACnB,WAAW;AACf;;AAEA;IACI,WAAW;IACX,6BAA6B;IAC7B,uBAAuB;IACvB,kBAAkB;IAClB,YAAY;IACZ,eAAe;IACf,gEAAgE;AACpE;;AAEA;IACI,0CAA0C;IAC1C,YAAY;IACZ,eAAe;AACnB","sourcesContent":["* {\r\n    margin: 0;\r\n    padding: 0;\r\n    box-sizing: border-box;\r\n    font-size: 10px;\r\n    color: white;\r\n    font-family: 'Press Start 2P', system-ui;\r\n    font-weight: 400;\r\n    font-style: normal;  \r\n    user-select: none;\r\n    outline: none;\r\n}\r\n\r\nbody {\r\n    overflow: hidden;\r\n    background-color: black;\r\n}\r\n\r\n#fps {\r\n    position: fixed;\r\n    top: 0;\r\n    right: 0;\r\n    color: white;\r\n    z-index: 1000;\r\n    padding: 10px;\r\n    font-size: 1.5rem;\r\n}\r\n\r\n#canvas-container {\r\n    position: fixed;\r\n    width: 100vw;\r\n    height: 100vh;\r\n    background-color: black;\r\n}\r\n\r\n#game-canvas {\r\n    position: absolute;\r\n    top: 55%;\r\n    left: 50%;\r\n    transform: translate(-50%, -50%);\r\n    z-index: -1;\r\n    border: 5px solid white;\r\n}\r\n\r\n#canvas-container h1 {\r\n    padding-top: 20px;\r\n    text-align: center;\r\n}\r\n\r\n#canvas-container span {\r\n    font-size: 10rem;\r\n}\r\n\r\nmain {\r\n    position: absolute;\r\n    top: 0;\r\n    left: 0;\r\n    background-color: rgba(0, 0, 0, 0.8);\r\n    backdrop-filter: blur(10px);\r\n    width: 100vw;\r\n    height: 100vh;\r\n    z-index: -100;\r\n    opacity: 0;\r\n}\r\n\r\n#main-section {\r\n    width: 100%;\r\n    height: 100%;\r\n    display: grid;\r\n    grid-template-rows: 5fr 20fr 1fr;\r\n}\r\n\r\n#main-section header {\r\n    display: flex;\r\n    justify-content: center;\r\n    align-items: center;\r\n}\r\n\r\nh1 {\r\n    font-size: 10rem;\r\n    transition: color 1.5s;\r\n}\r\n\r\n#button-section {\r\n    display: flex;\r\n    justify-content: space-evenly;\r\n    align-items: center;\r\n    height: 80%;\r\n}\r\n\r\n#button-section button {\r\n    top: -100px;\r\n    background-color: transparent;\r\n    border: 5px solid white;\r\n    padding: 30px 20px;\r\n    color: white;\r\n    font-size: 3rem;\r\n    transition: background-color 0.3s, color 0.3s, border-color 1.5s;\r\n}\r\n\r\n#button-section button:hover {\r\n    background-color: rgba(255, 255, 255, 0.8);\r\n    color: black;\r\n    cursor: pointer;\r\n}"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -886,43 +911,71 @@ const canvas = document.getElementById('game-canvas');
 const ctx = canvas.getContext('2d');
 
 class Ball {
-    constructor(x, y, radius, dx = 0, dy = 0, color = 'white') {
+    constructor(x, y, radius, dx = 0, dy = 0, colorArray = []) {
         this.x = x;
         this.y = y;
         this.radius = radius;
-        this.color = color;
+        this.color = 'white';
         this.dx = dx;
         this.dy = dy;
+        this.colorArray = colorArray;
+        this.trailArray = [];
+        this.maxTrailLength = 10;
+    }
+
+    drawTrail() {
+        for (let i = 0; i < this.trailArray.length; i++) {
+            const trail = this.trailArray[i];
+            const trailRatio = (1 - (i / this.trailArray.length));
+            ctx.beginPath();
+            ctx.arc(trail.x, trail.y, this.radius * trailRatio, 0, Math.PI * 2, false);
+            ctx.fillStyle = `rgba(255, 255, 255, ${trailRatio})`;
+            ctx.fill();
+            ctx.closePath();
+        }
     }
 
     draw() {
         ctx.beginPath();
         ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false);
         ctx.fillStyle = this.color;
-        ctx.strokeStyle = 'white';
+        ctx.strokeStyle = this.color;
         ctx.lineWidth = 5;
         ctx.stroke();
         ctx.fill();
         ctx.closePath();
+        this.drawTrail();
     }
 
     // Update ball position
-    update(playerPaddle, aiPaddle, obstacles) {
+    update(playerPaddle, aiPaddle, obstacles, acceleration) {
+        // Add current position to trail array
+        this.trailArray.unshift({ x: this.x, y: this.y });
+
+        // Remove oldest trail position if trail array is too long
+        if (this.trailArray.length > this.maxTrailLength) {
+            this.trailArray.pop();
+        }
+
         // Check if the ball is colliding with the top or bottom of the canvas
-        if (this.y + this.radius > canvas.height || this.y - this.radius < 0) {
+        if (this.y + this.radius > canvas.height) {
+            this.y = canvas.height - this.radius; // Adjust position to the bottom edge
             this.dy *= -1; // Reverse direction
+            changeColor(this.colorArray[getRandomIntegerFromRange(0, this.colorArray.length - 1)], 'bottom');
+        } else if (this.y - this.radius < 0) {
+            this.y = this.radius; // Adjust position to the top edge
+            this.dy *= -1; // Reverse direction
+            changeColor(this.colorArray[getRandomIntegerFromRange(0, this.colorArray.length - 1)], 'top');
         }
 
         // Check if the ball is colliding with the left and right of a paddle
         if (checkHorizontalCollision(this, playerPaddle) || checkHorizontalCollision(this, aiPaddle)) {
-            this.dx *= -1; // Reverse direction
-            this.x += this.dx * 1;
+            this.dx *= -1; // Reverse horizontal direction
         }
 
         // Check if the ball is colliding with the top and bottom of a paddle
         if (checkVerticalCollision(this, playerPaddle) || checkVerticalCollision(this, aiPaddle)) {
-            this.dy *= -1;
-            this.y += this.dy * 1;
+            this.dy *= -1; // Reverse vertical direction
         }
 
         // Check if the ball is colliding with an obstacle
@@ -932,6 +985,10 @@ class Ball {
             }
         }
 
+        // Accelerate the ball
+        this.dx = this.dx * acceleration;
+        this.dy = this.dy * acceleration;
+
         // Change ball position and draw
         this.x += this.dx;
         this.y += this.dy;
@@ -939,18 +996,82 @@ class Ball {
     }
 }
 
+let topIntervalId, bottomIntervalId;
+async function changeColor(hslString, border) {
+    if (!hslString) return;
+
+    // Use a regular expression to match the HSL values
+    const regex = /hsl\((\d+),\s*(\d+)%,\s*(\d+)%\)/;
+    const match = hslString.match(regex);
+    let lightness = parseInt(match[3]);
+
+    if (border === 'top') {
+        if (topIntervalId) clearInterval(topIntervalId);
+        // Initially set the top border color
+        let borderTop = document.getElementById('game-canvas');
+        borderTop.style.borderTopColor = hslString;
+
+        // Gradually change the top border color to white
+        topIntervalId = setInterval(() => {
+            if (lightness < 100) {
+                lightness += 1;
+
+                const newHslString = `hsl(${match[1]}, ${match[2]}%, ${lightness}%)`;
+                borderTop.style.borderTopColor = newHslString;
+            } else {
+                clearInterval(topIntervalId);
+            }
+        }, 10);
+    } else if (border === 'bottom') {
+        if (bottomIntervalId) clearInterval(bottomIntervalId);
+        // Initially set the bottom border color
+        const borderBottom = document.getElementById('game-canvas');
+        borderBottom.style.borderBottomColor = hslString;
+
+        // Gradually change the bottom border color to white
+        bottomIntervalId = setInterval(() => {
+            if (lightness < 100) {
+                lightness += 1;
+
+                const newHslString = `hsl(${match[1]}, ${match[2]}%, ${lightness}%)`;
+                borderBottom.style.borderBottomColor = newHslString;
+            } else {
+                clearInterval(bottomIntervalId);
+            }
+        }, 10);
+    }
+}
+
 function checkHorizontalCollision(ball, paddle) {
     const withinVerticalBounds = ball.y > paddle.y && ball.y < paddle.y + paddle.height;
     const horizontalCollision = ball.x + ball.radius > paddle.x && ball.x - ball.radius < paddle.x + paddle.width;
 
-    return withinVerticalBounds && horizontalCollision;
+    if (withinVerticalBounds && horizontalCollision) {
+        // Adjust ball's position to avoid clipping into the paddle
+        if (ball.x < paddle.x) {
+            ball.x = paddle.x - ball.radius; // Left side of paddle
+        } else {
+            ball.x = paddle.x + paddle.width + ball.radius; // Right side of paddle
+        }
+        return true;
+    }
+    return false;
 }
 
 function checkVerticalCollision(ball, paddle) {
-    const withinHorizontalBound = ball.x > paddle.x && ball.x < paddle.x + paddle.width;
+    const withinHorizontalBounds = ball.x > paddle.x && ball.x < paddle.x + paddle.width;
     const verticalCollision = ball.y + ball.radius > paddle.y && ball.y - ball.radius < paddle.y + paddle.height;
 
-    return withinHorizontalBound && verticalCollision;
+    if (withinHorizontalBounds && verticalCollision) {
+        // Adjust ball's position to avoid clipping into the paddle
+        if (ball.y < paddle.y) {
+            ball.y = paddle.y - ball.radius; // Above paddle
+        } else {
+            ball.y = paddle.y + paddle.height + ball.radius; // Below paddle
+        }
+        return true;
+    }
+    return false;
 }
 
 function resolveObstacleCollision(ball, obstacle) {
@@ -1013,7 +1134,9 @@ class Paddle {
     }
 
     update(value) {
-        this.y += value;   
+        if (this.y + value >= 0 && this.y + this.height + value <= canvas.height) {
+            this.y += value;
+        }
         this.draw();
     }
 }
@@ -1187,14 +1310,22 @@ const {
 
 //! ====== Game State Variables ======
 let playerPaddle, aiPaddle, ball;
-let points = { player: 0, ai: 0 };
+let points = { player1: 0, player2: 0 };
 let playerInput = { up: false, down: false };
 let isGameOn = false;
 let obstacles = [];
 let colorIndex = 0;
+let ballAcceleration = 1.0001;
 
 // Game settings
 let setColor, setDifficulty, obstacleState, maxObstacles;
+
+// Difficulty settings
+const difficultyObject = {
+    'easy': { playerSpeed: 10, aiSpeed: 5, playerPaddleHeight: 200, aiPaddleHeight: 200 },
+    'medium': { playerSpeed: 10, aiSpeed: 7, playerPaddleHeight: 150, aiPaddleHeight: 200 },
+    'hard': { playerSpeed: 10, aiSpeed: 9, playerPaddleHeight: 100, aiPaddleHeight: 200 },
+};
 
 //! ====== Color Arrays ======
 const colorObject = {
@@ -1207,7 +1338,7 @@ const colorObject = {
 // Initialize canvas size
 function setCanvasSize() {
     canvas.width = window.innerWidth * 0.9;
-    canvas.height = window.innerHeight * 0.9;
+    canvas.height = window.innerHeight * 0.8;
 }
 
 // Apply color to various elements
@@ -1233,13 +1364,14 @@ function getStoredSettings() {
 // Update paddle position based on input
 function updateUserPaddle(targetPaddle) {
     const velocity = 10;
-    const paddleDy = playerInput.up && targetPaddle.y > 0 ? -velocity : playerInput.down && targetPaddle.y + targetPaddle.height < canvas.height ? velocity : 0;
+    const paddleDy = playerInput.up > 0 ? -velocity : playerInput.down ? velocity : 0;
     targetPaddle.update(paddleDy);
 }
 
 // Update AI paddle to follow the ball
 function updateAiPaddle(targetPaddle) {
-    const paddleDy = targetPaddle.y + targetPaddle.height / 2 < ball.y ? 7 : targetPaddle.y + targetPaddle.height / 2 > ball.y ? -7 : 0;
+    const aiSpeed = difficultyObject[setDifficulty].aiSpeed;
+    const paddleDy = targetPaddle.y + targetPaddle.height / 2 < ball.y ? aiSpeed : targetPaddle.y + targetPaddle.height / 2 > ball.y ? -aiSpeed : 0;
     targetPaddle.update(paddleDy);
 }
 
@@ -1249,17 +1381,21 @@ function checkGoal() {
 }
 
 // Restart round with score update
-function restartRound(playerWin) {
-    if (playerWin) points.player++;
-    else points.ai++;
+function restartRound(playerWin1) {
+    if (playerWin1) points.player1++;
+    else points.player2++;
+    document.getElementById('player1-score').textContent = points.player1;
+    document.getElementById('player2-score').textContent = points.player2;
     setBall();
 }
 
 // Initialize ball properties
+let timeOutId; // Timeout ID for ball launch
 function setBall() {
     const ballRadius = 20;
     let ballDx, ballDy;
 
+    // Set ball speed based on difficulty
     do {
         ballDx = (0,_utility_js__WEBPACK_IMPORTED_MODULE_2__.getRandomIntegerFromRange)(-15, 15);
     } while (Math.abs(ballDx) < 10);
@@ -1268,30 +1404,37 @@ function setBall() {
         ballDy = (0,_utility_js__WEBPACK_IMPORTED_MODULE_2__.getRandomIntegerFromRange)(-10, 10);
     } while (Math.abs(ballDy) < 5);
 
-    const ballColor = 
-    ball = new _utility_js__WEBPACK_IMPORTED_MODULE_2__.Ball(canvas.width / 2, canvas.height / 2, ballRadius, 0, 0);
-    setTimeout(() => ball = new _utility_js__WEBPACK_IMPORTED_MODULE_2__.Ball(canvas.width / 2, canvas.height / 2, ballRadius, ballDx, ballDy), 1000);
+    // If timeout is already set, clear it
+    if (timeOutId) clearTimeout(timeOutId);
+
+    // Set ball to center of canvas
+    ball = new _utility_js__WEBPACK_IMPORTED_MODULE_2__.Ball(canvas.width / 2, canvas.height / 2, ballRadius, 0, 0, colorObject[setColor]);
+
+    // Launch ball after 1 second
+    timeOutId = setTimeout(() => ball = new _utility_js__WEBPACK_IMPORTED_MODULE_2__.Ball(canvas.width / 2, canvas.height / 2, ballRadius, ballDx, ballDy, colorObject[setColor]), 1000);
 }
 
 // Initialize paddle properties
 function setPaddle() {
     const paddleWidth = 30;
-    const paddleHeight = 150;
+    const playerPaddleHeight = difficultyObject[setDifficulty].playerPaddleHeight;
+    const aiPaddleHeight = difficultyObject[setDifficulty].aiPaddleHeight;
     const playerX = 60;
     const aiX = canvas.width - paddleWidth - 60;
-    const y = canvas.height / 2 - paddleHeight / 2;
+    const playerY = canvas.height / 2 - playerPaddleHeight / 2;
+    const aiY = canvas.height / 2 - aiPaddleHeight / 2;
 
-    playerPaddle = new _utility_js__WEBPACK_IMPORTED_MODULE_2__.Paddle(playerX, y, paddleWidth, paddleHeight);
-    aiPaddle = new _utility_js__WEBPACK_IMPORTED_MODULE_2__.Paddle(aiX, y, paddleWidth, paddleHeight);
+    playerPaddle = new _utility_js__WEBPACK_IMPORTED_MODULE_2__.Paddle(playerX, playerY, paddleWidth, playerPaddleHeight);
+    aiPaddle = new _utility_js__WEBPACK_IMPORTED_MODULE_2__.Paddle(aiX, aiY, paddleWidth, aiPaddleHeight);
 }
 
 // Initialize obstacle properties
 function setObstacle() {
     obstacles = [];
     const obstacleRadius = 30;
-    const canvasPadding = 200;
+    const canvasPadding = 300;
 
-    while (obstacles.length < maxObstacles) {
+    while (obstacles.length < maxObstacles && obstacleState === 'on') {
         const obstacleColor = colorObject[setColor][(0,_utility_js__WEBPACK_IMPORTED_MODULE_2__.getRandomIntegerFromRange)(0, colorObject[setColor].length - 1)];
         const x = (0,_utility_js__WEBPACK_IMPORTED_MODULE_2__.getRandomIntegerFromRange)(obstacleRadius + canvasPadding, canvas.width - obstacleRadius - canvasPadding);
         const y = (0,_utility_js__WEBPACK_IMPORTED_MODULE_2__.getRandomIntegerFromRange)(obstacleRadius + canvasPadding, canvas.height - obstacleRadius - canvasPadding);
@@ -1303,15 +1446,43 @@ function setObstacle() {
 }
 
 //! ====== Event Listeners ======
+// Change color on button click
 for (const button of colorButtons) {
-    button.addEventListener('click', () => setColor = button.value);
+    button.addEventListener('click', () => {
+        setColor = button.value;
+        startGame();
+    });
 }
 
+// Change difficulty on button click
+for (const button of difficultyButtons) {
+    button.addEventListener('click', () => {
+        setDifficulty = button.value;
+        startGame();
+    });
+}
+
+// Change obstacle state on button click
+for (const button of obstacleButtons) {
+    button.addEventListener('click', () => {
+        obstacleState = button.value;
+        startGame();
+    });
+}
+
+// Change obstacle quantity based on input value
+obstacleQuantityInput.addEventListener('input', (event) => {
+    maxObstacles = Number(event.target.value) + 1;
+    if (obstacleState === 'on') startGame();
+});
+
+// Resize canvas on window resize
 window.addEventListener('resize', () => { 
     setCanvasSize();
     startGame();
 });
 
+// Player paddle movement on key press
 window.addEventListener('keydown', (event) => {
     if (isGameOn && (event.key === 'w' || event.key === 's')) playerInput[event.key === 'w' ? 'up' : 'down'] = true;
 });
@@ -1320,25 +1491,22 @@ window.addEventListener('keyup', (event) => {
     if (isGameOn && (event.key === 'w' || event.key === 's')) playerInput[event.key === 'w' ? 'up' : 'down'] = false;
 });
 
-for (const button of difficultyButtons) {
-    button.addEventListener('click', () => setDifficulty = button.value);
-}
-
 //! ====== Game Functions ======
-function animate() {
-    requestAnimationFrame(animate);
+function animate(timestamp) {
     (0,_utility_js__WEBPACK_IMPORTED_MODULE_2__.clearCanvas)();
 
-    ball.update(playerPaddle, aiPaddle, obstacles);
+    // ballAcceleration += 0.001;
+    ball.update(playerPaddle, aiPaddle, obstacles, ballAcceleration);
     obstacles.forEach(obstacle => obstacle.update());
 
     isGameOn ? updateUserPaddle(playerPaddle) : updateAiPaddle(playerPaddle);
     updateAiPaddle(aiPaddle);
     checkGoal();
+
+    requestAnimationFrame(animate);
 }
 
 function startGame() {
-    getStoredSettings();
     setCanvasSize();
     setPaddle();
     setBall();
@@ -1347,10 +1515,11 @@ function startGame() {
 
 // ====== Initialization ======
 setInterval(() => applyColorToElements(setColor), 1000);
+getStoredSettings();
 startGame();
-animate();
+requestAnimationFrame(animate);
 })();
 
 /******/ })()
 ;
-//# sourceMappingURL=bundlebad73d1e471350a6bd15.js.map
+//# sourceMappingURL=bundle0ea2bde2b4762be1612c.js.map

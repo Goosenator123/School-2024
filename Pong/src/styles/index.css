@@ -16,14 +16,39 @@ body {
     background-color: black;
 }
 
-#game-canvas {
+#fps {
     position: fixed;
-    top: 50%;
+    top: 0;
+    right: 0;
+    color: white;
+    z-index: 1000;
+    padding: 10px;
+    font-size: 1.5rem;
+}
+
+#canvas-container {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    background-color: black;
+}
+
+#game-canvas {
+    position: absolute;
+    top: 55%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: black;
     z-index: -1;
     border: 5px solid white;
+}
+
+#canvas-container h1 {
+    padding-top: 20px;
+    text-align: center;
+}
+
+#canvas-container span {
+    font-size: 10rem;
 }
 
 main {

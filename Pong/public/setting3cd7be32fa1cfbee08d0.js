@@ -130,7 +130,10 @@ function initializeSettings() {
     localStorage.getItem('pongSettings') ? loadSettings() : setDefaultSettings();
     bindEventListeners();
 }
-initializeSettings();
+
+window.onload = () => {
+    initializeSettings();
+}
 /******/ })()
 ;
-//# sourceMappingURL=setting8f64314a9511ff5796f0.js.map
+//# sourceMappingURL=setting3cd7be32fa1cfbee08d0.js.map

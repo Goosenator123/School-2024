@@ -126,4 +126,7 @@ function initializeSettings() {
     localStorage.getItem('pongSettings') ? loadSettings() : setDefaultSettings();
     bindEventListeners();
 }
-initializeSettings();
+
+window.onload = () => {
+    initializeSettings();
+}

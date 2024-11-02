@@ -1833,10 +1833,12 @@ function startGame() {
 }
 
 function main() {
-    getStoredSettings();
-    startGame();
-    requestAnimationFrame(animate);
-    localStorage.setItem('isGameOn', isGameOn);
+    setTimeout(() => {
+        getStoredSettings();
+        startGame();
+        requestAnimationFrame(animate);
+        localStorage.setItem('isGameOn', isGameOn);
+    }, 100);
 }
 
 //! ====== Initialization ======
@@ -1846,4 +1848,4 @@ main();
 
 /******/ })()
 ;
-//# sourceMappingURL=bundlee85a560b2de591b8bd9e.js.map
+//# sourceMappingURL=bundle82701a3e1a41edf01e12.js.map

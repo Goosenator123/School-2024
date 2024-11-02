@@ -1556,6 +1556,14 @@ gameOverMusic.volume = 0.5;
 const ballGoalSound = new Audio(_sound_goalSound_mp3__WEBPACK_IMPORTED_MODULE_4__["default"]);
 ballGoalSound.volume = 0.5;
 
+// Default game settings
+const defaultSettings = {
+    difficulty: 'medium',
+    color: 'red',
+    obstacleState: 'on',
+    obstacleNumber: 5,
+};
+
 //! ====== Color Arrays ======
 const colorObject = {
     'red': ['hsl(0, 100%, 20%)', 'hsl(0, 100%, 30%)', 'hsl(39, 100%, 50%)', 'hsl(40, 100%, 53%)', 'hsl(40, 100%, 60%)'],
@@ -1598,7 +1606,7 @@ function applyColorToElements(color) {
 
 // Retrieve stored game settings
 function getStoredSettings() {
-    const storedSettings = JSON.parse(localStorage.getItem("pongSettings"));
+    const storedSettings = JSON.parse(localStorage.getItem("pongSettings")) ? JSON.parse(localStorage.getItem("pongSettings")) : defaultSettings;
     obstacleState = storedSettings.obstacleState;
     maxObstacles = storedSettings.obstacleNumber;
     setColor = storedSettings.color;
@@ -1848,4 +1856,4 @@ main();
 
 /******/ })()
 ;
-//# sourceMappingURL=bundle82701a3e1a41edf01e12.js.map
+//# sourceMappingURL=bundlee33df07162637ab7145c.js.map

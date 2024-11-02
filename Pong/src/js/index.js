@@ -1,6 +1,9 @@
 //! ====== Imports ======
 import '../styles/index.css';
 import '../styles/setting.css';
+import bgMusic from '../sound/backgroundMusic.mp3';
+import gameOverSound from '../sound/gameOver.mp3';
+import goalSound from '../sound/goalSound.mp3';
 import { Ball, Obstacle, Paddle, clearCanvas, getRandomIntegerFromRange, getDistance } from './utility.js';
 
 //! ====== Cached HTML Elements ======
@@ -52,6 +55,18 @@ const difficultyObject = {
     'medium': { playerSpeed: 12, aiSpeed: 8, playerPaddleHeight: 150, aiPaddleHeight: 200 },
     'hard': { playerSpeed: 12, aiSpeed: 10, playerPaddleHeight: 100, aiPaddleHeight: 200 },
 };
+
+// Sound settings
+const backgroundMusic = new Audio(bgMusic);
+backgroundMusic.loop = true;
+backgroundMusic.volume = 0.5;
+
+const gameOverMusic = new Audio(gameOverSound);
+gameOverMusic.loop = true;
+gameOverMusic.volume = 0.5;
+
+const ballGoalSound = new Audio(goalSound);
+ballGoalSound.volume = 0.5;
 
 //! ====== Color Arrays ======
 const colorObject = {
@@ -129,11 +144,20 @@ function updateAiPaddle(targetPaddle) {
 function checkGoal() {
     if (!isGameOn) return;
 
+    if (ball.x < 0 || ball.x > canvas.width) restartRound(ball.x > canvas.width);
+}
+
+// Restart round with score update
+function restartRound(playerWin1) {
+    playerWin1 ? points.player1++ : points.player2++;
     if (points.player1 >= 10 || points.player2 >= 10) {
         gameOver(points.player1 >= 1 ? 'Player 1' : player2);
-    } else if (ball.x < 0 || ball.x > canvas.width) {
-        restartRound(ball.x > canvas.width);
+        return;
     }
+    ballGoalSound.play();
+    document.getElementById('player1-score').textContent = points.player1;
+    document.getElementById('player2-score').textContent = points.player2;
+    setBall();
 }
 
 // Game over function
@@ -142,14 +166,8 @@ function gameOver(winner) {
     isPaused = isGameOver = true;
     gameOverSection.style.zIndex = 1;
     document.getElementById('winner-text').textContent = `${winner} wins!`;
-}
-
-// Restart round with score update
-function restartRound(playerWin1) {
-    playerWin1 ? points.player1++ : points.player2++;
-    document.getElementById('player1-score').textContent = points.player1;
-    document.getElementById('player2-score').textContent = points.player2;
-    setBall();
+    backgroundMusic.pause();
+    gameOverMusic.play();
 }
 
 // Initialize ball properties
@@ -217,7 +235,6 @@ function setObstacle() {
 }
 
 //! ====== Event Listeners ======
-//! ====== Event Listeners ======
 // General function to handle button clicks
 function setupButtonListeners(buttons, setValue) {
     for (const button of buttons) {
@@ -247,6 +264,7 @@ function startGameWithPlayerType(type) {
     isGameOver = false;
     player2 = type;
     localStorage.setItem('isGameOn', isGameOn);
+    backgroundMusic.play();
     startGame();
 }
 
@@ -302,7 +320,7 @@ function animate() {
     drawDottedLine();
 
     if (!isPaused) {
-        ball.update(playerPaddle, otherPaddle, obstacles, ballAcceleration, isGameOn);
+        ball.update(playerPaddle, otherPaddle, obstacles, ballAcceleration);
         obstacles.forEach(obstacle => obstacle.update());
         updateUserPaddle(playerPaddle);
 

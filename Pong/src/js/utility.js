@@ -1,12 +1,8 @@
 import bounceSound from '../sound/bounceSound.mp3';
-import goalSound from '../sound/goalSound.mp3';
 
 // Set sound
 const ballBounceSound = new Audio(bounceSound);
 ballBounceSound.volume = 1;
-
-const ballGoalSound = new Audio(goalSound);
-ballGoalSound.volume = 1;
 
 const canvas = document.getElementById('game-canvas');
 const ctx = canvas.getContext('2d');
@@ -54,11 +50,6 @@ class Ball {
         ballBounceSound.currentTime = 0;
         ballBounceSound.play();
     }
-    
-    playGoalSound() {
-        ballGoalSound.currentTime = 0.2;
-        ballGoalSound.play();
-    }
 
     // Helper function to handle collisions
     handleEdgeCollision(edge, axis) {
@@ -73,7 +64,7 @@ class Ball {
     }
 
     // Update ball position
-    update(playerPaddle, aiPaddle, obstacles, acceleration, isGameOn) {
+    update(playerPaddle, aiPaddle, obstacles, acceleration) {
         // Add current position to trail array
         this.trailArray.unshift({ x: this.x, y: this.y });
 
@@ -83,9 +74,6 @@ class Ball {
         }
 
         // Check for edge collisions
-        if (this.x + this.radius > canvas.width) this.playGoalSound();
-        else if (this.x - this.radius < 0) this.playGoalSound();
-
         if (this.y + this.radius > canvas.height) {
             this.y = canvas.height - this.radius; // Adjust position to the bottom edge
             this.handleEdgeCollision('bottom', 'y');

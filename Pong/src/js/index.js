@@ -70,7 +70,7 @@ const colorObject = {
 // Initialize canvas size
 function setCanvasSize() {
     canvas.width = window.innerWidth * 0.9;
-    canvas.height = window.innerHeight * 0.8;
+    canvas.height = window.innerHeight * 0.85;
 }
 
 // Apply color to various elements

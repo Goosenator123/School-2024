@@ -35,7 +35,7 @@ body {
 
 #game-canvas {
     position: absolute;
-    top: 55%;
+    top: 52%;
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: -1;
@@ -43,12 +43,13 @@ body {
 }
 
 #canvas-container h1 {
+    font-size: 5rem;
     padding-top: 20px;
     text-align: center;
 }
 
 #canvas-container span {
-    font-size: 10rem;
+    font-size: 5rem;
 }
 
 main {

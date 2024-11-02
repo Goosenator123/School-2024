@@ -58,20 +58,24 @@ body {
 
 #game-canvas {
     position: absolute;
-    top: 55%;
+    top: 52%;
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: -1;
     border: 5px solid white;
 }
 
-#canvas-container h1 {
+#score-text {
+    font-size: 5rem;
+    width: 100vw;
     padding-top: 20px;
-    text-align: center;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
 }
 
 #canvas-container span {
-    font-size: 10rem;
+    font-size: 5rem;
 }
 
 main {
@@ -82,8 +86,7 @@ main {
     backdrop-filter: blur(10px);
     width: 100vw;
     height: 100vh;
-    z-index: -100;
-    opacity: 0;
+    z-index: 1;
 }
 
 #main-section {
@@ -125,7 +128,7 @@ h1 {
     background-color: rgba(255, 255, 255, 0.8);
     color: black;
     cursor: pointer;
-}`, "",{"version":3,"sources":["webpack://./src/styles/index.css"],"names":[],"mappings":"AAAA;IACI,SAAS;IACT,UAAU;IACV,sBAAsB;IACtB,eAAe;IACf,YAAY;IACZ,wCAAwC;IACxC,gBAAgB;IAChB,kBAAkB;IAClB,iBAAiB;IACjB,aAAa;AACjB;;AAEA;IACI,gBAAgB;IAChB,uBAAuB;AAC3B;;AAEA;IACI,eAAe;IACf,MAAM;IACN,QAAQ;IACR,YAAY;IACZ,aAAa;IACb,aAAa;IACb,iBAAiB;AACrB;;AAEA;IACI,eAAe;IACf,YAAY;IACZ,aAAa;IACb,uBAAuB;AAC3B;;AAEA;IACI,kBAAkB;IAClB,QAAQ;IACR,SAAS;IACT,gCAAgC;IAChC,WAAW;IACX,uBAAuB;AAC3B;;AAEA;IACI,iBAAiB;IACjB,kBAAkB;AACtB;;AAEA;IACI,gBAAgB;AACpB;;AAEA;IACI,kBAAkB;IAClB,MAAM;IACN,OAAO;IACP,oCAAoC;IACpC,2BAA2B;IAC3B,YAAY;IACZ,aAAa;IACb,aAAa;IACb,UAAU;AACd;;AAEA;IACI,WAAW;IACX,YAAY;IACZ,aAAa;IACb,gCAAgC;AACpC;;AAEA;IACI,aAAa;IACb,uBAAuB;IACvB,mBAAmB;AACvB;;AAEA;IACI,gBAAgB;IAChB,sBAAsB;AAC1B;;AAEA;IACI,aAAa;IACb,6BAA6B;IAC7B,mBAAmB;IACnB,WAAW;AACf;;AAEA;IACI,WAAW;IACX,6BAA6B;IAC7B,uBAAuB;IACvB,kBAAkB;IAClB,YAAY;IACZ,eAAe;IACf,gEAAgE;AACpE;;AAEA;IACI,0CAA0C;IAC1C,YAAY;IACZ,eAAe;AACnB","sourcesContent":["* {\r\n    margin: 0;\r\n    padding: 0;\r\n    box-sizing: border-box;\r\n    font-size: 10px;\r\n    color: white;\r\n    font-family: 'Press Start 2P', system-ui;\r\n    font-weight: 400;\r\n    font-style: normal;  \r\n    user-select: none;\r\n    outline: none;\r\n}\r\n\r\nbody {\r\n    overflow: hidden;\r\n    background-color: black;\r\n}\r\n\r\n#fps {\r\n    position: fixed;\r\n    top: 0;\r\n    right: 0;\r\n    color: white;\r\n    z-index: 1000;\r\n    padding: 10px;\r\n    font-size: 1.5rem;\r\n}\r\n\r\n#canvas-container {\r\n    position: fixed;\r\n    width: 100vw;\r\n    height: 100vh;\r\n    background-color: black;\r\n}\r\n\r\n#game-canvas {\r\n    position: absolute;\r\n    top: 55%;\r\n    left: 50%;\r\n    transform: translate(-50%, -50%);\r\n    z-index: -1;\r\n    border: 5px solid white;\r\n}\r\n\r\n#canvas-container h1 {\r\n    padding-top: 20px;\r\n    text-align: center;\r\n}\r\n\r\n#canvas-container span {\r\n    font-size: 10rem;\r\n}\r\n\r\nmain {\r\n    position: absolute;\r\n    top: 0;\r\n    left: 0;\r\n    background-color: rgba(0, 0, 0, 0.8);\r\n    backdrop-filter: blur(10px);\r\n    width: 100vw;\r\n    height: 100vh;\r\n    z-index: -100;\r\n    opacity: 0;\r\n}\r\n\r\n#main-section {\r\n    width: 100%;\r\n    height: 100%;\r\n    display: grid;\r\n    grid-template-rows: 5fr 20fr 1fr;\r\n}\r\n\r\n#main-section header {\r\n    display: flex;\r\n    justify-content: center;\r\n    align-items: center;\r\n}\r\n\r\nh1 {\r\n    font-size: 10rem;\r\n    transition: color 1.5s;\r\n}\r\n\r\n#button-section {\r\n    display: flex;\r\n    justify-content: space-evenly;\r\n    align-items: center;\r\n    height: 80%;\r\n}\r\n\r\n#button-section button {\r\n    top: -100px;\r\n    background-color: transparent;\r\n    border: 5px solid white;\r\n    padding: 30px 20px;\r\n    color: white;\r\n    font-size: 3rem;\r\n    transition: background-color 0.3s, color 0.3s, border-color 1.5s;\r\n}\r\n\r\n#button-section button:hover {\r\n    background-color: rgba(255, 255, 255, 0.8);\r\n    color: black;\r\n    cursor: pointer;\r\n}"],"sourceRoot":""}]);
+}`, "",{"version":3,"sources":["webpack://./src/styles/index.css"],"names":[],"mappings":"AAAA;IACI,SAAS;IACT,UAAU;IACV,sBAAsB;IACtB,eAAe;IACf,YAAY;IACZ,wCAAwC;IACxC,gBAAgB;IAChB,kBAAkB;IAClB,iBAAiB;IACjB,aAAa;AACjB;;AAEA;IACI,gBAAgB;IAChB,uBAAuB;AAC3B;;AAEA;IACI,eAAe;IACf,MAAM;IACN,QAAQ;IACR,YAAY;IACZ,aAAa;IACb,aAAa;IACb,iBAAiB;AACrB;;AAEA;IACI,eAAe;IACf,YAAY;IACZ,aAAa;IACb,uBAAuB;AAC3B;;AAEA;IACI,kBAAkB;IAClB,QAAQ;IACR,SAAS;IACT,gCAAgC;IAChC,WAAW;IACX,uBAAuB;AAC3B;;AAEA;IACI,eAAe;IACf,YAAY;IACZ,iBAAiB;IACjB,aAAa;IACb,6BAA6B;IAC7B,mBAAmB;AACvB;;AAEA;IACI,eAAe;AACnB;;AAEA;IACI,kBAAkB;IAClB,MAAM;IACN,OAAO;IACP,oCAAoC;IACpC,2BAA2B;IAC3B,YAAY;IACZ,aAAa;IACb,UAAU;AACd;;AAEA;IACI,WAAW;IACX,YAAY;IACZ,aAAa;IACb,gCAAgC;AACpC;;AAEA;IACI,aAAa;IACb,uBAAuB;IACvB,mBAAmB;AACvB;;AAEA;IACI,gBAAgB;IAChB,sBAAsB;AAC1B;;AAEA;IACI,aAAa;IACb,6BAA6B;IAC7B,mBAAmB;IACnB,WAAW;AACf;;AAEA;IACI,WAAW;IACX,6BAA6B;IAC7B,uBAAuB;IACvB,kBAAkB;IAClB,YAAY;IACZ,eAAe;IACf,gEAAgE;AACpE;;AAEA;IACI,0CAA0C;IAC1C,YAAY;IACZ,eAAe;AACnB","sourcesContent":["* {\r\n    margin: 0;\r\n    padding: 0;\r\n    box-sizing: border-box;\r\n    font-size: 10px;\r\n    color: white;\r\n    font-family: 'Press Start 2P', system-ui;\r\n    font-weight: 400;\r\n    font-style: normal;  \r\n    user-select: none;\r\n    outline: none;\r\n}\r\n\r\nbody {\r\n    overflow: hidden;\r\n    background-color: black;\r\n}\r\n\r\n#fps {\r\n    position: fixed;\r\n    top: 0;\r\n    right: 0;\r\n    color: white;\r\n    z-index: 1000;\r\n    padding: 10px;\r\n    font-size: 1.5rem;\r\n}\r\n\r\n#canvas-container {\r\n    position: fixed;\r\n    width: 100vw;\r\n    height: 100vh;\r\n    background-color: black;\r\n}\r\n\r\n#game-canvas {\r\n    position: absolute;\r\n    top: 52%;\r\n    left: 50%;\r\n    transform: translate(-50%, -50%);\r\n    z-index: -1;\r\n    border: 5px solid white;\r\n}\r\n\r\n#score-text {\r\n    font-size: 5rem;\r\n    width: 100vw;\r\n    padding-top: 20px;\r\n    display: flex;\r\n    justify-content: space-evenly;\r\n    align-items: center;\r\n}\r\n\r\n#canvas-container span {\r\n    font-size: 5rem;\r\n}\r\n\r\nmain {\r\n    position: absolute;\r\n    top: 0;\r\n    left: 0;\r\n    background-color: rgba(0, 0, 0, 0.8);\r\n    backdrop-filter: blur(10px);\r\n    width: 100vw;\r\n    height: 100vh;\r\n    z-index: 1;\r\n}\r\n\r\n#main-section {\r\n    width: 100%;\r\n    height: 100%;\r\n    display: grid;\r\n    grid-template-rows: 5fr 20fr 1fr;\r\n}\r\n\r\n#main-section header {\r\n    display: flex;\r\n    justify-content: center;\r\n    align-items: center;\r\n}\r\n\r\nh1 {\r\n    font-size: 10rem;\r\n    transition: color 1.5s;\r\n}\r\n\r\n#button-section {\r\n    display: flex;\r\n    justify-content: space-evenly;\r\n    align-items: center;\r\n    height: 80%;\r\n}\r\n\r\n#button-section button {\r\n    top: -100px;\r\n    background-color: transparent;\r\n    border: 5px solid white;\r\n    padding: 30px 20px;\r\n    color: white;\r\n    font-size: 3rem;\r\n    transition: background-color 0.3s, color 0.3s, border-color 1.5s;\r\n}\r\n\r\n#button-section button:hover {\r\n    background-color: rgba(255, 255, 255, 0.8);\r\n    color: black;\r\n    cursor: pointer;\r\n}"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -395,7 +398,81 @@ footer {
 .active {
     background-color: white;
     color: black;
-}`, "",{"version":3,"sources":["webpack://./src/styles/setting.css"],"names":[],"mappings":";AACA;IACI,eAAe;IACf,YAAY;IACZ,UAAU;IACV,YAAY;IACZ,aAAa;IACb,6BAA6B;IAC7B,YAAY;IACZ,0BAA0B;IAC1B,sBAAsB;AAC1B;;AAEA;IACI,wBAAwB;IACxB,eAAe;AACnB;;AAEA;IACI,aAAa;IACb,uBAAuB;IACvB,mBAAmB;AACvB;;AAEA;IACI,eAAe;IACf,sBAAsB;AAC1B;;AAEA;IACI,eAAe;IACf,sBAAsB;AAC1B;;AAEA;IACI,UAAU;IACV,WAAW;IACX,eAAe;IACf,QAAQ;IACR,SAAS;IACT,gCAAgC;IAChC,aAAa;IACb,2BAA2B;IAC3B,cAAc;IACd,oCAAoC;IACpC,2BAA2B;IAC3B,uBAAuB;IACvB,6BAA6B;AACjC;;AAEA;IACI,aAAa;IACb,uBAAuB;IACvB,mBAAmB;IACnB,8BAA8B;IAC9B,cAAc;IACd,6BAA6B;AACjC;;AAEA;IACI,eAAe;AACnB;;AAEA;;;IAGI,eAAe;IACf,sBAAsB;AAC1B;;AAEA;IACI,aAAa;IACb,2BAA2B;IAC3B,SAAS;IACT,aAAa;AACjB;;AAEA;;;IAGI,aAAa;IACb,mBAAmB;AACvB;;AAEA;IACI,aAAa;IACb,2BAA2B;IAC3B,8BAA8B;IAC9B,6BAA6B;AACjC;;AAEA;IACI,aAAa;IACb,6BAA6B;IAC7B,mBAAmB;AACvB;;AAEA;IACI,UAAU;IACV,sBAAsB;IACtB,6BAA6B;IAC7B,uBAAuB;IACvB,kBAAkB;IAClB,YAAY;IACZ,eAAe;IACf,6CAA6C;AACjD;;AAEA;IACI,uCAAuC;IACvC,YAAY;IACZ,eAAe;AACnB;;AAEA;IACI,wCAAwC;IACxC,YAAY;IACZ,eAAe;AACnB;;AAEA;IACI,sCAAsC;IACtC,YAAY;IACZ,eAAe;AACnB;;AAEA;IACI,aAAa;IACb,8BAA8B;AAClC;;AAEA;;IAEI,aAAa;IACb,2BAA2B;AAC/B;;AAEA;IACI,6BAA6B;IAC7B,6BAA6B;AACjC;;AAEA;;IAEI,aAAa;IACb,mBAAmB;IACnB,uBAAuB;AAC3B;;AAEA;IACI,aAAa;IACb,sBAAsB;IACtB,6BAA6B;IAC7B,mBAAmB;AACvB;;AAEA;IACI,UAAU;IACV,6BAA6B;IAC7B,uBAAuB;IACvB,kBAAkB;IAClB,YAAY;IACZ,eAAe;IACf,6CAA6C;AACjD;;AAEA;IACI,yBAAyB;IACzB,YAAY;IACZ,eAAe;AACnB;;AAEA;IACI,yBAAyB;IACzB,YAAY;IACZ,eAAe;AACnB;;AAEA;IACI,yBAAyB;IACzB,YAAY;IACZ,eAAe;AACnB;;AAEA;IACI,aAAa;IACb,2BAA2B;AAC/B;;AAEA;IACI,aAAa;IACb,mBAAmB;IACnB,uBAAuB;IACvB,mBAAmB;IACnB,SAAS;AACb;;AAEA;IACI,UAAU;IACV,6BAA6B;IAC7B,uBAAuB;IACvB,kBAAkB;IAClB,YAAY;IACZ,eAAe;IACf,6CAA6C;AACjD;;AAEA;IACI,uCAAuC;IACvC,YAAY;IACZ,eAAe;AACnB;;AAEA;IACI,sCAAsC;IACtC,YAAY;IACZ,eAAe;AACnB;;AAEA;IACI,kBAAkB;IAClB,UAAU;IACV,YAAY;AAChB;;AAEA;IACI,WAAW;IACX,aAAa;IACb,8BAA8B;IAC9B,mBAAmB;AACvB;;AAEA;IACI,eAAe;IACf,oBAAoB;AACxB;;AAEA;IACI,WAAW;AACf;;AAEA;IACI,uBAAuB;IACvB,YAAY;AAChB","sourcesContent":["\r\n#setting-button {\r\n    position: fixed;\r\n    bottom: 20px;\r\n    left: 20px;\r\n    color: white;\r\n    z-index: 1000;\r\n    background-color: transparent;\r\n    border: none;\r\n    transition: transform 0.3s;\r\n    box-sizing: border-box;\r\n}\r\n\r\n#setting-button:hover {\r\n    transform: rotate(90deg);\r\n    cursor: pointer;\r\n}\r\n\r\nfooter {\r\n    display: flex;\r\n    justify-content: center;\r\n    align-items: center;\r\n}\r\n\r\n#footer-text {\r\n    font-size: 1rem;\r\n    transition: color 1.5s;\r\n}\r\n\r\n#setting-icon {\r\n    font-size: 4rem;\r\n    transition: color 1.5s;\r\n}\r\n\r\n#setting-section {\r\n    width: 80%;\r\n    height: 80%;\r\n    position: fixed;\r\n    top: 50%;\r\n    left: 50%;\r\n    transform: translate(-50%, -50%);\r\n    display: grid;\r\n    grid-template-rows: 1fr 5fr;\r\n    z-index: -1000;\r\n    background-color: rgba(0, 0, 0, 0.6);\r\n    backdrop-filter: blur(10px);\r\n    border: 5px solid white;\r\n    transition: border-color 1.5s;\r\n}\r\n\r\n#setting-header {\r\n    display: flex;\r\n    justify-content: center;\r\n    align-items: center;\r\n    border-bottom: 3px solid white;\r\n    margin: 0 20px;\r\n    transition: border-color 1.5s;\r\n}\r\n\r\n#setting-title {\r\n    font-size: 4rem;\r\n}\r\n\r\n#difficulty-title,\r\n#color-title,\r\n#obstacle-title {\r\n    font-size: 3rem;\r\n    transition: color 1.5s;\r\n}\r\n\r\n#setting-content {\r\n    display: grid;\r\n    grid-template-rows: 2fr 3fr;\r\n    gap: 20px;\r\n    padding: 20px;\r\n}\r\n\r\n#difficulty-section header,\r\n#color-section header,\r\n#obstacle-section header {\r\n    display: flex;\r\n    align-items: center;\r\n}\r\n\r\n#difficulty-section {\r\n    display: grid;\r\n    grid-template-rows: 1fr 5fr;\r\n    border-bottom: 3px solid white;\r\n    transition: border-color 1.5s;\r\n}\r\n\r\n#difficulty-option {\r\n    display: flex;\r\n    justify-content: space-evenly;\r\n    align-items: center;\r\n}\r\n\r\n.difficulty-button {\r\n    width: 20%;\r\n    min-width: fit-content;\r\n    background-color: transparent;\r\n    border: 5px solid white;\r\n    padding: 20px 10px;\r\n    color: white;\r\n    font-size: 2rem;\r\n    transition: background-color 0.3s, color 0.3s;\r\n}\r\n\r\n#easy-button:hover, .easy-enabled {\r\n    background-color: rgba(0, 255, 72, 0.8);\r\n    color: black;\r\n    cursor: pointer;\r\n}\r\n\r\n#medium-button:hover, .medium-enabled {\r\n    background-color: rgba(255, 255, 0, 0.8);\r\n    color: black;\r\n    cursor: pointer;\r\n}\r\n\r\n#hard-button:hover, .hard-enabled {\r\n    background-color: rgba(255, 0, 0, 0.8);\r\n    color: black;\r\n    cursor: pointer;\r\n}\r\n\r\n#other-section {\r\n    display: grid;\r\n    grid-template-columns: 1fr 1fr;\r\n}\r\n\r\n#color-section,\r\n#obstacle-section {\r\n    display: grid;\r\n    grid-template-rows: 1fr 5fr;\r\n}\r\n\r\n#color-section {\r\n    border-right: 3px solid white;\r\n    transition: border-color 1.5s;\r\n}\r\n\r\n#color-section header,\r\n#obstacle-section header {\r\n    display: flex;\r\n    align-items: center;\r\n    justify-content: center;\r\n}\r\n\r\n#color-option-container {\r\n    display: flex;\r\n    flex-direction: column;\r\n    justify-content: space-evenly;\r\n    align-items: center;\r\n}\r\n\r\n.color-button {\r\n    width: 50%;\r\n    background-color: transparent;\r\n    border: 5px solid white;\r\n    padding: 20px 10px;\r\n    color: white;\r\n    font-size: 2rem;\r\n    transition: background-color 0.3s, color 0.3s;\r\n}\r\n\r\n#color-option-container #red-option:hover, .red-enabled {\r\n    background-color: #9d0208;\r\n    color: black;\r\n    cursor: pointer;\r\n}\r\n\r\n#color-option-container #green-option:hover, .green-enabled {\r\n    background-color: #008000;\r\n    color: black;\r\n    cursor: pointer;\r\n}\r\n\r\n#color-option-container #blue-option:hover, .blue-enabled {\r\n    background-color: #0077b6;\r\n    color: black;\r\n    cursor: pointer;\r\n}\r\n\r\n#obstacle-option-container {\r\n    display: grid;\r\n    grid-template-rows: 3fr 2fr;\r\n}\r\n\r\n#obstacle-presence-section {\r\n    display: flex;\r\n    flex-direction: row;\r\n    justify-content: center;\r\n    align-items: center;\r\n    gap: 20px;\r\n}\r\n\r\n.obstacle-button {\r\n    width: 30%;\r\n    background-color: transparent;\r\n    border: 5px solid white;\r\n    padding: 20px 10px;\r\n    color: white;\r\n    font-size: 2rem;\r\n    transition: background-color 0.3s, color 0.3s;\r\n}\r\n\r\n#obstacle-presence-section #on-button:hover, .on-enabled {\r\n    background-color: rgba(0, 255, 72, 0.8);\r\n    color: black;\r\n    cursor: pointer;\r\n}\r\n\r\n#obstacle-presence-section #off-button:hover, .off-enabled {\r\n    background-color: rgba(255, 0, 0, 0.8);\r\n    color: black;\r\n    cursor: pointer;\r\n}\r\n\r\n#obstacle-quantity-section {\r\n    position: relative;\r\n    width: 80%;\r\n    margin: auto;\r\n}\r\n\r\n#obstacle-quantity-section div {\r\n    width: 100%;\r\n    display: flex;\r\n    justify-content: space-between;\r\n    align-items: center;\r\n}\r\n\r\n#obstacle-quantity-section label, #obstacle-quantity-section span {\r\n    font-size: 2rem;\r\n    padding-bottom: 10px;\r\n}\r\n\r\n#obstacle-quantity-input {\r\n    width: 100%;\r\n}\r\n\r\n.active {\r\n    background-color: white;\r\n    color: black;\r\n}"],"sourceRoot":""}]);
+}
+
+#instructions-section {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(50px);
+    z-index: -1;
+}   
+
+#instructions-container {
+    border: 5px solid white;
+    padding: 20px 10px;
+}
+
+#instructions-section header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 3px solid white;
+    margin: 0 20px;
+}
+
+#instructions-title {
+    font-size: 4rem;
+    padding-bottom: 10px;
+}
+
+#instructions-content p {
+    font-size: 2rem;
+    padding: 20px;
+}
+
+#game-over-section {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: black;
+    z-index: -1;
+}
+
+#game-over-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#winner-text {
+    font-size: 4rem;
+    padding: 20px;
+}
+
+#restart-button {
+    width: fit-content;
+    background-color: transparent;
+    border: 5px solid white;
+    padding: 20px 10px;
+    color: white;
+    font-size: 2rem;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+#restart-button:hover {
+    background-color: rgba(189, 189, 189, 0.8);
+    color: black;
+    cursor: pointer;
+}`, "",{"version":3,"sources":["webpack://./src/styles/setting.css"],"names":[],"mappings":"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","sourcesContent":["\r\n#setting-button {\r\n    position: fixed;\r\n    bottom: 20px;\r\n    left: 20px;\r\n    color: white;\r\n    z-index: 1000;\r\n    background-color: transparent;\r\n    border: none;\r\n    transition: transform 0.3s;\r\n    box-sizing: border-box;\r\n}\r\n\r\n#setting-button:hover {\r\n    transform: rotate(90deg);\r\n    cursor: pointer;\r\n}\r\n\r\nfooter {\r\n    display: flex;\r\n    justify-content: center;\r\n    align-items: center;\r\n}\r\n\r\n#footer-text {\r\n    font-size: 1rem;\r\n    transition: color 1.5s;\r\n}\r\n\r\n#setting-icon {\r\n    font-size: 4rem;\r\n    transition: color 1.5s;\r\n}\r\n\r\n#setting-section {\r\n    width: 80%;\r\n    height: 80%;\r\n    position: fixed;\r\n    top: 50%;\r\n    left: 50%;\r\n    transform: translate(-50%, -50%);\r\n    display: grid;\r\n    grid-template-rows: 1fr 5fr;\r\n    z-index: -1000;\r\n    background-color: rgba(0, 0, 0, 0.6);\r\n    backdrop-filter: blur(10px);\r\n    border: 5px solid white;\r\n    transition: border-color 1.5s;\r\n}\r\n\r\n#setting-header {\r\n    display: flex;\r\n    justify-content: center;\r\n    align-items: center;\r\n    border-bottom: 3px solid white;\r\n    margin: 0 20px;\r\n    transition: border-color 1.5s;\r\n}\r\n\r\n#setting-title {\r\n    font-size: 4rem;\r\n}\r\n\r\n#difficulty-title,\r\n#color-title,\r\n#obstacle-title {\r\n    font-size: 3rem;\r\n    transition: color 1.5s;\r\n}\r\n\r\n#setting-content {\r\n    display: grid;\r\n    grid-template-rows: 2fr 3fr;\r\n    gap: 20px;\r\n    padding: 20px;\r\n}\r\n\r\n#difficulty-section header,\r\n#color-section header,\r\n#obstacle-section header {\r\n    display: flex;\r\n    align-items: center;\r\n}\r\n\r\n#difficulty-section {\r\n    display: grid;\r\n    grid-template-rows: 1fr 5fr;\r\n    border-bottom: 3px solid white;\r\n    transition: border-color 1.5s;\r\n}\r\n\r\n#difficulty-option {\r\n    display: flex;\r\n    justify-content: space-evenly;\r\n    align-items: center;\r\n}\r\n\r\n.difficulty-button {\r\n    width: 20%;\r\n    min-width: fit-content;\r\n    background-color: transparent;\r\n    border: 5px solid white;\r\n    padding: 20px 10px;\r\n    color: white;\r\n    font-size: 2rem;\r\n    transition: background-color 0.3s, color 0.3s;\r\n}\r\n\r\n#easy-button:hover, .easy-enabled {\r\n    background-color: rgba(0, 255, 72, 0.8);\r\n    color: black;\r\n    cursor: pointer;\r\n}\r\n\r\n#medium-button:hover, .medium-enabled {\r\n    background-color: rgba(255, 255, 0, 0.8);\r\n    color: black;\r\n    cursor: pointer;\r\n}\r\n\r\n#hard-button:hover, .hard-enabled {\r\n    background-color: rgba(255, 0, 0, 0.8);\r\n    color: black;\r\n    cursor: pointer;\r\n}\r\n\r\n#other-section {\r\n    display: grid;\r\n    grid-template-columns: 1fr 1fr;\r\n}\r\n\r\n#color-section,\r\n#obstacle-section {\r\n    display: grid;\r\n    grid-template-rows: 1fr 5fr;\r\n}\r\n\r\n#color-section {\r\n    border-right: 3px solid white;\r\n    transition: border-color 1.5s;\r\n}\r\n\r\n#color-section header,\r\n#obstacle-section header {\r\n    display: flex;\r\n    align-items: center;\r\n    justify-content: center;\r\n}\r\n\r\n#color-option-container {\r\n    display: flex;\r\n    flex-direction: column;\r\n    justify-content: space-evenly;\r\n    align-items: center;\r\n}\r\n\r\n.color-button {\r\n    width: 50%;\r\n    background-color: transparent;\r\n    border: 5px solid white;\r\n    padding: 20px 10px;\r\n    color: white;\r\n    font-size: 2rem;\r\n    transition: background-color 0.3s, color 0.3s;\r\n}\r\n\r\n#color-option-container #red-option:hover, .red-enabled {\r\n    background-color: #9d0208;\r\n    color: black;\r\n    cursor: pointer;\r\n}\r\n\r\n#color-option-container #green-option:hover, .green-enabled {\r\n    background-color: #008000;\r\n    color: black;\r\n    cursor: pointer;\r\n}\r\n\r\n#color-option-container #blue-option:hover, .blue-enabled {\r\n    background-color: #0077b6;\r\n    color: black;\r\n    cursor: pointer;\r\n}\r\n\r\n#obstacle-option-container {\r\n    display: grid;\r\n    grid-template-rows: 3fr 2fr;\r\n}\r\n\r\n#obstacle-presence-section {\r\n    display: flex;\r\n    flex-direction: row;\r\n    justify-content: center;\r\n    align-items: center;\r\n    gap: 20px;\r\n}\r\n\r\n.obstacle-button {\r\n    width: 30%;\r\n    background-color: transparent;\r\n    border: 5px solid white;\r\n    padding: 20px 10px;\r\n    color: white;\r\n    font-size: 2rem;\r\n    transition: background-color 0.3s, color 0.3s;\r\n}\r\n\r\n#obstacle-presence-section #on-button:hover, .on-enabled {\r\n    background-color: rgba(0, 255, 72, 0.8);\r\n    color: black;\r\n    cursor: pointer;\r\n}\r\n\r\n#obstacle-presence-section #off-button:hover, .off-enabled {\r\n    background-color: rgba(255, 0, 0, 0.8);\r\n    color: black;\r\n    cursor: pointer;\r\n}\r\n\r\n#obstacle-quantity-section {\r\n    position: relative;\r\n    width: 80%;\r\n    margin: auto;\r\n}\r\n\r\n#obstacle-quantity-section div {\r\n    width: 100%;\r\n    display: flex;\r\n    justify-content: space-between;\r\n    align-items: center;\r\n}\r\n\r\n#obstacle-quantity-section label, #obstacle-quantity-section span {\r\n    font-size: 2rem;\r\n    padding-bottom: 10px;\r\n}\r\n\r\n#obstacle-quantity-input {\r\n    width: 100%;\r\n}\r\n\r\n.active {\r\n    background-color: white;\r\n    color: black;\r\n}\r\n\r\n#instructions-section {\r\n    position: fixed;\r\n    width: 100vw;\r\n    height: 100vh;\r\n    display: flex;\r\n    justify-content: center;\r\n    align-items: center;\r\n    backdrop-filter: blur(50px);\r\n    z-index: -1;\r\n}   \r\n\r\n#instructions-container {\r\n    border: 5px solid white;\r\n    padding: 20px 10px;\r\n}\r\n\r\n#instructions-section header {\r\n    display: flex;\r\n    justify-content: center;\r\n    align-items: center;\r\n    border-bottom: 3px solid white;\r\n    margin: 0 20px;\r\n}\r\n\r\n#instructions-title {\r\n    font-size: 4rem;\r\n    padding-bottom: 10px;\r\n}\r\n\r\n#instructions-content p {\r\n    font-size: 2rem;\r\n    padding: 20px;\r\n}\r\n\r\n#game-over-section {\r\n    position: fixed;\r\n    width: 100vw;\r\n    height: 100vh;\r\n    display: flex;\r\n    justify-content: center;\r\n    align-items: center;\r\n    flex-direction: column;\r\n    background-color: black;\r\n    z-index: -1;\r\n}\r\n\r\n#game-over-content {\r\n    display: flex;\r\n    flex-direction: column;\r\n    justify-content: center;\r\n    align-items: center;\r\n}\r\n\r\n#winner-text {\r\n    font-size: 4rem;\r\n    padding: 20px;\r\n}\r\n\r\n#restart-button {\r\n    width: fit-content;\r\n    background-color: transparent;\r\n    border: 5px solid white;\r\n    padding: 20px 10px;\r\n    color: white;\r\n    font-size: 2rem;\r\n    transition: background-color 0.3s, color 0.3s;\r\n}\r\n\r\n#restart-button:hover {\r\n    background-color: rgba(189, 189, 189, 0.8);\r\n    color: black;\r\n    cursor: pointer;\r\n}"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -939,22 +1016,34 @@ class Ball {
         ctx.beginPath();
         ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false);
         ctx.fillStyle = this.color;
-        ctx.strokeStyle = this.color;
         ctx.lineWidth = 5;
-        ctx.stroke();
         ctx.fill();
         ctx.closePath();
         this.drawTrail();
     }
 
     // Update ball position
-    update(playerPaddle, aiPaddle, obstacles, acceleration) {
+    update(playerPaddle, aiPaddle, obstacles, acceleration, isGameOn) {
         // Add current position to trail array
         this.trailArray.unshift({ x: this.x, y: this.y });
 
         // Remove oldest trail position if trail array is too long
         if (this.trailArray.length > this.maxTrailLength) {
             this.trailArray.pop();
+        }
+
+        // Check if game is on
+        if (!isGameOn) {
+            if (this.x + this.radius > canvas.width) {
+                this.x = canvas.width - this.radius; // Adjust position to the right edge
+                this.dx *= -1; // Reverse direction
+                changeColor(this.colorArray[getRandomIntegerFromRange(0, this.colorArray.length - 1)], 'right');
+            } else if (this.x - this.radius < 0) {
+                this.x = this.radius; // Adjust position to the left edge
+                this.dx *= -1; // Reverse direction
+                changeColor(this.colorArray[getRandomIntegerFromRange(0, this.colorArray.length - 1)], 'left');
+
+            }
         }
 
         // Check if the ball is colliding with the top or bottom of the canvas
@@ -996,7 +1085,8 @@ class Ball {
     }
 }
 
-let topIntervalId, bottomIntervalId;
+let topIntervalId, bottomIntervalId, leftIntervalId, rightIntervalId;
+const targetBorder = document.getElementById('game-canvas');
 async function changeColor(hslString, border) {
     if (!hslString) return;
 
@@ -1008,8 +1098,7 @@ async function changeColor(hslString, border) {
     if (border === 'top') {
         if (topIntervalId) clearInterval(topIntervalId);
         // Initially set the top border color
-        let borderTop = document.getElementById('game-canvas');
-        borderTop.style.borderTopColor = hslString;
+        targetBorder.style.borderTopColor = hslString;
 
         // Gradually change the top border color to white
         topIntervalId = setInterval(() => {
@@ -1017,7 +1106,7 @@ async function changeColor(hslString, border) {
                 lightness += 1;
 
                 const newHslString = `hsl(${match[1]}, ${match[2]}%, ${lightness}%)`;
-                borderTop.style.borderTopColor = newHslString;
+                targetBorder.style.borderTopColor = newHslString;
             } else {
                 clearInterval(topIntervalId);
             }
@@ -1025,8 +1114,7 @@ async function changeColor(hslString, border) {
     } else if (border === 'bottom') {
         if (bottomIntervalId) clearInterval(bottomIntervalId);
         // Initially set the bottom border color
-        const borderBottom = document.getElementById('game-canvas');
-        borderBottom.style.borderBottomColor = hslString;
+        targetBorder.style.borderBottomColor = hslString;
 
         // Gradually change the bottom border color to white
         bottomIntervalId = setInterval(() => {
@@ -1034,9 +1122,41 @@ async function changeColor(hslString, border) {
                 lightness += 1;
 
                 const newHslString = `hsl(${match[1]}, ${match[2]}%, ${lightness}%)`;
-                borderBottom.style.borderBottomColor = newHslString;
+                targetBorder.style.borderBottomColor = newHslString;
             } else {
                 clearInterval(bottomIntervalId);
+            }
+        }, 10);
+    } else if (border === 'left') {
+        if (leftIntervalId) clearInterval(leftIntervalId);
+        // Initially set the left border color
+        targetBorder.style.borderLeftColor = hslString;
+
+        // Gradually change the left border color to white
+        leftIntervalId = setInterval(() => {
+            if (lightness < 100) {
+                lightness += 1;
+
+                const newHslString = `hsl(${match[1]}, ${match[2]}%, ${lightness}%)`;
+                targetBorder.style.borderLeftColor = newHslString;
+            } else {
+                clearInterval(leftIntervalId);
+            }
+        }, 10);
+    } else if (border === 'right') {
+        if (rightIntervalId) clearInterval(rightIntervalId);
+        // Initially set the right border color
+        targetBorder.style.borderRightColor = hslString;
+
+        // Gradually change the right border color to white
+        rightIntervalId = setInterval(() => {
+            if (lightness < 100) {
+                lightness += 1;
+
+                const newHslString = `hsl(${match[1]}, ${match[2]}%, ${lightness}%)`;
+                targetBorder.style.borderRightColor = newHslString;
+            } else {
+                clearInterval(rightIntervalId);
             }
         }, 10);
     }
@@ -1133,8 +1253,8 @@ class Paddle {
         ctx.closePath();
     }
 
-    update(value) {
-        if (this.y + value >= 0 && this.y + this.height + value <= canvas.height) {
+    update(value, isGameOn) {
+        if (this.y + value >= 0 && this.y + this.height + value <= canvas.height && isGameOn) {
             this.y += value;
         }
         this.draw();
@@ -1273,51 +1393,45 @@ __webpack_require__.r(__webpack_exports__);
 
 //! ====== Constants and DOM Elements ======
 const canvas = document.getElementById('game-canvas');
+const ctx = canvas.getContext('2d');
 const colorButtons = document.getElementsByClassName('color-button');
 const difficultyButtons = document.getElementsByClassName('difficulty-button');
 const obstacleButtons = document.getElementsByClassName('obstacle-button');
 const obstacleQuantityInput = document.getElementById('obstacle-quantity-input');
-
-const {
-    gameTitle,
-    startButton,
-    startButton2,
-    footerText,
-    settingIcon,
-    settingSection,
-    settingTitle,
-    difficultyTitle,
-    colorTitle,
-    obstacleTitle,
-    settingHeader,
-    difficultySection,
-    colorSection,
-} = {
+const playAgainstAiButton = document.getElementById('start-button');
+const playAgainstPlayerButton = document.getElementById('start-button2');
+const mainMenu = document.getElementById('main-menu');
+const instructionSection = document.getElementById('instructions-section');
+const gameOverSection = document.getElementById('game-over-section');
+const restartButton = document.getElementById('restart-button');
+const elementsToColor = {
     gameTitle: document.getElementById('game-title'),
-    startButton: document.getElementById('start-button'),
-    startButton2: document.getElementById('start-button2'),
     footerText: document.getElementById('footer-text'),
     settingIcon: document.getElementById('setting-icon'),
-    settingSection: document.getElementById('setting-section'),
     settingTitle: document.getElementById('setting-title'),
     difficultyTitle: document.getElementById('difficulty-title'),
     colorTitle: document.getElementById('color-title'),
     obstacleTitle: document.getElementById('obstacle-title'),
+}
+const elementsWithBorder = {
+    startButton: document.getElementById('start-button'),
+    startButton2: document.getElementById('start-button2'),
+    settingSection: document.getElementById('setting-section'),
     settingHeader: document.getElementById('setting-header'),
     difficultySection: document.getElementById('difficulty-section'),
     colorSection: document.getElementById('color-section'),
-};
+}
 
 //! ====== Game State Variables ======
-let playerPaddle, aiPaddle, ball;
+let playerPaddle, otherPaddle, ball, player2, timeOutId;
 let points = { player1: 0, player2: 0 };
 let playerInput = { up: false, down: false };
-let isGameOn = false;
+let otherPlayerInput = { up: false, down: false };
+let isGameOn = false, isPaused = true, isGameOver = false;
 let obstacles = [];
 let colorIndex = 0;
 let ballAcceleration = 1.0001;
-
-// Game settings
+let zIndex = 100;
 let setColor, setDifficulty, obstacleState, maxObstacles;
 
 // Difficulty settings
@@ -1338,17 +1452,32 @@ const colorObject = {
 // Initialize canvas size
 function setCanvasSize() {
     canvas.width = window.innerWidth * 0.9;
-    canvas.height = window.innerHeight * 0.8;
+    canvas.height = window.innerHeight * 0.85;
+}
+
+// Draw dotted line in the center of the canvas
+function drawDottedLine() {
+    const middleX = canvas.width / 2;
+    ctx.beginPath();
+    ctx.setLineDash([50, 50]);
+    ctx.strokeStyle = "white";
+    ctx.lineWidth = 10;
+    ctx.moveTo(middleX, 30);
+    ctx.lineTo(middleX, canvas.height);
+    ctx.stroke();
 }
 
 // Apply color to various elements
 function applyColorToElements(color) {
     const colorValue = colorObject[color][colorIndex % colorObject[color].length];
-    const elementsToColor = [gameTitle, footerText, settingIcon, settingTitle, difficultyTitle, colorTitle, obstacleTitle];
-    const elementsWithBorder = [startButton, startButton2, settingSection, settingHeader, difficultySection, colorSection];
 
-    elementsToColor.forEach(element => (element.style.color = colorValue));
-    elementsWithBorder.forEach(element => (element.style.borderColor = colorValue));
+    for (const element in elementsToColor) {
+        elementsToColor[element].style.color = colorValue;
+    }
+
+    for (const element in elementsWithBorder) {
+        elementsWithBorder[element].style.borderColor = colorValue;
+    }
     colorIndex++;
 }
 
@@ -1361,36 +1490,57 @@ function getStoredSettings() {
     setDifficulty = storedSettings.difficulty;
 }
 
-// Update paddle position based on input
+// Generalized function to update paddle position
+function updatePaddle(targetPaddle, input, speed) {
+    const paddleDy = input.up ? -speed : input.down ? speed : 0;
+    targetPaddle.update(paddleDy, isGameOn);
+}
+
+// Update user paddle
 function updateUserPaddle(targetPaddle) {
-    const velocity = 10;
-    const paddleDy = playerInput.up > 0 ? -velocity : playerInput.down ? velocity : 0;
-    targetPaddle.update(paddleDy);
+    updatePaddle(targetPaddle, playerInput, 10);
+}
+
+// Update other player paddle
+function updateOtherPlayerPaddle(targetPaddle) {
+    updatePaddle(targetPaddle, otherPlayerInput, 10);
 }
 
 // Update AI paddle to follow the ball
 function updateAiPaddle(targetPaddle) {
     const aiSpeed = difficultyObject[setDifficulty].aiSpeed;
     const paddleDy = targetPaddle.y + targetPaddle.height / 2 < ball.y ? aiSpeed : targetPaddle.y + targetPaddle.height / 2 > ball.y ? -aiSpeed : 0;
-    targetPaddle.update(paddleDy);
+    targetPaddle.update(paddleDy, isGameOn);
 }
 
 // Check if a goal has been scored
 function checkGoal() {
-    if (ball.x < 0 || ball.x > canvas.width) restartRound(ball.x > canvas.width);
+    if (!isGameOn) return;
+
+    if (points.player1 >= 1 || points.player2 >= 1) {
+        gameOver(points.player1 >= 1 ? 'Player 1' : 'Player 2');
+    } else if (ball.x < 0 || ball.x > canvas.width) {
+        restartRound(ball.x > canvas.width);
+    }
+}
+
+// Game over function
+function gameOver(winner) {
+    isGameOn = false;
+    isPaused = isGameOver = true;
+    gameOverSection.style.zIndex = 1;
+    document.getElementById('winner-text').textContent = `${winner} wins!`;
 }
 
 // Restart round with score update
 function restartRound(playerWin1) {
-    if (playerWin1) points.player1++;
-    else points.player2++;
+    playerWin1 ? points.player1++ : points.player2++;
     document.getElementById('player1-score').textContent = points.player1;
     document.getElementById('player2-score').textContent = points.player2;
     setBall();
 }
 
 // Initialize ball properties
-let timeOutId; // Timeout ID for ball launch
 function setBall() {
     const ballRadius = 20;
     let ballDx, ballDy;
@@ -1420,12 +1570,19 @@ function setPaddle() {
     const playerPaddleHeight = difficultyObject[setDifficulty].playerPaddleHeight;
     const aiPaddleHeight = difficultyObject[setDifficulty].aiPaddleHeight;
     const playerX = 60;
-    const aiX = canvas.width - paddleWidth - 60;
+    const otherPlayerX = canvas.width - paddleWidth - 60;
     const playerY = canvas.height / 2 - playerPaddleHeight / 2;
-    const aiY = canvas.height / 2 - aiPaddleHeight / 2;
+    const aiPlayerY = canvas.height / 2 - aiPaddleHeight / 2;
 
     playerPaddle = new _utility_js__WEBPACK_IMPORTED_MODULE_2__.Paddle(playerX, playerY, paddleWidth, playerPaddleHeight);
-    aiPaddle = new _utility_js__WEBPACK_IMPORTED_MODULE_2__.Paddle(aiX, aiY, paddleWidth, aiPaddleHeight);
+
+    if (player2 === 'Player 2') {
+        otherPaddle = new _utility_js__WEBPACK_IMPORTED_MODULE_2__.Paddle(otherPlayerX, playerY, paddleWidth, playerPaddleHeight)
+    } else if (player2 === 'AI') {
+        otherPaddle = new _utility_js__WEBPACK_IMPORTED_MODULE_2__.Paddle(otherPlayerX, aiPlayerY, paddleWidth, aiPaddleHeight)
+    } else {
+        otherPaddle = new _utility_js__WEBPACK_IMPORTED_MODULE_2__.Paddle(otherPlayerX, aiPlayerY, paddleWidth, aiPaddleHeight)
+    }
 }
 
 // Initialize obstacle properties
@@ -1458,6 +1615,7 @@ for (const button of colorButtons) {
 for (const button of difficultyButtons) {
     button.addEventListener('click', () => {
         setDifficulty = button.value;
+
         startGame();
     });
 }
@@ -1476,31 +1634,87 @@ obstacleQuantityInput.addEventListener('input', (event) => {
     if (obstacleState === 'on') startGame();
 });
 
+// Start game on button click
+playAgainstAiButton.addEventListener('click', () => {
+    mainMenu.style.zIndex = -1;
+    instructionSection.style.zIndex = 1;
+    isGameOn = true;
+    isGameOver = false;
+    player2 = 'AI';
+    localStorage.setItem('isGameOn', isGameOn);
+    startGame();
+});
+
+playAgainstPlayerButton.addEventListener('click', () => {
+    mainMenu.style.zIndex = -1;
+    instructionSection.style.zIndex = 1;
+    isGameOn = true;
+    isGameOver = false;
+    player2 = 'Player 2';
+    localStorage.setItem('isGameOn', isGameOn);
+    startGame();
+});
+
+// Restart game on button click
+restartButton.addEventListener('click', () => {
+    // Reload the page to reset the game
+    location.reload();
+});
+
 // Resize canvas on window resize
 window.addEventListener('resize', () => { 
     setCanvasSize();
     startGame();
 });
 
-// Player paddle movement on key press
+// Paddle movement on key press
 window.addEventListener('keydown', (event) => {
-    if (isGameOn && (event.key === 'w' || event.key === 's')) playerInput[event.key === 'w' ? 'up' : 'down'] = true;
+    if (isGameOn) {
+        if (event.key === 'w' || event.key === 's') {
+            playerInput[event.key === 'w' ? 'up' : 'down'] = true;
+        } 
+        if (event.key === 'ArrowUp' || event.key === 'ArrowDown') {
+            otherPlayerInput[event.key === 'ArrowUp' ? 'up' : 'down'] = true;
+        }
+    }
 });
 
 window.addEventListener('keyup', (event) => {
-    if (isGameOn && (event.key === 'w' || event.key === 's')) playerInput[event.key === 'w' ? 'up' : 'down'] = false;
+    if (isGameOn) {
+        if (event.key === 'w' || event.key === 's') {
+            playerInput[event.key === 'w' ? 'up' : 'down'] = false;
+        }
+         if (event.key === 'ArrowUp' || event.key === 'ArrowDown') {
+            otherPlayerInput[event.key === 'ArrowUp' ? 'up' : 'down'] = false;
+        }
+    }
+});
+
+// Pause Unpause game on 'Escape' key press
+window.addEventListener('keydown', (event) => {
+    if (event.key !== 'Escape' || !isGameOn) return;
+    zIndex = -zIndex;
+    instructionSection.style.zIndex = zIndex;
+    isPaused = !isPaused;
 });
 
 //! ====== Game Functions ======
-function animate(timestamp) {
+function animate() {
     (0,_utility_js__WEBPACK_IMPORTED_MODULE_2__.clearCanvas)();
+    if (isGameOver) return;
+    drawDottedLine();
 
-    // ballAcceleration += 0.001;
-    ball.update(playerPaddle, aiPaddle, obstacles, ballAcceleration);
-    obstacles.forEach(obstacle => obstacle.update());
-
-    isGameOn ? updateUserPaddle(playerPaddle) : updateAiPaddle(playerPaddle);
-    updateAiPaddle(aiPaddle);
+    if (!isPaused) {
+        ball.update(playerPaddle, otherPaddle, obstacles, ballAcceleration, isGameOn);
+        obstacles.forEach(obstacle => obstacle.update());
+        updateUserPaddle(playerPaddle);
+        if (player2 === 'AI') updateAiPaddle(otherPaddle);
+        else if (player2 === 'Player 2') updateOtherPlayerPaddle(otherPaddle);
+    } else if (!isGameOn) {
+        obstacles.forEach(obstacle => obstacle.update());
+        playerPaddle.update(0, isGameOn);
+        otherPaddle.update(0, isGameOn);
+    }
     checkGoal();
 
     requestAnimationFrame(animate);
@@ -1513,13 +1727,18 @@ function startGame() {
     setObstacle();
 }
 
+function main() {
+    getStoredSettings();
+    startGame();
+    requestAnimationFrame(animate);
+    localStorage.setItem('isGameOn', isGameOn);
+}
+
 // ====== Initialization ======
 setInterval(() => applyColorToElements(setColor), 1000);
-getStoredSettings();
-startGame();
-requestAnimationFrame(animate);
+main();
 })();
 
 /******/ })()
 ;
-//# sourceMappingURL=bundle0ea2bde2b4762be1612c.js.map
+//# sourceMappingURL=bundle4af6ffbc3d068298a743.js.map

@@ -243,3 +243,77 @@ footer {
     background-color: white;
     color: black;
 }
+
+#instructions-section {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(50px);
+    z-index: -1;
+}   
+
+#instructions-container {
+    border: 5px solid white;
+    padding: 20px 10px;
+}
+
+#instructions-section header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 3px solid white;
+    margin: 0 20px;
+}
+
+#instructions-title {
+    font-size: 4rem;
+    padding-bottom: 10px;
+}
+
+#instructions-content p {
+    font-size: 2rem;
+    padding: 20px;
+}
+
+#game-over-section {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: black;
+    z-index: -1;
+}
+
+#game-over-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#winner-text {
+    font-size: 4rem;
+    padding: 20px;
+}
+
+#restart-button {
+    width: fit-content;
+    background-color: transparent;
+    border: 5px solid white;
+    padding: 20px 10px;
+    color: white;
+    font-size: 2rem;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+#restart-button:hover {
+    background-color: rgba(189, 189, 189, 0.8);
+    color: black;
+    cursor: pointer;
+}

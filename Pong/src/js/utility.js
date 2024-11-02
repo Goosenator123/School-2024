@@ -30,22 +30,34 @@ class Ball {
         ctx.beginPath();
         ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false);
         ctx.fillStyle = this.color;
-        ctx.strokeStyle = this.color;
         ctx.lineWidth = 5;
-        ctx.stroke();
         ctx.fill();
         ctx.closePath();
         this.drawTrail();
     }
 
     // Update ball position
-    update(playerPaddle, aiPaddle, obstacles, acceleration) {
+    update(playerPaddle, aiPaddle, obstacles, acceleration, isGameOn) {
         // Add current position to trail array
         this.trailArray.unshift({ x: this.x, y: this.y });
 
         // Remove oldest trail position if trail array is too long
         if (this.trailArray.length > this.maxTrailLength) {
             this.trailArray.pop();
+        }
+
+        // Check if game is on
+        if (!isGameOn) {
+            if (this.x + this.radius > canvas.width) {
+                this.x = canvas.width - this.radius; // Adjust position to the right edge
+                this.dx *= -1; // Reverse direction
+                changeColor(this.colorArray[getRandomIntegerFromRange(0, this.colorArray.length - 1)], 'right');
+            } else if (this.x - this.radius < 0) {
+                this.x = this.radius; // Adjust position to the left edge
+                this.dx *= -1; // Reverse direction
+                changeColor(this.colorArray[getRandomIntegerFromRange(0, this.colorArray.length - 1)], 'left');
+
+            }
         }
 
         // Check if the ball is colliding with the top or bottom of the canvas
@@ -87,7 +99,8 @@ class Ball {
     }
 }
 
-let topIntervalId, bottomIntervalId;
+let topIntervalId, bottomIntervalId, leftIntervalId, rightIntervalId;
+const targetBorder = document.getElementById('game-canvas');
 async function changeColor(hslString, border) {
     if (!hslString) return;
 
@@ -99,8 +112,7 @@ async function changeColor(hslString, border) {
     if (border === 'top') {
         if (topIntervalId) clearInterval(topIntervalId);
         // Initially set the top border color
-        let borderTop = document.getElementById('game-canvas');
-        borderTop.style.borderTopColor = hslString;
+        targetBorder.style.borderTopColor = hslString;
 
         // Gradually change the top border color to white
         topIntervalId = setInterval(() => {
@@ -108,7 +120,7 @@ async function changeColor(hslString, border) {
                 lightness += 1;
 
                 const newHslString = `hsl(${match[1]}, ${match[2]}%, ${lightness}%)`;
-                borderTop.style.borderTopColor = newHslString;
+                targetBorder.style.borderTopColor = newHslString;
             } else {
                 clearInterval(topIntervalId);
             }
@@ -116,8 +128,7 @@ async function changeColor(hslString, border) {
     } else if (border === 'bottom') {
         if (bottomIntervalId) clearInterval(bottomIntervalId);
         // Initially set the bottom border color
-        const borderBottom = document.getElementById('game-canvas');
-        borderBottom.style.borderBottomColor = hslString;
+        targetBorder.style.borderBottomColor = hslString;
 
         // Gradually change the bottom border color to white
         bottomIntervalId = setInterval(() => {
@@ -125,9 +136,41 @@ async function changeColor(hslString, border) {
                 lightness += 1;
 
                 const newHslString = `hsl(${match[1]}, ${match[2]}%, ${lightness}%)`;
-                borderBottom.style.borderBottomColor = newHslString;
+                targetBorder.style.borderBottomColor = newHslString;
             } else {
                 clearInterval(bottomIntervalId);
+            }
+        }, 10);
+    } else if (border === 'left') {
+        if (leftIntervalId) clearInterval(leftIntervalId);
+        // Initially set the left border color
+        targetBorder.style.borderLeftColor = hslString;
+
+        // Gradually change the left border color to white
+        leftIntervalId = setInterval(() => {
+            if (lightness < 100) {
+                lightness += 1;
+
+                const newHslString = `hsl(${match[1]}, ${match[2]}%, ${lightness}%)`;
+                targetBorder.style.borderLeftColor = newHslString;
+            } else {
+                clearInterval(leftIntervalId);
+            }
+        }, 10);
+    } else if (border === 'right') {
+        if (rightIntervalId) clearInterval(rightIntervalId);
+        // Initially set the right border color
+        targetBorder.style.borderRightColor = hslString;
+
+        // Gradually change the right border color to white
+        rightIntervalId = setInterval(() => {
+            if (lightness < 100) {
+                lightness += 1;
+
+                const newHslString = `hsl(${match[1]}, ${match[2]}%, ${lightness}%)`;
+                targetBorder.style.borderRightColor = newHslString;
+            } else {
+                clearInterval(rightIntervalId);
             }
         }, 10);
     }
@@ -224,8 +267,8 @@ class Paddle {
         ctx.closePath();
     }
 
-    update(value) {
-        if (this.y + value >= 0 && this.y + this.height + value <= canvas.height) {
+    update(value, isGameOn) {
+        if (this.y + value >= 0 && this.y + this.height + value <= canvas.height && isGameOn) {
             this.y += value;
         }
         this.draw();

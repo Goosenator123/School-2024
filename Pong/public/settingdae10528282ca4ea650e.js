@@ -34,6 +34,7 @@ const obstacleQuantityInput = document.getElementById('obstacle-quantity-input')
 const obstacleQuantityDisplay = document.getElementById('obstacle-quantity');
 const settingSection = document.getElementById('setting-section');
 const settingButton = document.getElementById('setting-button');
+const instructionSection = document.getElementById('instructions-section');
 
 //! ====== Settings Initialization ======
 // Set default settings in local storage
@@ -89,7 +90,11 @@ function updateObstacleNumber(quantity) {
 }
 
 // Show/hide the settings menu
-function showHideSettingMenu() {
+function showHideSettingOrInstruction() {
+    if (localStorage.getItem('isGameOn') === 'true') {
+        return;
+    }
+
     zIndex = -zIndex;
     settingSection.style.zIndex = zIndex;
 }
@@ -110,9 +115,9 @@ function bindEventListeners() {
 // Toggle the settings menu on 'Escape' key press or settings button click
 window.addEventListener('keydown', (event) => {
     if (event.key !== 'Escape') return;
-    showHideSettingMenu();
+    showHideSettingOrInstruction();
 });
-settingButton.addEventListener('click', showHideSettingMenu);
+settingButton.addEventListener('click', showHideSettingOrInstruction);
 
 // Update obstacle number based on input value
 obstacleQuantityInput.addEventListener('input', (event) => {
@@ -130,4 +135,4 @@ function initializeSettings() {
 initializeSettings();
 /******/ })()
 ;
-//# sourceMappingURL=settingbffcc7c260cb6fc601a4.js.map
+//# sourceMappingURL=settingdae10528282ca4ea650e.js.map

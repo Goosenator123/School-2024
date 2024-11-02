@@ -51,8 +51,8 @@ let setColor, setDifficulty, obstacleState, maxObstacles;
 
 // Difficulty settings
 const difficultyObject = {
-    'easy': { playerSpeed: 12, aiSpeed: 6, playerPaddleHeight: 200, aiPaddleHeight: 200 },
-    'medium': { playerSpeed: 12, aiSpeed: 8, playerPaddleHeight: 150, aiPaddleHeight: 200 },
+    'easy': { playerSpeed: 12, aiSpeed: 5, playerPaddleHeight: 200, aiPaddleHeight: 200 },
+    'medium': { playerSpeed: 12, aiSpeed: 7.5, playerPaddleHeight: 150, aiPaddleHeight: 200 },
     'hard': { playerSpeed: 12, aiSpeed: 10, playerPaddleHeight: 100, aiPaddleHeight: 200 },
 };
 
@@ -158,6 +158,7 @@ function restartRound(playerWin1) {
     document.getElementById('player1-score').textContent = points.player1;
     document.getElementById('player2-score').textContent = points.player2;
     setBall();
+    setObstacle();
 }
 
 // Game over function

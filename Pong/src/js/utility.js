@@ -1,6 +1,17 @@
+import bounceSound from '../sound/bounceSound.mp3';
+import goalSound from '../sound/goalSound.mp3';
+
+// Set sound
+const ballBounceSound = new Audio(bounceSound);
+ballBounceSound.volume = 1;
+
+const ballGoalSound = new Audio(goalSound);
+ballGoalSound.volume = 1;
+
 const canvas = document.getElementById('game-canvas');
 const ctx = canvas.getContext('2d');
 
+//! ====== Ball Class ======
 class Ball {
     constructor(x, y, radius, dx = 0, dy = 0, colorArray = []) {
         this.x = x;
@@ -31,9 +42,34 @@ class Ball {
         ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false);
         ctx.fillStyle = this.color;
         ctx.lineWidth = 5;
+        ctx.strokeStyle = 'white';
+        ctx.setLineDash([]); // Reset to solid line
+        ctx.stroke();
         ctx.fill();
         ctx.closePath();
         this.drawTrail();
+    }
+
+    playBounceSound() {
+        ballBounceSound.currentTime = 0;
+        ballBounceSound.play();
+    }
+    
+    playGoalSound() {
+        ballGoalSound.currentTime = 0.2;
+        ballGoalSound.play();
+    }
+
+    // Helper function to handle collisions
+    handleEdgeCollision(edge, axis) {
+        if (axis === 'x') {
+            this.dx *= -1; // Reverse horizontal direction
+            changeColor(this.colorArray[getRandomIntegerFromRange(0, this.colorArray.length - 1)], edge);
+        } else {
+            this.dy *= -1; // Reverse vertical direction
+            changeColor(this.colorArray[getRandomIntegerFromRange(0, this.colorArray.length - 1)], edge);
+        }
+        this.playBounceSound();
     }
 
     // Update ball position
@@ -46,39 +82,28 @@ class Ball {
             this.trailArray.pop();
         }
 
-        // Check if game is on
-        if (!isGameOn) {
-            if (this.x + this.radius > canvas.width) {
-                this.x = canvas.width - this.radius; // Adjust position to the right edge
-                this.dx *= -1; // Reverse direction
-                changeColor(this.colorArray[getRandomIntegerFromRange(0, this.colorArray.length - 1)], 'right');
-            } else if (this.x - this.radius < 0) {
-                this.x = this.radius; // Adjust position to the left edge
-                this.dx *= -1; // Reverse direction
-                changeColor(this.colorArray[getRandomIntegerFromRange(0, this.colorArray.length - 1)], 'left');
+        // Check for edge collisions
+        if (this.x + this.radius > canvas.width) this.playGoalSound();
+        else if (this.x - this.radius < 0) this.playGoalSound();
 
-            }
-        }
-
-        // Check if the ball is colliding with the top or bottom of the canvas
         if (this.y + this.radius > canvas.height) {
             this.y = canvas.height - this.radius; // Adjust position to the bottom edge
-            this.dy *= -1; // Reverse direction
-            changeColor(this.colorArray[getRandomIntegerFromRange(0, this.colorArray.length - 1)], 'bottom');
+            this.handleEdgeCollision('bottom', 'y');
         } else if (this.y - this.radius < 0) {
             this.y = this.radius; // Adjust position to the top edge
-            this.dy *= -1; // Reverse direction
-            changeColor(this.colorArray[getRandomIntegerFromRange(0, this.colorArray.length - 1)], 'top');
+            this.handleEdgeCollision('top', 'y');
         }
 
         // Check if the ball is colliding with the left and right of a paddle
         if (checkHorizontalCollision(this, playerPaddle) || checkHorizontalCollision(this, aiPaddle)) {
             this.dx *= -1; // Reverse horizontal direction
+            this.playBounceSound();
         }
 
         // Check if the ball is colliding with the top and bottom of a paddle
         if (checkVerticalCollision(this, playerPaddle) || checkVerticalCollision(this, aiPaddle)) {
             this.dy *= -1; // Reverse vertical direction
+            this.playBounceSound();
         }
 
         // Check if the ball is colliding with an obstacle
@@ -99,8 +124,10 @@ class Ball {
     }
 }
 
-let topIntervalId, bottomIntervalId, leftIntervalId, rightIntervalId;
+//! ====== Color Change Functions ======
+let intervalIds = { top: null, bottom: null };
 const targetBorder = document.getElementById('game-canvas');
+
 async function changeColor(hslString, border) {
     if (!hslString) return;
 
@@ -109,73 +136,38 @@ async function changeColor(hslString, border) {
     const match = hslString.match(regex);
     let lightness = parseInt(match[3]);
 
-    if (border === 'top') {
-        if (topIntervalId) clearInterval(topIntervalId);
-        // Initially set the top border color
-        targetBorder.style.borderTopColor = hslString;
+    // Helper function to change border color
+    const changeBorderColor = (borderSide) => {
+        if (intervalIds[borderSide]) clearInterval(intervalIds[borderSide]);
+        targetBorder.style[`border${capitalizeFirstLetter(borderSide)}Color`] = hslString;
 
-        // Gradually change the top border color to white
-        topIntervalId = setInterval(() => {
+        intervalIds[borderSide] = setInterval(() => {
             if (lightness < 100) {
                 lightness += 1;
-
                 const newHslString = `hsl(${match[1]}, ${match[2]}%, ${lightness}%)`;
-                targetBorder.style.borderTopColor = newHslString;
+                targetBorder.style[`border${capitalizeFirstLetter(borderSide)}Color`] = newHslString;
             } else {
-                clearInterval(topIntervalId);
+                clearInterval(intervalIds[borderSide]);
             }
         }, 10);
-    } else if (border === 'bottom') {
-        if (bottomIntervalId) clearInterval(bottomIntervalId);
-        // Initially set the bottom border color
-        targetBorder.style.borderBottomColor = hslString;
+    };
 
-        // Gradually change the bottom border color to white
-        bottomIntervalId = setInterval(() => {
-            if (lightness < 100) {
-                lightness += 1;
-
-                const newHslString = `hsl(${match[1]}, ${match[2]}%, ${lightness}%)`;
-                targetBorder.style.borderBottomColor = newHslString;
-            } else {
-                clearInterval(bottomIntervalId);
-            }
-        }, 10);
-    } else if (border === 'left') {
-        if (leftIntervalId) clearInterval(leftIntervalId);
-        // Initially set the left border color
-        targetBorder.style.borderLeftColor = hslString;
-
-        // Gradually change the left border color to white
-        leftIntervalId = setInterval(() => {
-            if (lightness < 100) {
-                lightness += 1;
-
-                const newHslString = `hsl(${match[1]}, ${match[2]}%, ${lightness}%)`;
-                targetBorder.style.borderLeftColor = newHslString;
-            } else {
-                clearInterval(leftIntervalId);
-            }
-        }, 10);
-    } else if (border === 'right') {
-        if (rightIntervalId) clearInterval(rightIntervalId);
-        // Initially set the right border color
-        targetBorder.style.borderRightColor = hslString;
-
-        // Gradually change the right border color to white
-        rightIntervalId = setInterval(() => {
-            if (lightness < 100) {
-                lightness += 1;
-
-                const newHslString = `hsl(${match[1]}, ${match[2]}%, ${lightness}%)`;
-                targetBorder.style.borderRightColor = newHslString;
-            } else {
-                clearInterval(rightIntervalId);
-            }
-        }, 10);
+    switch (border) {
+        case 'top':
+            changeBorderColor('top');
+            break;
+        case 'bottom':
+            changeBorderColor('bottom');
+            break;
     }
 }
 
+// Helper function to capitalize the first letter of a string
+function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
+//! ====== Collision Detection Functions ======
 function checkHorizontalCollision(ball, paddle) {
     const withinVerticalBounds = ball.y > paddle.y && ball.y < paddle.y + paddle.height;
     const horizontalCollision = ball.x + ball.radius > paddle.x && ball.x - ball.radius < paddle.x + paddle.width;
@@ -232,10 +224,12 @@ function resolveObstacleCollision(ball, obstacle) {
         // Update ball velocity
         ball.dx = finalV1.dx;
         ball.dy = finalV1.dy;
+
+        ball.playBounceSound();
     }
 }
 
-// Rotate Vector function
+//! ====== Utility Functions ======
 function rotateVector(object, angle) {
     return {
         dx: (Math.cos(angle) * object.dx) - (Math.sin(angle) * object.dy),
@@ -250,6 +244,19 @@ function getDistance(object1, object2) {
     return Math.sqrt(dx * dx + dy * dy);
 }
 
+function clearCanvas() {
+    ctx.beginPath();
+    ctx.rect(0, 0, canvas.width, canvas.height);
+    ctx.fillStyle = 'black';
+    ctx.fill();
+    ctx.closePath();
+}
+
+function getRandomIntegerFromRange(min, max) {
+    return Math.floor(Math.random() * (max - min + 1) + min);
+}
+
+//! ====== Paddle Class ======
 class Paddle {
     constructor(x, y, width, height, color = 'white') {
         this.x = x;
@@ -275,6 +282,7 @@ class Paddle {
     }
 }
 
+//! ====== Obstacle Class ======
 class Obstacle {
     constructor(x, y, radius, dy, color = 'white') {
         this.x = x;
@@ -293,24 +301,11 @@ class Obstacle {
     }
 
     update() {
-        if (this.y + this.radius > canvas.height || this.y - this.radius < 0) {
-            this.dy *= -1;
-        }
+        if (this.y + this.radius > canvas.height || this.y - this.radius < 0) this.dy *= -1;
         this.y += this.dy;
         this.draw();
     }
 }
 
-function clearCanvas() {
-    ctx.beginPath();
-    ctx.rect(0, 0, canvas.width, canvas.height);
-    ctx.fillStyle = 'black';
-    ctx.fill();
-    ctx.closePath();
-}
-
-function getRandomIntegerFromRange(min, max) {
-    return Math.floor(Math.random() * (max - min + 1) + min);
-}
-
+// Export the classes and functions
 export { Ball, Paddle, Obstacle, clearCanvas, getRandomIntegerFromRange, getDistance };

@@ -21,7 +21,8 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, `* {
+___CSS_LOADER_EXPORT___.push([module.id, `/* General Styles */
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -39,6 +40,7 @@ body {
     background-color: black;
 }
 
+/* FPS Display */
 #fps {
     position: fixed;
     top: 0;
@@ -49,6 +51,7 @@ body {
     font-size: 1.5rem;
 }
 
+/* Canvas Container */
 #canvas-container {
     position: fixed;
     width: 100vw;
@@ -65,6 +68,7 @@ body {
     border: 5px solid white;
 }
 
+/* Score Text */
 #score-text {
     font-size: 5rem;
     width: 100vw;
@@ -78,6 +82,7 @@ body {
     font-size: 5rem;
 }
 
+/* Main Overlay */
 main {
     position: absolute;
     top: 0;
@@ -89,6 +94,7 @@ main {
     z-index: 1;
 }
 
+/* Main Section */
 #main-section {
     width: 100%;
     height: 100%;
@@ -107,6 +113,7 @@ h1 {
     transition: color 1.5s;
 }
 
+/* Button Section */
 #button-section {
     display: flex;
     justify-content: space-evenly;
@@ -128,7 +135,7 @@ h1 {
     background-color: rgba(255, 255, 255, 0.8);
     color: black;
     cursor: pointer;
-}`, "",{"version":3,"sources":["webpack://./src/styles/index.css"],"names":[],"mappings":"AAAA;IACI,SAAS;IACT,UAAU;IACV,sBAAsB;IACtB,eAAe;IACf,YAAY;IACZ,wCAAwC;IACxC,gBAAgB;IAChB,kBAAkB;IAClB,iBAAiB;IACjB,aAAa;AACjB;;AAEA;IACI,gBAAgB;IAChB,uBAAuB;AAC3B;;AAEA;IACI,eAAe;IACf,MAAM;IACN,QAAQ;IACR,YAAY;IACZ,aAAa;IACb,aAAa;IACb,iBAAiB;AACrB;;AAEA;IACI,eAAe;IACf,YAAY;IACZ,aAAa;IACb,uBAAuB;AAC3B;;AAEA;IACI,kBAAkB;IAClB,QAAQ;IACR,SAAS;IACT,gCAAgC;IAChC,WAAW;IACX,uBAAuB;AAC3B;;AAEA;IACI,eAAe;IACf,YAAY;IACZ,iBAAiB;IACjB,aAAa;IACb,6BAA6B;IAC7B,mBAAmB;AACvB;;AAEA;IACI,eAAe;AACnB;;AAEA;IACI,kBAAkB;IAClB,MAAM;IACN,OAAO;IACP,oCAAoC;IACpC,2BAA2B;IAC3B,YAAY;IACZ,aAAa;IACb,UAAU;AACd;;AAEA;IACI,WAAW;IACX,YAAY;IACZ,aAAa;IACb,gCAAgC;AACpC;;AAEA;IACI,aAAa;IACb,uBAAuB;IACvB,mBAAmB;AACvB;;AAEA;IACI,gBAAgB;IAChB,sBAAsB;AAC1B;;AAEA;IACI,aAAa;IACb,6BAA6B;IAC7B,mBAAmB;IACnB,WAAW;AACf;;AAEA;IACI,WAAW;IACX,6BAA6B;IAC7B,uBAAuB;IACvB,kBAAkB;IAClB,YAAY;IACZ,eAAe;IACf,gEAAgE;AACpE;;AAEA;IACI,0CAA0C;IAC1C,YAAY;IACZ,eAAe;AACnB","sourcesContent":["* {\r\n    margin: 0;\r\n    padding: 0;\r\n    box-sizing: border-box;\r\n    font-size: 10px;\r\n    color: white;\r\n    font-family: 'Press Start 2P', system-ui;\r\n    font-weight: 400;\r\n    font-style: normal;  \r\n    user-select: none;\r\n    outline: none;\r\n}\r\n\r\nbody {\r\n    overflow: hidden;\r\n    background-color: black;\r\n}\r\n\r\n#fps {\r\n    position: fixed;\r\n    top: 0;\r\n    right: 0;\r\n    color: white;\r\n    z-index: 1000;\r\n    padding: 10px;\r\n    font-size: 1.5rem;\r\n}\r\n\r\n#canvas-container {\r\n    position: fixed;\r\n    width: 100vw;\r\n    height: 100vh;\r\n    background-color: black;\r\n}\r\n\r\n#game-canvas {\r\n    position: absolute;\r\n    top: 52%;\r\n    left: 50%;\r\n    transform: translate(-50%, -50%);\r\n    z-index: -1;\r\n    border: 5px solid white;\r\n}\r\n\r\n#score-text {\r\n    font-size: 5rem;\r\n    width: 100vw;\r\n    padding-top: 20px;\r\n    display: flex;\r\n    justify-content: space-evenly;\r\n    align-items: center;\r\n}\r\n\r\n#canvas-container span {\r\n    font-size: 5rem;\r\n}\r\n\r\nmain {\r\n    position: absolute;\r\n    top: 0;\r\n    left: 0;\r\n    background-color: rgba(0, 0, 0, 0.8);\r\n    backdrop-filter: blur(10px);\r\n    width: 100vw;\r\n    height: 100vh;\r\n    z-index: 1;\r\n}\r\n\r\n#main-section {\r\n    width: 100%;\r\n    height: 100%;\r\n    display: grid;\r\n    grid-template-rows: 5fr 20fr 1fr;\r\n}\r\n\r\n#main-section header {\r\n    display: flex;\r\n    justify-content: center;\r\n    align-items: center;\r\n}\r\n\r\nh1 {\r\n    font-size: 10rem;\r\n    transition: color 1.5s;\r\n}\r\n\r\n#button-section {\r\n    display: flex;\r\n    justify-content: space-evenly;\r\n    align-items: center;\r\n    height: 80%;\r\n}\r\n\r\n#button-section button {\r\n    top: -100px;\r\n    background-color: transparent;\r\n    border: 5px solid white;\r\n    padding: 30px 20px;\r\n    color: white;\r\n    font-size: 3rem;\r\n    transition: background-color 0.3s, color 0.3s, border-color 1.5s;\r\n}\r\n\r\n#button-section button:hover {\r\n    background-color: rgba(255, 255, 255, 0.8);\r\n    color: black;\r\n    cursor: pointer;\r\n}"],"sourceRoot":""}]);
+}`, "",{"version":3,"sources":["webpack://./src/styles/index.css"],"names":[],"mappings":"AAAA,mBAAmB;AACnB;IACI,SAAS;IACT,UAAU;IACV,sBAAsB;IACtB,eAAe;IACf,YAAY;IACZ,wCAAwC;IACxC,gBAAgB;IAChB,kBAAkB;IAClB,iBAAiB;IACjB,aAAa;AACjB;;AAEA;IACI,gBAAgB;IAChB,uBAAuB;AAC3B;;AAEA,gBAAgB;AAChB;IACI,eAAe;IACf,MAAM;IACN,QAAQ;IACR,YAAY;IACZ,aAAa;IACb,aAAa;IACb,iBAAiB;AACrB;;AAEA,qBAAqB;AACrB;IACI,eAAe;IACf,YAAY;IACZ,aAAa;IACb,uBAAuB;AAC3B;;AAEA;IACI,kBAAkB;IAClB,QAAQ;IACR,SAAS;IACT,gCAAgC;IAChC,WAAW;IACX,uBAAuB;AAC3B;;AAEA,eAAe;AACf;IACI,eAAe;IACf,YAAY;IACZ,iBAAiB;IACjB,aAAa;IACb,6BAA6B;IAC7B,mBAAmB;AACvB;;AAEA;IACI,eAAe;AACnB;;AAEA,iBAAiB;AACjB;IACI,kBAAkB;IAClB,MAAM;IACN,OAAO;IACP,oCAAoC;IACpC,2BAA2B;IAC3B,YAAY;IACZ,aAAa;IACb,UAAU;AACd;;AAEA,iBAAiB;AACjB;IACI,WAAW;IACX,YAAY;IACZ,aAAa;IACb,gCAAgC;AACpC;;AAEA;IACI,aAAa;IACb,uBAAuB;IACvB,mBAAmB;AACvB;;AAEA;IACI,gBAAgB;IAChB,sBAAsB;AAC1B;;AAEA,mBAAmB;AACnB;IACI,aAAa;IACb,6BAA6B;IAC7B,mBAAmB;IACnB,WAAW;AACf;;AAEA;IACI,WAAW;IACX,6BAA6B;IAC7B,uBAAuB;IACvB,kBAAkB;IAClB,YAAY;IACZ,eAAe;IACf,gEAAgE;AACpE;;AAEA;IACI,0CAA0C;IAC1C,YAAY;IACZ,eAAe;AACnB","sourcesContent":["/* General Styles */\r\n* {\r\n    margin: 0;\r\n    padding: 0;\r\n    box-sizing: border-box;\r\n    font-size: 10px;\r\n    color: white;\r\n    font-family: 'Press Start 2P', system-ui;\r\n    font-weight: 400;\r\n    font-style: normal;  \r\n    user-select: none;\r\n    outline: none;\r\n}\r\n\r\nbody {\r\n    overflow: hidden;\r\n    background-color: black;\r\n}\r\n\r\n/* FPS Display */\r\n#fps {\r\n    position: fixed;\r\n    top: 0;\r\n    right: 0;\r\n    color: white;\r\n    z-index: 1000;\r\n    padding: 10px;\r\n    font-size: 1.5rem;\r\n}\r\n\r\n/* Canvas Container */\r\n#canvas-container {\r\n    position: fixed;\r\n    width: 100vw;\r\n    height: 100vh;\r\n    background-color: black;\r\n}\r\n\r\n#game-canvas {\r\n    position: absolute;\r\n    top: 52%;\r\n    left: 50%;\r\n    transform: translate(-50%, -50%);\r\n    z-index: -1;\r\n    border: 5px solid white;\r\n}\r\n\r\n/* Score Text */\r\n#score-text {\r\n    font-size: 5rem;\r\n    width: 100vw;\r\n    padding-top: 20px;\r\n    display: flex;\r\n    justify-content: space-evenly;\r\n    align-items: center;\r\n}\r\n\r\n#canvas-container span {\r\n    font-size: 5rem;\r\n}\r\n\r\n/* Main Overlay */\r\nmain {\r\n    position: absolute;\r\n    top: 0;\r\n    left: 0;\r\n    background-color: rgba(0, 0, 0, 0.8);\r\n    backdrop-filter: blur(10px);\r\n    width: 100vw;\r\n    height: 100vh;\r\n    z-index: 1;\r\n}\r\n\r\n/* Main Section */\r\n#main-section {\r\n    width: 100%;\r\n    height: 100%;\r\n    display: grid;\r\n    grid-template-rows: 5fr 20fr 1fr;\r\n}\r\n\r\n#main-section header {\r\n    display: flex;\r\n    justify-content: center;\r\n    align-items: center;\r\n}\r\n\r\nh1 {\r\n    font-size: 10rem;\r\n    transition: color 1.5s;\r\n}\r\n\r\n/* Button Section */\r\n#button-section {\r\n    display: flex;\r\n    justify-content: space-evenly;\r\n    align-items: center;\r\n    height: 80%;\r\n}\r\n\r\n#button-section button {\r\n    top: -100px;\r\n    background-color: transparent;\r\n    border: 5px solid white;\r\n    padding: 30px 20px;\r\n    color: white;\r\n    font-size: 3rem;\r\n    transition: background-color 0.3s, color 0.3s, border-color 1.5s;\r\n}\r\n\r\n#button-section button:hover {\r\n    background-color: rgba(255, 255, 255, 0.8);\r\n    color: black;\r\n    cursor: pointer;\r\n}"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -154,7 +161,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, `
+___CSS_LOADER_EXPORT___.push([module.id, `/* Setting Button */
 #setting-button {
     position: fixed;
     bottom: 20px;
@@ -172,6 +179,7 @@ ___CSS_LOADER_EXPORT___.push([module.id, `
     cursor: pointer;
 }
 
+/* Footer */
 footer {
     display: flex;
     justify-content: center;
@@ -183,11 +191,13 @@ footer {
     transition: color 1.5s;
 }
 
+/* Setting Icon */
 #setting-icon {
     font-size: 4rem;
     transition: color 1.5s;
 }
 
+/* Setting Section */
 #setting-section {
     width: 80%;
     height: 80%;
@@ -204,6 +214,7 @@ footer {
     transition: border-color 1.5s;
 }
 
+/* Setting Header */
 #setting-header {
     display: flex;
     justify-content: center;
@@ -217,6 +228,7 @@ footer {
     font-size: 4rem;
 }
 
+/* Difficulty, Color, Obstacle Titles */
 #difficulty-title,
 #color-title,
 #obstacle-title {
@@ -224,6 +236,7 @@ footer {
     transition: color 1.5s;
 }
 
+/* Setting Content */
 #setting-content {
     display: grid;
     grid-template-rows: 2fr 3fr;
@@ -231,18 +244,17 @@ footer {
     padding: 20px;
 }
 
-#difficulty-section header,
-#color-section header,
-#obstacle-section header {
-    display: flex;
-    align-items: center;
-}
-
+/* Difficulty Section */
 #difficulty-section {
     display: grid;
     grid-template-rows: 1fr 5fr;
     border-bottom: 3px solid white;
     transition: border-color 1.5s;
+}
+
+#difficulty-section header {
+    display: flex;
+    align-items: center;
 }
 
 #difficulty-option {
@@ -251,6 +263,7 @@ footer {
     align-items: center;
 }
 
+/* Difficulty Buttons */
 .difficulty-button {
     width: 20%;
     min-width: fit-content;
@@ -280,6 +293,7 @@ footer {
     cursor: pointer;
 }
 
+/* Other Sections */
 #other-section {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -303,6 +317,7 @@ footer {
     justify-content: center;
 }
 
+/* Color Options */
 #color-option-container {
     display: flex;
     flex-direction: column;
@@ -338,6 +353,7 @@ footer {
     cursor: pointer;
 }
 
+/* Obstacle Options */
 #obstacle-option-container {
     display: grid;
     grid-template-rows: 3fr 2fr;
@@ -373,6 +389,7 @@ footer {
     cursor: pointer;
 }
 
+/* Obstacle Quantity Section */
 #obstacle-quantity-section {
     position: relative;
     width: 80%;
@@ -386,7 +403,8 @@ footer {
     align-items: center;
 }
 
-#obstacle-quantity-section label, #obstacle-quantity-section span {
+#obstacle-quantity-section label,
+#obstacle-quantity-section span {
     font-size: 2rem;
     padding-bottom: 10px;
 }
@@ -395,11 +413,13 @@ footer {
     width: 100%;
 }
 
+/* Active State */
 .active {
     background-color: white;
     color: black;
 }
 
+/* Instructions Section */
 #instructions-section {
     position: fixed;
     width: 100vw;
@@ -409,7 +429,7 @@ footer {
     align-items: center;
     backdrop-filter: blur(50px);
     z-index: -1;
-}   
+}
 
 #instructions-container {
     border: 5px solid white;
@@ -434,6 +454,7 @@ footer {
     padding: 20px;
 }
 
+/* Game Over Section */
 #game-over-section {
     position: fixed;
     width: 100vw;
@@ -458,6 +479,7 @@ footer {
     padding: 20px;
 }
 
+/* Restart Button */
 #restart-button {
     width: fit-content;
     background-color: transparent;
@@ -472,7 +494,7 @@ footer {
     background-color: rgba(189, 189, 189, 0.8);
     color: black;
     cursor: pointer;
-}`, "",{"version":3,"sources":["webpack://./src/styles/setting.css"],"names":[],"mappings":"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","sourcesContent":["\r\n#setting-button {\r\n    position: fixed;\r\n    bottom: 20px;\r\n    left: 20px;\r\n    color: white;\r\n    z-index: 1000;\r\n    background-color: transparent;\r\n    border: none;\r\n    transition: transform 0.3s;\r\n    box-sizing: border-box;\r\n}\r\n\r\n#setting-button:hover {\r\n    transform: rotate(90deg);\r\n    cursor: pointer;\r\n}\r\n\r\nfooter {\r\n    display: flex;\r\n    justify-content: center;\r\n    align-items: center;\r\n}\r\n\r\n#footer-text {\r\n    font-size: 1rem;\r\n    transition: color 1.5s;\r\n}\r\n\r\n#setting-icon {\r\n    font-size: 4rem;\r\n    transition: color 1.5s;\r\n}\r\n\r\n#setting-section {\r\n    width: 80%;\r\n    height: 80%;\r\n    position: fixed;\r\n    top: 50%;\r\n    left: 50%;\r\n    transform: translate(-50%, -50%);\r\n    display: grid;\r\n    grid-template-rows: 1fr 5fr;\r\n    z-index: -1000;\r\n    background-color: rgba(0, 0, 0, 0.6);\r\n    backdrop-filter: blur(10px);\r\n    border: 5px solid white;\r\n    transition: border-color 1.5s;\r\n}\r\n\r\n#setting-header {\r\n    display: flex;\r\n    justify-content: center;\r\n    align-items: center;\r\n    border-bottom: 3px solid white;\r\n    margin: 0 20px;\r\n    transition: border-color 1.5s;\r\n}\r\n\r\n#setting-title {\r\n    font-size: 4rem;\r\n}\r\n\r\n#difficulty-title,\r\n#color-title,\r\n#obstacle-title {\r\n    font-size: 3rem;\r\n    transition: color 1.5s;\r\n}\r\n\r\n#setting-content {\r\n    display: grid;\r\n    grid-template-rows: 2fr 3fr;\r\n    gap: 20px;\r\n    padding: 20px;\r\n}\r\n\r\n#difficulty-section header,\r\n#color-section header,\r\n#obstacle-section header {\r\n    display: flex;\r\n    align-items: center;\r\n}\r\n\r\n#difficulty-section {\r\n    display: grid;\r\n    grid-template-rows: 1fr 5fr;\r\n    border-bottom: 3px solid white;\r\n    transition: border-color 1.5s;\r\n}\r\n\r\n#difficulty-option {\r\n    display: flex;\r\n    justify-content: space-evenly;\r\n    align-items: center;\r\n}\r\n\r\n.difficulty-button {\r\n    width: 20%;\r\n    min-width: fit-content;\r\n    background-color: transparent;\r\n    border: 5px solid white;\r\n    padding: 20px 10px;\r\n    color: white;\r\n    font-size: 2rem;\r\n    transition: background-color 0.3s, color 0.3s;\r\n}\r\n\r\n#easy-button:hover, .easy-enabled {\r\n    background-color: rgba(0, 255, 72, 0.8);\r\n    color: black;\r\n    cursor: pointer;\r\n}\r\n\r\n#medium-button:hover, .medium-enabled {\r\n    background-color: rgba(255, 255, 0, 0.8);\r\n    color: black;\r\n    cursor: pointer;\r\n}\r\n\r\n#hard-button:hover, .hard-enabled {\r\n    background-color: rgba(255, 0, 0, 0.8);\r\n    color: black;\r\n    cursor: pointer;\r\n}\r\n\r\n#other-section {\r\n    display: grid;\r\n    grid-template-columns: 1fr 1fr;\r\n}\r\n\r\n#color-section,\r\n#obstacle-section {\r\n    display: grid;\r\n    grid-template-rows: 1fr 5fr;\r\n}\r\n\r\n#color-section {\r\n    border-right: 3px solid white;\r\n    transition: border-color 1.5s;\r\n}\r\n\r\n#color-section header,\r\n#obstacle-section header {\r\n    display: flex;\r\n    align-items: center;\r\n    justify-content: center;\r\n}\r\n\r\n#color-option-container {\r\n    display: flex;\r\n    flex-direction: column;\r\n    justify-content: space-evenly;\r\n    align-items: center;\r\n}\r\n\r\n.color-button {\r\n    width: 50%;\r\n    background-color: transparent;\r\n    border: 5px solid white;\r\n    padding: 20px 10px;\r\n    color: white;\r\n    font-size: 2rem;\r\n    transition: background-color 0.3s, color 0.3s;\r\n}\r\n\r\n#color-option-container #red-option:hover, .red-enabled {\r\n    background-color: #9d0208;\r\n    color: black;\r\n    cursor: pointer;\r\n}\r\n\r\n#color-option-container #green-option:hover, .green-enabled {\r\n    background-color: #008000;\r\n    color: black;\r\n    cursor: pointer;\r\n}\r\n\r\n#color-option-container #blue-option:hover, .blue-enabled {\r\n    background-color: #0077b6;\r\n    color: black;\r\n    cursor: pointer;\r\n}\r\n\r\n#obstacle-option-container {\r\n    display: grid;\r\n    grid-template-rows: 3fr 2fr;\r\n}\r\n\r\n#obstacle-presence-section {\r\n    display: flex;\r\n    flex-direction: row;\r\n    justify-content: center;\r\n    align-items: center;\r\n    gap: 20px;\r\n}\r\n\r\n.obstacle-button {\r\n    width: 30%;\r\n    background-color: transparent;\r\n    border: 5px solid white;\r\n    padding: 20px 10px;\r\n    color: white;\r\n    font-size: 2rem;\r\n    transition: background-color 0.3s, color 0.3s;\r\n}\r\n\r\n#obstacle-presence-section #on-button:hover, .on-enabled {\r\n    background-color: rgba(0, 255, 72, 0.8);\r\n    color: black;\r\n    cursor: pointer;\r\n}\r\n\r\n#obstacle-presence-section #off-button:hover, .off-enabled {\r\n    background-color: rgba(255, 0, 0, 0.8);\r\n    color: black;\r\n    cursor: pointer;\r\n}\r\n\r\n#obstacle-quantity-section {\r\n    position: relative;\r\n    width: 80%;\r\n    margin: auto;\r\n}\r\n\r\n#obstacle-quantity-section div {\r\n    width: 100%;\r\n    display: flex;\r\n    justify-content: space-between;\r\n    align-items: center;\r\n}\r\n\r\n#obstacle-quantity-section label, #obstacle-quantity-section span {\r\n    font-size: 2rem;\r\n    padding-bottom: 10px;\r\n}\r\n\r\n#obstacle-quantity-input {\r\n    width: 100%;\r\n}\r\n\r\n.active {\r\n    background-color: white;\r\n    color: black;\r\n}\r\n\r\n#instructions-section {\r\n    position: fixed;\r\n    width: 100vw;\r\n    height: 100vh;\r\n    display: flex;\r\n    justify-content: center;\r\n    align-items: center;\r\n    backdrop-filter: blur(50px);\r\n    z-index: -1;\r\n}   \r\n\r\n#instructions-container {\r\n    border: 5px solid white;\r\n    padding: 20px 10px;\r\n}\r\n\r\n#instructions-section header {\r\n    display: flex;\r\n    justify-content: center;\r\n    align-items: center;\r\n    border-bottom: 3px solid white;\r\n    margin: 0 20px;\r\n}\r\n\r\n#instructions-title {\r\n    font-size: 4rem;\r\n    padding-bottom: 10px;\r\n}\r\n\r\n#instructions-content p {\r\n    font-size: 2rem;\r\n    padding: 20px;\r\n}\r\n\r\n#game-over-section {\r\n    position: fixed;\r\n    width: 100vw;\r\n    height: 100vh;\r\n    display: flex;\r\n    justify-content: center;\r\n    align-items: center;\r\n    flex-direction: column;\r\n    background-color: black;\r\n    z-index: -1;\r\n}\r\n\r\n#game-over-content {\r\n    display: flex;\r\n    flex-direction: column;\r\n    justify-content: center;\r\n    align-items: center;\r\n}\r\n\r\n#winner-text {\r\n    font-size: 4rem;\r\n    padding: 20px;\r\n}\r\n\r\n#restart-button {\r\n    width: fit-content;\r\n    background-color: transparent;\r\n    border: 5px solid white;\r\n    padding: 20px 10px;\r\n    color: white;\r\n    font-size: 2rem;\r\n    transition: background-color 0.3s, color 0.3s;\r\n}\r\n\r\n#restart-button:hover {\r\n    background-color: rgba(189, 189, 189, 0.8);\r\n    color: black;\r\n    cursor: pointer;\r\n}"],"sourceRoot":""}]);
+}`, "",{"version":3,"sources":["webpack://./src/styles/setting.css"],"names":[],"mappings":"AAAA,mBAAmB;AACnB;IACI,eAAe;IACf,YAAY;IACZ,UAAU;IACV,YAAY;IACZ,aAAa;IACb,6BAA6B;IAC7B,YAAY;IACZ,0BAA0B;IAC1B,sBAAsB;AAC1B;;AAEA;IACI,wBAAwB;IACxB,eAAe;AACnB;;AAEA,WAAW;AACX;IACI,aAAa;IACb,uBAAuB;IACvB,mBAAmB;AACvB;;AAEA;IACI,eAAe;IACf,sBAAsB;AAC1B;;AAEA,iBAAiB;AACjB;IACI,eAAe;IACf,sBAAsB;AAC1B;;AAEA,oBAAoB;AACpB;IACI,UAAU;IACV,WAAW;IACX,eAAe;IACf,QAAQ;IACR,SAAS;IACT,gCAAgC;IAChC,aAAa;IACb,2BAA2B;IAC3B,cAAc;IACd,oCAAoC;IACpC,2BAA2B;IAC3B,uBAAuB;IACvB,6BAA6B;AACjC;;AAEA,mBAAmB;AACnB;IACI,aAAa;IACb,uBAAuB;IACvB,mBAAmB;IACnB,8BAA8B;IAC9B,cAAc;IACd,6BAA6B;AACjC;;AAEA;IACI,eAAe;AACnB;;AAEA,uCAAuC;AACvC;;;IAGI,eAAe;IACf,sBAAsB;AAC1B;;AAEA,oBAAoB;AACpB;IACI,aAAa;IACb,2BAA2B;IAC3B,SAAS;IACT,aAAa;AACjB;;AAEA,uBAAuB;AACvB;IACI,aAAa;IACb,2BAA2B;IAC3B,8BAA8B;IAC9B,6BAA6B;AACjC;;AAEA;IACI,aAAa;IACb,mBAAmB;AACvB;;AAEA;IACI,aAAa;IACb,6BAA6B;IAC7B,mBAAmB;AACvB;;AAEA,uBAAuB;AACvB;IACI,UAAU;IACV,sBAAsB;IACtB,6BAA6B;IAC7B,uBAAuB;IACvB,kBAAkB;IAClB,YAAY;IACZ,eAAe;IACf,6CAA6C;AACjD;;AAEA;IACI,uCAAuC;IACvC,YAAY;IACZ,eAAe;AACnB;;AAEA;IACI,wCAAwC;IACxC,YAAY;IACZ,eAAe;AACnB;;AAEA;IACI,sCAAsC;IACtC,YAAY;IACZ,eAAe;AACnB;;AAEA,mBAAmB;AACnB;IACI,aAAa;IACb,8BAA8B;AAClC;;AAEA;;IAEI,aAAa;IACb,2BAA2B;AAC/B;;AAEA;IACI,6BAA6B;IAC7B,6BAA6B;AACjC;;AAEA;;IAEI,aAAa;IACb,mBAAmB;IACnB,uBAAuB;AAC3B;;AAEA,kBAAkB;AAClB;IACI,aAAa;IACb,sBAAsB;IACtB,6BAA6B;IAC7B,mBAAmB;AACvB;;AAEA;IACI,UAAU;IACV,6BAA6B;IAC7B,uBAAuB;IACvB,kBAAkB;IAClB,YAAY;IACZ,eAAe;IACf,6CAA6C;AACjD;;AAEA;IACI,yBAAyB;IACzB,YAAY;IACZ,eAAe;AACnB;;AAEA;IACI,yBAAyB;IACzB,YAAY;IACZ,eAAe;AACnB;;AAEA;IACI,yBAAyB;IACzB,YAAY;IACZ,eAAe;AACnB;;AAEA,qBAAqB;AACrB;IACI,aAAa;IACb,2BAA2B;AAC/B;;AAEA;IACI,aAAa;IACb,mBAAmB;IACnB,uBAAuB;IACvB,mBAAmB;IACnB,SAAS;AACb;;AAEA;IACI,UAAU;IACV,6BAA6B;IAC7B,uBAAuB;IACvB,kBAAkB;IAClB,YAAY;IACZ,eAAe;IACf,6CAA6C;AACjD;;AAEA;IACI,uCAAuC;IACvC,YAAY;IACZ,eAAe;AACnB;;AAEA;IACI,sCAAsC;IACtC,YAAY;IACZ,eAAe;AACnB;;AAEA,8BAA8B;AAC9B;IACI,kBAAkB;IAClB,UAAU;IACV,YAAY;AAChB;;AAEA;IACI,WAAW;IACX,aAAa;IACb,8BAA8B;IAC9B,mBAAmB;AACvB;;AAEA;;IAEI,eAAe;IACf,oBAAoB;AACxB;;AAEA;IACI,WAAW;AACf;;AAEA,iBAAiB;AACjB;IACI,uBAAuB;IACvB,YAAY;AAChB;;AAEA,yBAAyB;AACzB;IACI,eAAe;IACf,YAAY;IACZ,aAAa;IACb,aAAa;IACb,uBAAuB;IACvB,mBAAmB;IACnB,2BAA2B;IAC3B,WAAW;AACf;;AAEA;IACI,uBAAuB;IACvB,kBAAkB;AACtB;;AAEA;IACI,aAAa;IACb,uBAAuB;IACvB,mBAAmB;IACnB,8BAA8B;IAC9B,cAAc;AAClB;;AAEA;IACI,eAAe;IACf,oBAAoB;AACxB;;AAEA;IACI,eAAe;IACf,aAAa;AACjB;;AAEA,sBAAsB;AACtB;IACI,eAAe;IACf,YAAY;IACZ,aAAa;IACb,aAAa;IACb,uBAAuB;IACvB,mBAAmB;IACnB,sBAAsB;IACtB,uBAAuB;IACvB,WAAW;AACf;;AAEA;IACI,aAAa;IACb,sBAAsB;IACtB,uBAAuB;IACvB,mBAAmB;AACvB;;AAEA;IACI,eAAe;IACf,aAAa;AACjB;;AAEA,mBAAmB;AACnB;IACI,kBAAkB;IAClB,6BAA6B;IAC7B,uBAAuB;IACvB,kBAAkB;IAClB,YAAY;IACZ,eAAe;IACf,6CAA6C;AACjD;;AAEA;IACI,0CAA0C;IAC1C,YAAY;IACZ,eAAe;AACnB","sourcesContent":["/* Setting Button */\r\n#setting-button {\r\n    position: fixed;\r\n    bottom: 20px;\r\n    left: 20px;\r\n    color: white;\r\n    z-index: 1000;\r\n    background-color: transparent;\r\n    border: none;\r\n    transition: transform 0.3s;\r\n    box-sizing: border-box;\r\n}\r\n\r\n#setting-button:hover {\r\n    transform: rotate(90deg);\r\n    cursor: pointer;\r\n}\r\n\r\n/* Footer */\r\nfooter {\r\n    display: flex;\r\n    justify-content: center;\r\n    align-items: center;\r\n}\r\n\r\n#footer-text {\r\n    font-size: 1rem;\r\n    transition: color 1.5s;\r\n}\r\n\r\n/* Setting Icon */\r\n#setting-icon {\r\n    font-size: 4rem;\r\n    transition: color 1.5s;\r\n}\r\n\r\n/* Setting Section */\r\n#setting-section {\r\n    width: 80%;\r\n    height: 80%;\r\n    position: fixed;\r\n    top: 50%;\r\n    left: 50%;\r\n    transform: translate(-50%, -50%);\r\n    display: grid;\r\n    grid-template-rows: 1fr 5fr;\r\n    z-index: -1000;\r\n    background-color: rgba(0, 0, 0, 0.6);\r\n    backdrop-filter: blur(10px);\r\n    border: 5px solid white;\r\n    transition: border-color 1.5s;\r\n}\r\n\r\n/* Setting Header */\r\n#setting-header {\r\n    display: flex;\r\n    justify-content: center;\r\n    align-items: center;\r\n    border-bottom: 3px solid white;\r\n    margin: 0 20px;\r\n    transition: border-color 1.5s;\r\n}\r\n\r\n#setting-title {\r\n    font-size: 4rem;\r\n}\r\n\r\n/* Difficulty, Color, Obstacle Titles */\r\n#difficulty-title,\r\n#color-title,\r\n#obstacle-title {\r\n    font-size: 3rem;\r\n    transition: color 1.5s;\r\n}\r\n\r\n/* Setting Content */\r\n#setting-content {\r\n    display: grid;\r\n    grid-template-rows: 2fr 3fr;\r\n    gap: 20px;\r\n    padding: 20px;\r\n}\r\n\r\n/* Difficulty Section */\r\n#difficulty-section {\r\n    display: grid;\r\n    grid-template-rows: 1fr 5fr;\r\n    border-bottom: 3px solid white;\r\n    transition: border-color 1.5s;\r\n}\r\n\r\n#difficulty-section header {\r\n    display: flex;\r\n    align-items: center;\r\n}\r\n\r\n#difficulty-option {\r\n    display: flex;\r\n    justify-content: space-evenly;\r\n    align-items: center;\r\n}\r\n\r\n/* Difficulty Buttons */\r\n.difficulty-button {\r\n    width: 20%;\r\n    min-width: fit-content;\r\n    background-color: transparent;\r\n    border: 5px solid white;\r\n    padding: 20px 10px;\r\n    color: white;\r\n    font-size: 2rem;\r\n    transition: background-color 0.3s, color 0.3s;\r\n}\r\n\r\n#easy-button:hover, .easy-enabled {\r\n    background-color: rgba(0, 255, 72, 0.8);\r\n    color: black;\r\n    cursor: pointer;\r\n}\r\n\r\n#medium-button:hover, .medium-enabled {\r\n    background-color: rgba(255, 255, 0, 0.8);\r\n    color: black;\r\n    cursor: pointer;\r\n}\r\n\r\n#hard-button:hover, .hard-enabled {\r\n    background-color: rgba(255, 0, 0, 0.8);\r\n    color: black;\r\n    cursor: pointer;\r\n}\r\n\r\n/* Other Sections */\r\n#other-section {\r\n    display: grid;\r\n    grid-template-columns: 1fr 1fr;\r\n}\r\n\r\n#color-section,\r\n#obstacle-section {\r\n    display: grid;\r\n    grid-template-rows: 1fr 5fr;\r\n}\r\n\r\n#color-section {\r\n    border-right: 3px solid white;\r\n    transition: border-color 1.5s;\r\n}\r\n\r\n#color-section header,\r\n#obstacle-section header {\r\n    display: flex;\r\n    align-items: center;\r\n    justify-content: center;\r\n}\r\n\r\n/* Color Options */\r\n#color-option-container {\r\n    display: flex;\r\n    flex-direction: column;\r\n    justify-content: space-evenly;\r\n    align-items: center;\r\n}\r\n\r\n.color-button {\r\n    width: 50%;\r\n    background-color: transparent;\r\n    border: 5px solid white;\r\n    padding: 20px 10px;\r\n    color: white;\r\n    font-size: 2rem;\r\n    transition: background-color 0.3s, color 0.3s;\r\n}\r\n\r\n#color-option-container #red-option:hover, .red-enabled {\r\n    background-color: #9d0208;\r\n    color: black;\r\n    cursor: pointer;\r\n}\r\n\r\n#color-option-container #green-option:hover, .green-enabled {\r\n    background-color: #008000;\r\n    color: black;\r\n    cursor: pointer;\r\n}\r\n\r\n#color-option-container #blue-option:hover, .blue-enabled {\r\n    background-color: #0077b6;\r\n    color: black;\r\n    cursor: pointer;\r\n}\r\n\r\n/* Obstacle Options */\r\n#obstacle-option-container {\r\n    display: grid;\r\n    grid-template-rows: 3fr 2fr;\r\n}\r\n\r\n#obstacle-presence-section {\r\n    display: flex;\r\n    flex-direction: row;\r\n    justify-content: center;\r\n    align-items: center;\r\n    gap: 20px;\r\n}\r\n\r\n.obstacle-button {\r\n    width: 30%;\r\n    background-color: transparent;\r\n    border: 5px solid white;\r\n    padding: 20px 10px;\r\n    color: white;\r\n    font-size: 2rem;\r\n    transition: background-color 0.3s, color 0.3s;\r\n}\r\n\r\n#obstacle-presence-section #on-button:hover, .on-enabled {\r\n    background-color: rgba(0, 255, 72, 0.8);\r\n    color: black;\r\n    cursor: pointer;\r\n}\r\n\r\n#obstacle-presence-section #off-button:hover, .off-enabled {\r\n    background-color: rgba(255, 0, 0, 0.8);\r\n    color: black;\r\n    cursor: pointer;\r\n}\r\n\r\n/* Obstacle Quantity Section */\r\n#obstacle-quantity-section {\r\n    position: relative;\r\n    width: 80%;\r\n    margin: auto;\r\n}\r\n\r\n#obstacle-quantity-section div {\r\n    width: 100%;\r\n    display: flex;\r\n    justify-content: space-between;\r\n    align-items: center;\r\n}\r\n\r\n#obstacle-quantity-section label,\r\n#obstacle-quantity-section span {\r\n    font-size: 2rem;\r\n    padding-bottom: 10px;\r\n}\r\n\r\n#obstacle-quantity-input {\r\n    width: 100%;\r\n}\r\n\r\n/* Active State */\r\n.active {\r\n    background-color: white;\r\n    color: black;\r\n}\r\n\r\n/* Instructions Section */\r\n#instructions-section {\r\n    position: fixed;\r\n    width: 100vw;\r\n    height: 100vh;\r\n    display: flex;\r\n    justify-content: center;\r\n    align-items: center;\r\n    backdrop-filter: blur(50px);\r\n    z-index: -1;\r\n}\r\n\r\n#instructions-container {\r\n    border: 5px solid white;\r\n    padding: 20px 10px;\r\n}\r\n\r\n#instructions-section header {\r\n    display: flex;\r\n    justify-content: center;\r\n    align-items: center;\r\n    border-bottom: 3px solid white;\r\n    margin: 0 20px;\r\n}\r\n\r\n#instructions-title {\r\n    font-size: 4rem;\r\n    padding-bottom: 10px;\r\n}\r\n\r\n#instructions-content p {\r\n    font-size: 2rem;\r\n    padding: 20px;\r\n}\r\n\r\n/* Game Over Section */\r\n#game-over-section {\r\n    position: fixed;\r\n    width: 100vw;\r\n    height: 100vh;\r\n    display: flex;\r\n    justify-content: center;\r\n    align-items: center;\r\n    flex-direction: column;\r\n    background-color: black;\r\n    z-index: -1;\r\n}\r\n\r\n#game-over-content {\r\n    display: flex;\r\n    flex-direction: column;\r\n    justify-content: center;\r\n    align-items: center;\r\n}\r\n\r\n#winner-text {\r\n    font-size: 4rem;\r\n    padding: 20px;\r\n}\r\n\r\n/* Restart Button */\r\n#restart-button {\r\n    width: fit-content;\r\n    background-color: transparent;\r\n    border: 5px solid white;\r\n    padding: 20px 10px;\r\n    color: white;\r\n    font-size: 2rem;\r\n    transition: background-color 0.3s, color 0.3s;\r\n}\r\n\r\n#restart-button:hover {\r\n    background-color: rgba(189, 189, 189, 0.8);\r\n    color: black;\r\n    cursor: pointer;\r\n}"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -595,6 +617,34 @@ module.exports = function (item) {
   }
   return [content].join("\n");
 };
+
+/***/ }),
+
+/***/ "./src/sound/bounceSound.mp3":
+/*!***********************************!*\
+  !*** ./src/sound/bounceSound.mp3 ***!
+  \***********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__webpack_require__.p + "sounds/bounceSound.2da18f361f5e2e016e72e74226f4b098.mp3");
+
+/***/ }),
+
+/***/ "./src/sound/goalSound.mp3":
+/*!*********************************!*\
+  !*** ./src/sound/goalSound.mp3 ***!
+  \*********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__webpack_require__.p + "sounds/goalSound.ec27ba5c676cecd5708f7537398bf602.mp3");
 
 /***/ }),
 
@@ -984,9 +1034,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   getDistance: () => (/* binding */ getDistance),
 /* harmony export */   getRandomIntegerFromRange: () => (/* binding */ getRandomIntegerFromRange)
 /* harmony export */ });
+/* harmony import */ var _sound_bounceSound_mp3__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../sound/bounceSound.mp3 */ "./src/sound/bounceSound.mp3");
+/* harmony import */ var _sound_goalSound_mp3__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../sound/goalSound.mp3 */ "./src/sound/goalSound.mp3");
+
+
+
+// Set sound
+const ballBounceSound = new Audio(_sound_bounceSound_mp3__WEBPACK_IMPORTED_MODULE_0__["default"]);
+ballBounceSound.volume = 1;
+
+const ballGoalSound = new Audio(_sound_goalSound_mp3__WEBPACK_IMPORTED_MODULE_1__["default"]);
+ballGoalSound.volume = 1;
+
 const canvas = document.getElementById('game-canvas');
 const ctx = canvas.getContext('2d');
 
+//! ====== Ball Class ======
 class Ball {
     constructor(x, y, radius, dx = 0, dy = 0, colorArray = []) {
         this.x = x;
@@ -1017,9 +1080,34 @@ class Ball {
         ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false);
         ctx.fillStyle = this.color;
         ctx.lineWidth = 5;
+        ctx.strokeStyle = 'white';
+        ctx.setLineDash([]); // Reset to solid line
+        ctx.stroke();
         ctx.fill();
         ctx.closePath();
         this.drawTrail();
+    }
+
+    playBounceSound() {
+        ballBounceSound.currentTime = 0;
+        ballBounceSound.play();
+    }
+    
+    playGoalSound() {
+        ballGoalSound.currentTime = 0.2;
+        ballGoalSound.play();
+    }
+
+    // Helper function to handle collisions
+    handleEdgeCollision(edge, axis) {
+        if (axis === 'x') {
+            this.dx *= -1; // Reverse horizontal direction
+            changeColor(this.colorArray[getRandomIntegerFromRange(0, this.colorArray.length - 1)], edge);
+        } else {
+            this.dy *= -1; // Reverse vertical direction
+            changeColor(this.colorArray[getRandomIntegerFromRange(0, this.colorArray.length - 1)], edge);
+        }
+        this.playBounceSound();
     }
 
     // Update ball position
@@ -1032,39 +1120,28 @@ class Ball {
             this.trailArray.pop();
         }
 
-        // Check if game is on
-        if (!isGameOn) {
-            if (this.x + this.radius > canvas.width) {
-                this.x = canvas.width - this.radius; // Adjust position to the right edge
-                this.dx *= -1; // Reverse direction
-                changeColor(this.colorArray[getRandomIntegerFromRange(0, this.colorArray.length - 1)], 'right');
-            } else if (this.x - this.radius < 0) {
-                this.x = this.radius; // Adjust position to the left edge
-                this.dx *= -1; // Reverse direction
-                changeColor(this.colorArray[getRandomIntegerFromRange(0, this.colorArray.length - 1)], 'left');
+        // Check for edge collisions
+        if (this.x + this.radius > canvas.width) this.playGoalSound();
+        else if (this.x - this.radius < 0) this.playGoalSound();
 
-            }
-        }
-
-        // Check if the ball is colliding with the top or bottom of the canvas
         if (this.y + this.radius > canvas.height) {
             this.y = canvas.height - this.radius; // Adjust position to the bottom edge
-            this.dy *= -1; // Reverse direction
-            changeColor(this.colorArray[getRandomIntegerFromRange(0, this.colorArray.length - 1)], 'bottom');
+            this.handleEdgeCollision('bottom', 'y');
         } else if (this.y - this.radius < 0) {
             this.y = this.radius; // Adjust position to the top edge
-            this.dy *= -1; // Reverse direction
-            changeColor(this.colorArray[getRandomIntegerFromRange(0, this.colorArray.length - 1)], 'top');
+            this.handleEdgeCollision('top', 'y');
         }
 
         // Check if the ball is colliding with the left and right of a paddle
         if (checkHorizontalCollision(this, playerPaddle) || checkHorizontalCollision(this, aiPaddle)) {
             this.dx *= -1; // Reverse horizontal direction
+            this.playBounceSound();
         }
 
         // Check if the ball is colliding with the top and bottom of a paddle
         if (checkVerticalCollision(this, playerPaddle) || checkVerticalCollision(this, aiPaddle)) {
             this.dy *= -1; // Reverse vertical direction
+            this.playBounceSound();
         }
 
         // Check if the ball is colliding with an obstacle
@@ -1085,8 +1162,10 @@ class Ball {
     }
 }
 
-let topIntervalId, bottomIntervalId, leftIntervalId, rightIntervalId;
+//! ====== Color Change Functions ======
+let intervalIds = { top: null, bottom: null };
 const targetBorder = document.getElementById('game-canvas');
+
 async function changeColor(hslString, border) {
     if (!hslString) return;
 
@@ -1095,73 +1174,38 @@ async function changeColor(hslString, border) {
     const match = hslString.match(regex);
     let lightness = parseInt(match[3]);
 
-    if (border === 'top') {
-        if (topIntervalId) clearInterval(topIntervalId);
-        // Initially set the top border color
-        targetBorder.style.borderTopColor = hslString;
+    // Helper function to change border color
+    const changeBorderColor = (borderSide) => {
+        if (intervalIds[borderSide]) clearInterval(intervalIds[borderSide]);
+        targetBorder.style[`border${capitalizeFirstLetter(borderSide)}Color`] = hslString;
 
-        // Gradually change the top border color to white
-        topIntervalId = setInterval(() => {
+        intervalIds[borderSide] = setInterval(() => {
             if (lightness < 100) {
                 lightness += 1;
-
                 const newHslString = `hsl(${match[1]}, ${match[2]}%, ${lightness}%)`;
-                targetBorder.style.borderTopColor = newHslString;
+                targetBorder.style[`border${capitalizeFirstLetter(borderSide)}Color`] = newHslString;
             } else {
-                clearInterval(topIntervalId);
+                clearInterval(intervalIds[borderSide]);
             }
         }, 10);
-    } else if (border === 'bottom') {
-        if (bottomIntervalId) clearInterval(bottomIntervalId);
-        // Initially set the bottom border color
-        targetBorder.style.borderBottomColor = hslString;
+    };
 
-        // Gradually change the bottom border color to white
-        bottomIntervalId = setInterval(() => {
-            if (lightness < 100) {
-                lightness += 1;
-
-                const newHslString = `hsl(${match[1]}, ${match[2]}%, ${lightness}%)`;
-                targetBorder.style.borderBottomColor = newHslString;
-            } else {
-                clearInterval(bottomIntervalId);
-            }
-        }, 10);
-    } else if (border === 'left') {
-        if (leftIntervalId) clearInterval(leftIntervalId);
-        // Initially set the left border color
-        targetBorder.style.borderLeftColor = hslString;
-
-        // Gradually change the left border color to white
-        leftIntervalId = setInterval(() => {
-            if (lightness < 100) {
-                lightness += 1;
-
-                const newHslString = `hsl(${match[1]}, ${match[2]}%, ${lightness}%)`;
-                targetBorder.style.borderLeftColor = newHslString;
-            } else {
-                clearInterval(leftIntervalId);
-            }
-        }, 10);
-    } else if (border === 'right') {
-        if (rightIntervalId) clearInterval(rightIntervalId);
-        // Initially set the right border color
-        targetBorder.style.borderRightColor = hslString;
-
-        // Gradually change the right border color to white
-        rightIntervalId = setInterval(() => {
-            if (lightness < 100) {
-                lightness += 1;
-
-                const newHslString = `hsl(${match[1]}, ${match[2]}%, ${lightness}%)`;
-                targetBorder.style.borderRightColor = newHslString;
-            } else {
-                clearInterval(rightIntervalId);
-            }
-        }, 10);
+    switch (border) {
+        case 'top':
+            changeBorderColor('top');
+            break;
+        case 'bottom':
+            changeBorderColor('bottom');
+            break;
     }
 }
 
+// Helper function to capitalize the first letter of a string
+function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
+//! ====== Collision Detection Functions ======
 function checkHorizontalCollision(ball, paddle) {
     const withinVerticalBounds = ball.y > paddle.y && ball.y < paddle.y + paddle.height;
     const horizontalCollision = ball.x + ball.radius > paddle.x && ball.x - ball.radius < paddle.x + paddle.width;
@@ -1218,10 +1262,12 @@ function resolveObstacleCollision(ball, obstacle) {
         // Update ball velocity
         ball.dx = finalV1.dx;
         ball.dy = finalV1.dy;
+
+        ball.playBounceSound();
     }
 }
 
-// Rotate Vector function
+//! ====== Utility Functions ======
 function rotateVector(object, angle) {
     return {
         dx: (Math.cos(angle) * object.dx) - (Math.sin(angle) * object.dy),
@@ -1236,6 +1282,19 @@ function getDistance(object1, object2) {
     return Math.sqrt(dx * dx + dy * dy);
 }
 
+function clearCanvas() {
+    ctx.beginPath();
+    ctx.rect(0, 0, canvas.width, canvas.height);
+    ctx.fillStyle = 'black';
+    ctx.fill();
+    ctx.closePath();
+}
+
+function getRandomIntegerFromRange(min, max) {
+    return Math.floor(Math.random() * (max - min + 1) + min);
+}
+
+//! ====== Paddle Class ======
 class Paddle {
     constructor(x, y, width, height, color = 'white') {
         this.x = x;
@@ -1261,6 +1320,7 @@ class Paddle {
     }
 }
 
+//! ====== Obstacle Class ======
 class Obstacle {
     constructor(x, y, radius, dy, color = 'white') {
         this.x = x;
@@ -1279,26 +1339,13 @@ class Obstacle {
     }
 
     update() {
-        if (this.y + this.radius > canvas.height || this.y - this.radius < 0) {
-            this.dy *= -1;
-        }
+        if (this.y + this.radius > canvas.height || this.y - this.radius < 0) this.dy *= -1;
         this.y += this.dy;
         this.draw();
     }
 }
 
-function clearCanvas() {
-    ctx.beginPath();
-    ctx.rect(0, 0, canvas.width, canvas.height);
-    ctx.fillStyle = 'black';
-    ctx.fill();
-    ctx.closePath();
-}
-
-function getRandomIntegerFromRange(min, max) {
-    return Math.floor(Math.random() * (max - min + 1) + min);
-}
-
+// Export the classes and functions
 
 
 /***/ })
@@ -1354,6 +1401,18 @@ function getRandomIntegerFromRange(min, max) {
 /******/ 		};
 /******/ 	})();
 /******/ 	
+/******/ 	/* webpack/runtime/global */
+/******/ 	(() => {
+/******/ 		__webpack_require__.g = (function() {
+/******/ 			if (typeof globalThis === 'object') return globalThis;
+/******/ 			try {
+/******/ 				return this || new Function('return this')();
+/******/ 			} catch (e) {
+/******/ 				if (typeof window === 'object') return window;
+/******/ 			}
+/******/ 		})();
+/******/ 	})();
+/******/ 	
 /******/ 	/* webpack/runtime/hasOwnProperty shorthand */
 /******/ 	(() => {
 /******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
@@ -1368,6 +1427,29 @@ function getRandomIntegerFromRange(min, max) {
 /******/ 			}
 /******/ 			Object.defineProperty(exports, '__esModule', { value: true });
 /******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/publicPath */
+/******/ 	(() => {
+/******/ 		var scriptUrl;
+/******/ 		if (__webpack_require__.g.importScripts) scriptUrl = __webpack_require__.g.location + "";
+/******/ 		var document = __webpack_require__.g.document;
+/******/ 		if (!scriptUrl && document) {
+/******/ 			if (document.currentScript && document.currentScript.tagName.toUpperCase() === 'SCRIPT')
+/******/ 				scriptUrl = document.currentScript.src;
+/******/ 			if (!scriptUrl) {
+/******/ 				var scripts = document.getElementsByTagName("script");
+/******/ 				if(scripts.length) {
+/******/ 					var i = scripts.length - 1;
+/******/ 					while (i > -1 && (!scriptUrl || !/^http(s?):/.test(scriptUrl))) scriptUrl = scripts[i--].src;
+/******/ 				}
+/******/ 			}
+/******/ 		}
+/******/ 		// When supporting browsers where an automatic publicPath is not supported you must specify an output.publicPath manually via configuration
+/******/ 		// or pass an empty string ("") and set the __webpack_public_path__ variable from your code to use your own logic.
+/******/ 		if (!scriptUrl) throw new Error("Automatic publicPath is not supported in this browser");
+/******/ 		scriptUrl = scriptUrl.replace(/#.*$/, "").replace(/\?.*$/, "").replace(/\/[^\/]+$/, "/");
+/******/ 		__webpack_require__.p = scriptUrl;
 /******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/nonce */
@@ -1391,7 +1473,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-//! ====== Constants and DOM Elements ======
+//! ====== Cached HTML Elements ======
 const canvas = document.getElementById('game-canvas');
 const ctx = canvas.getContext('2d');
 const colorButtons = document.getElementsByClassName('color-button');
@@ -1436,9 +1518,9 @@ let setColor, setDifficulty, obstacleState, maxObstacles;
 
 // Difficulty settings
 const difficultyObject = {
-    'easy': { playerSpeed: 10, aiSpeed: 5, playerPaddleHeight: 200, aiPaddleHeight: 200 },
-    'medium': { playerSpeed: 10, aiSpeed: 7, playerPaddleHeight: 150, aiPaddleHeight: 200 },
-    'hard': { playerSpeed: 10, aiSpeed: 9, playerPaddleHeight: 100, aiPaddleHeight: 200 },
+    'easy': { playerSpeed: 12, aiSpeed: 6, playerPaddleHeight: 200, aiPaddleHeight: 200 },
+    'medium': { playerSpeed: 12, aiSpeed: 8, playerPaddleHeight: 150, aiPaddleHeight: 200 },
+    'hard': { playerSpeed: 12, aiSpeed: 10, playerPaddleHeight: 100, aiPaddleHeight: 200 },
 };
 
 //! ====== Color Arrays ======
@@ -1517,8 +1599,8 @@ function updateAiPaddle(targetPaddle) {
 function checkGoal() {
     if (!isGameOn) return;
 
-    if (points.player1 >= 1 || points.player2 >= 1) {
-        gameOver(points.player1 >= 1 ? 'Player 1' : 'Player 2');
+    if (points.player1 >= 10 || points.player2 >= 10) {
+        gameOver(points.player1 >= 1 ? 'Player 1' : player2);
     } else if (ball.x < 0 || ball.x > canvas.width) {
         restartRound(ball.x > canvas.width);
     }
@@ -1543,16 +1625,10 @@ function restartRound(playerWin1) {
 // Initialize ball properties
 function setBall() {
     const ballRadius = 20;
-    let ballDx, ballDy;
 
     // Set ball speed based on difficulty
-    do {
-        ballDx = (0,_utility_js__WEBPACK_IMPORTED_MODULE_2__.getRandomIntegerFromRange)(-15, 15);
-    } while (Math.abs(ballDx) < 10);
-    
-    do {
-        ballDy = (0,_utility_js__WEBPACK_IMPORTED_MODULE_2__.getRandomIntegerFromRange)(-10, 10);
-    } while (Math.abs(ballDy) < 5);
+    const ballDx = getRandomSpeed(-12, 12, 10);
+    const ballDy = getRandomSpeed(-8, 8, 6);
 
     // If timeout is already set, clear it
     if (timeOutId) clearTimeout(timeOutId);
@@ -1562,6 +1638,15 @@ function setBall() {
 
     // Launch ball after 1 second
     timeOutId = setTimeout(() => ball = new _utility_js__WEBPACK_IMPORTED_MODULE_2__.Ball(canvas.width / 2, canvas.height / 2, ballRadius, ballDx, ballDy, colorObject[setColor]), 1000);
+}
+
+// Helper function to get a random speed value
+function getRandomSpeed(min, max, threshold) {
+    let speed;
+    do {
+        speed = (0,_utility_js__WEBPACK_IMPORTED_MODULE_2__.getRandomIntegerFromRange)(min, max);
+    } while (Math.abs(speed) < threshold);
+    return speed;
 }
 
 // Initialize paddle properties
@@ -1576,26 +1661,25 @@ function setPaddle() {
 
     playerPaddle = new _utility_js__WEBPACK_IMPORTED_MODULE_2__.Paddle(playerX, playerY, paddleWidth, playerPaddleHeight);
 
-    if (player2 === 'Player 2') {
-        otherPaddle = new _utility_js__WEBPACK_IMPORTED_MODULE_2__.Paddle(otherPlayerX, playerY, paddleWidth, playerPaddleHeight)
-    } else if (player2 === 'AI') {
-        otherPaddle = new _utility_js__WEBPACK_IMPORTED_MODULE_2__.Paddle(otherPlayerX, aiPlayerY, paddleWidth, aiPaddleHeight)
-    } else {
-        otherPaddle = new _utility_js__WEBPACK_IMPORTED_MODULE_2__.Paddle(otherPlayerX, aiPlayerY, paddleWidth, aiPaddleHeight)
-    }
+    // Set other paddle based on player2 type
+    const otherPaddleHeight = player2 === 'Player 2' ? playerPaddleHeight : aiPaddleHeight;
+    const otherPaddleY = player2 === 'Player 2' ? playerY : aiPlayerY;
+    otherPaddle = new _utility_js__WEBPACK_IMPORTED_MODULE_2__.Paddle(otherPlayerX, otherPaddleY, paddleWidth, otherPaddleHeight);
 }
 
 // Initialize obstacle properties
 function setObstacle() {
     obstacles = [];
     const obstacleRadius = 30;
-    const canvasPadding = 300;
+    const horizontalPadding = 300;
+    const verticalPadding = 200;
 
     while (obstacles.length < maxObstacles && obstacleState === 'on') {
         const obstacleColor = colorObject[setColor][(0,_utility_js__WEBPACK_IMPORTED_MODULE_2__.getRandomIntegerFromRange)(0, colorObject[setColor].length - 1)];
-        const x = (0,_utility_js__WEBPACK_IMPORTED_MODULE_2__.getRandomIntegerFromRange)(obstacleRadius + canvasPadding, canvas.width - obstacleRadius - canvasPadding);
-        const y = (0,_utility_js__WEBPACK_IMPORTED_MODULE_2__.getRandomIntegerFromRange)(obstacleRadius + canvasPadding, canvas.height - obstacleRadius - canvasPadding);
+        const x = (0,_utility_js__WEBPACK_IMPORTED_MODULE_2__.getRandomIntegerFromRange)(obstacleRadius + horizontalPadding, canvas.width - obstacleRadius - horizontalPadding);
+        const y = (0,_utility_js__WEBPACK_IMPORTED_MODULE_2__.getRandomIntegerFromRange)(obstacleRadius + verticalPadding, canvas.height - obstacleRadius - verticalPadding);
         const dy = (0,_utility_js__WEBPACK_IMPORTED_MODULE_2__.getRandomIntegerFromRange)(-3, 3);
+
         if (!obstacles.some(obstacle => (0,_utility_js__WEBPACK_IMPORTED_MODULE_2__.getDistance)({ x, y }, obstacle) < obstacleRadius * 2) && dy !== 0) {
             obstacles.push(new _utility_js__WEBPACK_IMPORTED_MODULE_2__.Obstacle(x, y, obstacleRadius, dy, obstacleColor));
         }
@@ -1603,66 +1687,48 @@ function setObstacle() {
 }
 
 //! ====== Event Listeners ======
-// Change color on button click
-for (const button of colorButtons) {
-    button.addEventListener('click', () => {
-        setColor = button.value;
-        startGame();
-    });
+//! ====== Event Listeners ======
+// General function to handle button clicks
+function setupButtonListeners(buttons, setValue) {
+    for (const button of buttons) {
+        button.addEventListener('click', () => {
+            setValue(button.value);
+            startGame();
+        });
+    }
 }
 
-// Change difficulty on button click
-for (const button of difficultyButtons) {
-    button.addEventListener('click', () => {
-        setDifficulty = button.value;
-
-        startGame();
-    });
-}
-
-// Change obstacle state on button click
-for (const button of obstacleButtons) {
-    button.addEventListener('click', () => {
-        obstacleState = button.value;
-        startGame();
-    });
-}
+// Set up color, difficulty, and obstacle state buttons
+setupButtonListeners(colorButtons, (value) => setColor = value);
+setupButtonListeners(difficultyButtons, (value) => setDifficulty = value);
+setupButtonListeners(obstacleButtons, (value) => obstacleState = value);
 
 // Change obstacle quantity based on input value
-obstacleQuantityInput.addEventListener('input', (event) => {
-    maxObstacles = Number(event.target.value) + 1;
+obstacleQuantityInput.addEventListener('input', ({ target: { value } }) => {
+    maxObstacles = Number(value) + 1;
     if (obstacleState === 'on') startGame();
 });
 
-// Start game on button click
-playAgainstAiButton.addEventListener('click', () => {
+// Function to start the game with the specified player type
+function startGameWithPlayerType(type) {
     mainMenu.style.zIndex = -1;
     instructionSection.style.zIndex = 1;
     isGameOn = true;
     isGameOver = false;
-    player2 = 'AI';
+    player2 = type;
     localStorage.setItem('isGameOn', isGameOn);
     startGame();
-});
+}
 
-playAgainstPlayerButton.addEventListener('click', () => {
-    mainMenu.style.zIndex = -1;
-    instructionSection.style.zIndex = 1;
-    isGameOn = true;
-    isGameOver = false;
-    player2 = 'Player 2';
-    localStorage.setItem('isGameOn', isGameOn);
-    startGame();
-});
+// Start game on button clicks
+playAgainstAiButton.addEventListener('click', () => startGameWithPlayerType('AI'));
+playAgainstPlayerButton.addEventListener('click', () => startGameWithPlayerType('Player 2'));
 
 // Restart game on button click
-restartButton.addEventListener('click', () => {
-    // Reload the page to reset the game
-    location.reload();
-});
+restartButton.addEventListener('click', () => location.reload());
 
 // Resize canvas on window resize
-window.addEventListener('resize', () => { 
+window.addEventListener('resize', () => {
     setCanvasSize();
     startGame();
 });
@@ -1690,12 +1756,13 @@ window.addEventListener('keyup', (event) => {
     }
 });
 
-// Pause Unpause game on 'Escape' key press
+// Pause/Unpause game on 'Escape' key press
 window.addEventListener('keydown', (event) => {
-    if (event.key !== 'Escape' || !isGameOn) return;
-    zIndex = -zIndex;
-    instructionSection.style.zIndex = zIndex;
-    isPaused = !isPaused;
+    if (event.key === 'Escape' && isGameOn) {
+        zIndex = -zIndex;
+        instructionSection.style.zIndex = zIndex;
+        isPaused = !isPaused;
+    }
 });
 
 //! ====== Game Functions ======
@@ -1708,15 +1775,16 @@ function animate() {
         ball.update(playerPaddle, otherPaddle, obstacles, ballAcceleration, isGameOn);
         obstacles.forEach(obstacle => obstacle.update());
         updateUserPaddle(playerPaddle);
+
+        // Update the other paddle based on player2 type
         if (player2 === 'AI') updateAiPaddle(otherPaddle);
         else if (player2 === 'Player 2') updateOtherPlayerPaddle(otherPaddle);
     } else if (!isGameOn) {
         obstacles.forEach(obstacle => obstacle.update());
-        playerPaddle.update(0, isGameOn);
-        otherPaddle.update(0, isGameOn);
+        for (const paddle of [playerPaddle, otherPaddle]) paddle.update(0, isGameOn);
     }
-    checkGoal();
 
+    checkGoal();
     requestAnimationFrame(animate);
 }
 
@@ -1734,11 +1802,11 @@ function main() {
     localStorage.setItem('isGameOn', isGameOn);
 }
 
-// ====== Initialization ======
+//! ====== Initialization ======
 setInterval(() => applyColorToElements(setColor), 1000);
 main();
 })();
 
 /******/ })()
 ;
-//# sourceMappingURL=bundle4af6ffbc3d068298a743.js.map
+//# sourceMappingURL=bundle1fd53d1381ea6f22e6a0.js.map

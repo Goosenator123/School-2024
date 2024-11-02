@@ -5,15 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pong</title>
 
-    <!-- Link to google fonts -->
+    <!-- Link to Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
-    
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=settings"/>
 </head>
 <body>
-    <!-- <div id="fps">FPS: 0</div> -->
+    <!-- Canvas and Score Display -->
     <div id="canvas-container">
         <h1 id="score-text">
             <span id="player1-score">0</span>
@@ -21,6 +20,8 @@
         </h1>
         <canvas id="game-canvas"></canvas>
     </div>
+
+    <!-- Main Menu -->
     <main id="main-menu">
         <section id="main-section">
             <header>
@@ -31,13 +32,17 @@
                 <button class="start-game-button" id="start-button2">Player vs Player</button>
             </section>
             <footer>
-                <p id="footer-text">press Esc to open/close settings</p>
+                <p id="footer-text">Press Esc to open/close settings</p>
             </footer>
         </section>
+
+        <!-- Settings Button -->
         <button id="setting-button">
             <span class="material-symbols-outlined" id="setting-icon">settings</span>
         </button>
     </main>
+
+    <!-- Settings Section -->
     <div id="setting-section">
         <header id="setting-header">
             <h1 id="setting-title">Settings</h1>
@@ -53,6 +58,7 @@
                     <button class="difficulty-button" id="hard-button" value="hard">Hard</button>
                 </div>
             </section>
+
             <section id="other-section">
                 <div id="color-section">
                     <header>
@@ -64,6 +70,7 @@
                         <button class="color-button" id="blue-option" value="blue">Blue</button>
                     </div>
                 </div>
+
                 <div id="obstacle-section">
                     <header>
                         <h2 id="obstacle-title">Obstacle</h2>
@@ -75,7 +82,7 @@
                         </div>
                         <div id="obstacle-quantity-section">
                             <div>
-                                <label for="obstacle-quantity">Quantity: </label>
+                                <label for="obstacle-quantity">Quantity:</label>
                                 <span id="obstacle-quantity">1</span>
                             </div>
                             <input type="range" id="obstacle-quantity-input" max="9">
@@ -85,6 +92,8 @@
             </section>
         </article>
     </div>
+
+    <!-- Instructions Section -->
     <section id="instructions-section">
         <div id="instructions-container">
             <header>
@@ -93,10 +102,14 @@
             <article id="instructions-content">
                 <p>Player 1: W and S</p>
                 <p>Player 2: Up and Down arrow keys</p>
-                <p>Press Esc to pause/unpause the game</p>
+                <p>First player to 10 points wins!</p>
+                <p>The ball will gradually speed up as the round prolongs.</p>
+                <p>Press Esc to pause/unpause the game.</p>
             </article>
         </div>
     </section>
+
+    <!-- Game Over Section -->
     <section id="game-over-section">
         <header>
             <h1 id="game-over-title">Game Over</h1>

@@ -3,7 +3,7 @@ import '../styles/index.css';
 import '../styles/setting.css';
 import { Ball, Obstacle, Paddle, clearCanvas, getRandomIntegerFromRange, getDistance } from './utility.js';
 
-//! ====== Constants and DOM Elements ======
+//! ====== Cached HTML Elements ======
 const canvas = document.getElementById('game-canvas');
 const ctx = canvas.getContext('2d');
 const colorButtons = document.getElementsByClassName('color-button');
@@ -48,9 +48,9 @@ let setColor, setDifficulty, obstacleState, maxObstacles;
 
 // Difficulty settings
 const difficultyObject = {
-    'easy': { playerSpeed: 10, aiSpeed: 5, playerPaddleHeight: 200, aiPaddleHeight: 200 },
-    'medium': { playerSpeed: 10, aiSpeed: 7, playerPaddleHeight: 150, aiPaddleHeight: 200 },
-    'hard': { playerSpeed: 10, aiSpeed: 9, playerPaddleHeight: 100, aiPaddleHeight: 200 },
+    'easy': { playerSpeed: 12, aiSpeed: 6, playerPaddleHeight: 200, aiPaddleHeight: 200 },
+    'medium': { playerSpeed: 12, aiSpeed: 8, playerPaddleHeight: 150, aiPaddleHeight: 200 },
+    'hard': { playerSpeed: 12, aiSpeed: 10, playerPaddleHeight: 100, aiPaddleHeight: 200 },
 };
 
 //! ====== Color Arrays ======
@@ -129,8 +129,8 @@ function updateAiPaddle(targetPaddle) {
 function checkGoal() {
     if (!isGameOn) return;
 
-    if (points.player1 >= 1 || points.player2 >= 1) {
-        gameOver(points.player1 >= 1 ? 'Player 1' : 'Player 2');
+    if (points.player1 >= 10 || points.player2 >= 10) {
+        gameOver(points.player1 >= 1 ? 'Player 1' : player2);
     } else if (ball.x < 0 || ball.x > canvas.width) {
         restartRound(ball.x > canvas.width);
     }
@@ -155,16 +155,10 @@ function restartRound(playerWin1) {
 // Initialize ball properties
 function setBall() {
     const ballRadius = 20;
-    let ballDx, ballDy;
 
     // Set ball speed based on difficulty
-    do {
-        ballDx = getRandomIntegerFromRange(-15, 15);
-    } while (Math.abs(ballDx) < 10);
-    
-    do {
-        ballDy = getRandomIntegerFromRange(-10, 10);
-    } while (Math.abs(ballDy) < 5);
+    const ballDx = getRandomSpeed(-12, 12, 10);
+    const ballDy = getRandomSpeed(-8, 8, 6);
 
     // If timeout is already set, clear it
     if (timeOutId) clearTimeout(timeOutId);
@@ -174,6 +168,15 @@ function setBall() {
 
     // Launch ball after 1 second
     timeOutId = setTimeout(() => ball = new Ball(canvas.width / 2, canvas.height / 2, ballRadius, ballDx, ballDy, colorObject[setColor]), 1000);
+}
+
+// Helper function to get a random speed value
+function getRandomSpeed(min, max, threshold) {
+    let speed;
+    do {
+        speed = getRandomIntegerFromRange(min, max);
+    } while (Math.abs(speed) < threshold);
+    return speed;
 }
 
 // Initialize paddle properties
@@ -188,26 +191,25 @@ function setPaddle() {
 
     playerPaddle = new Paddle(playerX, playerY, paddleWidth, playerPaddleHeight);
 
-    if (player2 === 'Player 2') {
-        otherPaddle = new Paddle(otherPlayerX, playerY, paddleWidth, playerPaddleHeight)
-    } else if (player2 === 'AI') {
-        otherPaddle = new Paddle(otherPlayerX, aiPlayerY, paddleWidth, aiPaddleHeight)
-    } else {
-        otherPaddle = new Paddle(otherPlayerX, aiPlayerY, paddleWidth, aiPaddleHeight)
-    }
+    // Set other paddle based on player2 type
+    const otherPaddleHeight = player2 === 'Player 2' ? playerPaddleHeight : aiPaddleHeight;
+    const otherPaddleY = player2 === 'Player 2' ? playerY : aiPlayerY;
+    otherPaddle = new Paddle(otherPlayerX, otherPaddleY, paddleWidth, otherPaddleHeight);
 }
 
 // Initialize obstacle properties
 function setObstacle() {
     obstacles = [];
     const obstacleRadius = 30;
-    const canvasPadding = 300;
+    const horizontalPadding = 300;
+    const verticalPadding = 200;
 
     while (obstacles.length < maxObstacles && obstacleState === 'on') {
         const obstacleColor = colorObject[setColor][getRandomIntegerFromRange(0, colorObject[setColor].length - 1)];
-        const x = getRandomIntegerFromRange(obstacleRadius + canvasPadding, canvas.width - obstacleRadius - canvasPadding);
-        const y = getRandomIntegerFromRange(obstacleRadius + canvasPadding, canvas.height - obstacleRadius - canvasPadding);
+        const x = getRandomIntegerFromRange(obstacleRadius + horizontalPadding, canvas.width - obstacleRadius - horizontalPadding);
+        const y = getRandomIntegerFromRange(obstacleRadius + verticalPadding, canvas.height - obstacleRadius - verticalPadding);
         const dy = getRandomIntegerFromRange(-3, 3);
+
         if (!obstacles.some(obstacle => getDistance({ x, y }, obstacle) < obstacleRadius * 2) && dy !== 0) {
             obstacles.push(new Obstacle(x, y, obstacleRadius, dy, obstacleColor));
         }
@@ -215,66 +217,48 @@ function setObstacle() {
 }
 
 //! ====== Event Listeners ======
-// Change color on button click
-for (const button of colorButtons) {
-    button.addEventListener('click', () => {
-        setColor = button.value;
-        startGame();
-    });
+//! ====== Event Listeners ======
+// General function to handle button clicks
+function setupButtonListeners(buttons, setValue) {
+    for (const button of buttons) {
+        button.addEventListener('click', () => {
+            setValue(button.value);
+            startGame();
+        });
+    }
 }
 
-// Change difficulty on button click
-for (const button of difficultyButtons) {
-    button.addEventListener('click', () => {
-        setDifficulty = button.value;
-
-        startGame();
-    });
-}
-
-// Change obstacle state on button click
-for (const button of obstacleButtons) {
-    button.addEventListener('click', () => {
-        obstacleState = button.value;
-        startGame();
-    });
-}
+// Set up color, difficulty, and obstacle state buttons
+setupButtonListeners(colorButtons, (value) => setColor = value);
+setupButtonListeners(difficultyButtons, (value) => setDifficulty = value);
+setupButtonListeners(obstacleButtons, (value) => obstacleState = value);
 
 // Change obstacle quantity based on input value
-obstacleQuantityInput.addEventListener('input', (event) => {
-    maxObstacles = Number(event.target.value) + 1;
+obstacleQuantityInput.addEventListener('input', ({ target: { value } }) => {
+    maxObstacles = Number(value) + 1;
     if (obstacleState === 'on') startGame();
 });
 
-// Start game on button click
-playAgainstAiButton.addEventListener('click', () => {
+// Function to start the game with the specified player type
+function startGameWithPlayerType(type) {
     mainMenu.style.zIndex = -1;
     instructionSection.style.zIndex = 1;
     isGameOn = true;
     isGameOver = false;
-    player2 = 'AI';
+    player2 = type;
     localStorage.setItem('isGameOn', isGameOn);
     startGame();
-});
+}
 
-playAgainstPlayerButton.addEventListener('click', () => {
-    mainMenu.style.zIndex = -1;
-    instructionSection.style.zIndex = 1;
-    isGameOn = true;
-    isGameOver = false;
-    player2 = 'Player 2';
-    localStorage.setItem('isGameOn', isGameOn);
-    startGame();
-});
+// Start game on button clicks
+playAgainstAiButton.addEventListener('click', () => startGameWithPlayerType('AI'));
+playAgainstPlayerButton.addEventListener('click', () => startGameWithPlayerType('Player 2'));
 
 // Restart game on button click
-restartButton.addEventListener('click', () => {
-    // Reload the page to reset the game
-    location.reload();
-});
+restartButton.addEventListener('click', () => location.reload());
 
 // Resize canvas on window resize
-window.addEventListener('resize', () => { 
+window.addEventListener('resize', () => {
     setCanvasSize();
     startGame();
 });
@@ -302,12 +286,13 @@ window.addEventListener('keyup', (event) => {
     }
 });
 
-// Pause Unpause game on 'Escape' key press
+// Pause/Unpause game on 'Escape' key press
 window.addEventListener('keydown', (event) => {
-    if (event.key !== 'Escape' || !isGameOn) return;
-    zIndex = -zIndex;
-    instructionSection.style.zIndex = zIndex;
-    isPaused = !isPaused;
+    if (event.key === 'Escape' && isGameOn) {
+        zIndex = -zIndex;
+        instructionSection.style.zIndex = zIndex;
+        isPaused = !isPaused;
+    }
 });
 
 //! ====== Game Functions ======
@@ -320,15 +305,16 @@ function animate() {
         ball.update(playerPaddle, otherPaddle, obstacles, ballAcceleration, isGameOn);
         obstacles.forEach(obstacle => obstacle.update());
         updateUserPaddle(playerPaddle);
+
+        // Update the other paddle based on player2 type
         if (player2 === 'AI') updateAiPaddle(otherPaddle);
         else if (player2 === 'Player 2') updateOtherPlayerPaddle(otherPaddle);
     } else if (!isGameOn) {
         obstacles.forEach(obstacle => obstacle.update());
-        playerPaddle.update(0, isGameOn);
-        otherPaddle.update(0, isGameOn);
+        for (const paddle of [playerPaddle, otherPaddle]) paddle.update(0, isGameOn);
     }
-    checkGoal();
 
+    checkGoal();
     requestAnimationFrame(animate);
 }
 
@@ -346,6 +332,6 @@ function main() {
     localStorage.setItem('isGameOn', isGameOn);
 }
 
-// ====== Initialization ======
+//! ====== Initialization ======
 setInterval(() => applyColorToElements(setColor), 1000);
 main();

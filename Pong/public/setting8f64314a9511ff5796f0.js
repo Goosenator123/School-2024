@@ -14,6 +14,7 @@ const defaultSettings = {
 let zIndex = -1000;
 
 //! ====== Cached HTML Elements ======
+// Cached HTML elements for settings
 const settingButtonsObject = {
     difficulty: {
         easy: document.getElementById('easy-button'),
@@ -30,6 +31,8 @@ const settingButtonsObject = {
         off: document.getElementById('off-button'),
     }
 };
+
+// Cached input and display elements
 const obstacleQuantityInput = document.getElementById('obstacle-quantity-input');
 const obstacleQuantityDisplay = document.getElementById('obstacle-quantity');
 const settingSection = document.getElementById('setting-section');
@@ -61,7 +64,6 @@ function loadSettings() {
 // Toggle button states based on the current active button in each group
 function toggleButton(targetButtonGroup, targetButton) {
     for (const button in targetButtonGroup) {
-        // Toggle class for the target button; remove it from others in the group
         targetButtonGroup[button].classList.toggle(`${button}-enabled`, button === targetButton);
     }
 }
@@ -89,13 +91,11 @@ function updateObstacleNumber(quantity) {
     localStorage.setItem('pongSettings', JSON.stringify(storedSettings));
 }
 
-// Show/hide the settings menu
-function showHideSettingOrInstruction() {
-    if (localStorage.getItem('isGameOn') === 'true') {
-        return;
-    }
+// Show or hide the settings menu based on game status
+function toggleSettingsMenu() {
+    if (localStorage.getItem('isGameOn') === 'true') return;
 
-    zIndex = -zIndex;
+    zIndex = -zIndex
     settingSection.style.zIndex = zIndex;
 }
 
@@ -114,15 +114,13 @@ function bindEventListeners() {
 //! ====== Event Listeners ======
 // Toggle the settings menu on 'Escape' key press or settings button click
 window.addEventListener('keydown', (event) => {
-    if (event.key !== 'Escape') return;
-    showHideSettingOrInstruction();
+    if (event.key === 'Escape') toggleSettingsMenu();
 });
-settingButton.addEventListener('click', showHideSettingOrInstruction);
+settingButton.addEventListener('click', toggleSettingsMenu);
 
 // Update obstacle number based on input value
 obstacleQuantityInput.addEventListener('input', (event) => {
-    const value = Number(event.target.value) + 1;
-    updateObstacleNumber(value);
+    updateObstacleNumber(Number(event.target.value) + 1);
 });
 
 //! ====== Initialize Settings on Page Load ======
@@ -135,4 +133,4 @@ function initializeSettings() {
 initializeSettings();
 /******/ })()
 ;
-//# sourceMappingURL=settingdae10528282ca4ea650e.js.map
+//# sourceMappingURL=setting8f64314a9511ff5796f0.js.map

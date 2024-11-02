@@ -1639,7 +1639,7 @@ function checkGoal() {
 function restartRound(playerWin1) {
     playerWin1 ? points.player1++ : points.player2++;
     if (points.player1 >= 10 || points.player2 >= 10) {
-        gameOver(points.player1 >= 1 ? 'Player 1' : player2);
+        gameOver(points.player1 >= 10 ? 'Player 1' : player2);
         return;
     }
     ballGoalSound.play();
@@ -1845,4 +1845,4 @@ main();
 
 /******/ })()
 ;
-//# sourceMappingURL=bundle29c3bebe8381dfaa7c42.js.map
+//# sourceMappingURL=bundle7c4aba5672bc7e39ec77.js.map

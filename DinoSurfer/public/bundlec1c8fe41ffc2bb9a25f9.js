@@ -573,19 +573,15 @@ setCanvasSize(); // Call the function to set the initial canvas size
 let rectangle;
 const rectWidth = 50;
 const rectHeight = 50;
-let isJumping = false;
-let jumpCooldown = false;
-let groundLevel = canvas.height / 2;
 
-// Gravity Variables
-let gravity = 1;
-const gravityAcceleration = 0.5;
-const initialGravity = 1;
+// Direction Variable
+let directionPressed = {
+    'w': false,
+    'a': false,
+    's': false,
+    'd': false,
+};
 
-// Jumping variables;
-let jumpSpeed = 14;
-const initialJumpSpeed = 14;
-const jumpSlowdown = 0.5;
 
 // Function that clears the canvas
 function clearCanvas() {
@@ -594,13 +590,6 @@ function clearCanvas() {
     ctx.fillStyle = 'black';
     ctx.fill();
     ctx.closePath();
-}
-
-// Function that sets rectangle
-function setRectangle() {
-    const x = canvas.width / 4 - rectWidth;
-    const y = canvas.height / 2 - rectHeight;
-    rectangle = new Rectangle(x, y, rectWidth, rectHeight);
 }
 
 class Rectangle {
@@ -620,66 +609,108 @@ class Rectangle {
     }
 
     update() {
-        if (isJumping) {
-            if (jumpSpeed <= 1) isJumping = false;
-            this.y -= jumpSpeed;
-            jumpSpeed -= jumpSlowdown;
-            this.draw();
-            return;
-        }
-
-        if (this.y + (rectHeight + 10) <= groundLevel && !isJumping) {
-            this.y += gravity;
-            if (gravity < 14) gravity += gravityAcceleration;          
-            console.log(gravity)
-        } else {
-            jumpCooldown = false;
-        }
+        if (directionPressed['a']) this.x -= 5;
+        if (directionPressed['d']) this.x += 5;
+        if (directionPressed['w']) this.y -= 5;
+        if (directionPressed['s']) this.y += 5;
 
         this.draw();
     }
 }
 
-function setGround() {
-    groundLevel = canvas.height / 2;
-    ctx.beginPath();
-    ctx.moveTo(0, groundLevel);
-    ctx.lineTo(canvas.width, groundLevel);
-    ctx.strokeStyle = 'white';
-    ctx.lineWidth = 3;
-    ctx.stroke();
-    ctx.closePath();
-}
-setGround();
+class Obstacle {
+    constructor(x, y, dx, dy, radius) {
+        this.x = x;
+        this.y = y;
+        this.dx = dx;
+        this.dy = dy;
+        this.radius = radius;
+    }
 
+    draw() {
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.radius, 0, 2 * Math.PI, true);
+        ctx.fillStyle = 'red';
+        ctx.fill();
+        ctx.closePath();
+    }
+
+    update() {
+        this.y += this.dy;
+        this.x += this.dx;
+        this.draw();
+    }
+}
+
+// Function that checks collision
+function checkCollision(player, obstacle) {
+    
+}
+
+// Function that sets rectangle
+function setRectangle() {
+    const x = canvas.width / 2 - rectWidth;
+    const y = canvas.height - rectHeight - 50;
+    rectangle = new Rectangle(x, y, rectWidth, rectHeight);
+}
+
+function startGame() {
+    setInterval(() => {
+        createObstacle();
+    }, 1000);
+}
+
+// Function that sets the obstacles
+let obstacleArray = [];
+function createObstacle() {
+    const y = -10;
+    const dy = 3;
+    const radius = 20;
+    const x = getRandomIntFromRange(0, canvas.width);
+    const dx = getRandomIntFromRange(-1, 1);
+    obstacleArray.push(new Obstacle(x, y, dx, dy, radius));
+}
+
+function getRandomIntFromRange(min, max) {
+    return Math.floor(Math.random() * (max - min + 1) + min);
+}
+
+// Function that recurse animate function
 function animate() {
     requestAnimationFrame(animate);
     clearCanvas();
     rectangle.update();
-    setGround();
+    for (let i = 0; i < obstacleArray.length; i++) {
+        obstacleArray[i].update();
+        if (obstacleArray[i].y >= canvas.height) obstacleArray.splice(i, 1);
+    }
+
+    console.log(directionPressed)
 }
 
 window.onload = () => {
     setRectangle();
     animate();
-    setGround();
+    startGame();
 }
 
+
 window.addEventListener('keydown', (event) => {
-    if (event.key === 'w' && !jumpCooldown) {
-        gravity = initialGravity;
-        jumpSpeed = initialJumpSpeed
-        isJumping = true;
-        jumpCooldown = true;
-    }
+    if (['w', 'a', 's', 'd'].includes(event.key)) directionPressed[event.key] = true;
 });
+
+window.addEventListener('keyup', (event) => {
+    if (['w', 'a', 's', 'd'].includes(event.key)) directionPressed[event.key] = false;
+})
 
 window.addEventListener('resize', () => {
     setCanvasSize();
     setRectangle();
 });
+
+
 })();
 
 /******/ })()
 ;
-//# sourceMappingURL=bundle46179466d101c622a164.js.map
+//# sourceMappingURL=bundlec1c8fe41ffc2bb9a25f9.js.map

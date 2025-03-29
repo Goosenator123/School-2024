@@ -1,7 +1,7 @@
 {
-  "name": "tempate_name",
+  "name": "asteroids",
   "version": "1.0.0",
-  "description": "This is a template",
+  "description": "This is a game where u have to defend yourself from flying asteroids.",
   "main": "index.js",
   "scripts": {
     "build": "webpack",

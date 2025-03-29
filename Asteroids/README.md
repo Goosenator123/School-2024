@@ -23,5 +23,5 @@
 - A Game Over menu with a Restart button that reloads the game
 
 !!!=========================!!!
-## Run the index.html file from the public directory
+! Run the index.html file from the public directory !
 !!!=========================!!!

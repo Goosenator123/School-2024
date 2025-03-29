@@ -21,3 +21,7 @@
 ## User Interface Enhancements
 - A start menu with a large title, detailed instructions, and a Start Game button
 - A Game Over menu with a Restart button that reloads the game
+
+!!!=========================!!!
+# Run the index.html file from the public directory
+!!!=========================!!!

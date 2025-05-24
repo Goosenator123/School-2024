@@ -1,35 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zombie Shooter 3D</title>
-    <link rel="stylesheet" href="../styles/index.css">
-    <script src="https://cdn.tailwindcss.com"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zombie Shooter 3D</title>
+  <link rel="stylesheet" href="../styles/index.css">
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>
-    <div id="menu" class="flex items-center justify-center min-h-screen bg-gray-900 text-white">
-        <div class="text-center p-8 bg-gray-800 rounded-lg shadow-lg max-w-md w-full">
-            <h1 class="text-4xl font-bold mb-6">Zombie Shooter 3D</h1>
-            <h2 class="text-2xl font-semibold mb-4">Instructions</h2>
-            <ul class="text-left text-lg mb-6">
-                <li class="mb-2"><strong>Move:</strong> Use <span class="font-mono">WASD</span> keys to move the player.</li>
-                <li class="mb-2"><strong>Aim:</strong> Move the mouse to look around (mouse locks to center on play).</li>
-                <li class="mb-2"><strong>Shoot:</strong> Click to fire bullets at zombies.</li>
-                <li class="mb-2"><strong>Objective:</strong> Kill zombies (3 hits each, 10 points per kill). Avoid getting hit to keep health above 0.</li>
-                <li class="mb-2"><strong>Game Over:</strong> If health reaches 0, view your score and return to the menu.</li>
-            </ul>
-            <button id="playButton" class="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">Play</button>
-        </div>
+  <!-- Main Menu with Instructions -->
+  <div id="menu" class="flex items-center justify-center min-h-screen bg-gray-900 text-white px-4">
+    <div class="text-left p-8 bg-gray-800 rounded-lg shadow-lg max-w-2xl w-full">
+      <h1 class="text-4xl font-bold mb-4 text-center">Zombie Shooter 3D</h1>
+      <h2 class="text-2xl font-semibold mb-2">🎮 Controls</h2>
+      <ul class="list-disc list-inside mb-6">
+        <li><strong>Move:</strong> Use <span class="font-mono">W / A / S / D</span> keys to move around.</li>
+        <li><strong>Aim:</strong> Move your mouse to look around. The mouse will lock to the screen during play.</li>
+        <li><strong>Shoot:</strong> Click the left mouse button to shoot.</li>
+      </ul>
+
+    <h2 class="text-2xl font-semibold mb-2">🧟 Objective</h2>
+    <p class="mb-6">
+        Survive waves of zombies by shooting them before they reach you. Each kill earns <strong>10 points</strong>.
+        Be careful — not all zombies are the same:
+    </p>
+    <ul class="list-disc list-inside mb-6">
+        <li><span class="text-green-400 font-semibold">Green Zombies</span> – Normal type, balanced speed and health.</li>
+        <li><span class="text-red-400 font-semibold">Red Zombies</span> – Fast type, move quickly but have low health.</li>
+        <li><span class="text-green-700 font-semibold">Dark Green Zombies</span> – Tank type, slow but with high health.</li>
+    </ul>
+
+      <h2 class="text-2xl font-semibold mb-2">❤️ Health System</h2>
+      <p class="mb-6">Your health starts at 100. When zombies get close, they deal damage. The game ends when your health drops to 0, showing your final score.</p>
+
+      <h2 class="text-2xl font-semibold mb-2">🔊 Music</h2>
+      <p class="mb-6">Background music begins when the game starts and stops upon death. Make sure your sound is on!</p>
+
+      <h2 class="text-2xl font-semibold mb-2">🧱 Environment</h2>
+      <ul class="list-disc list-inside mb-6">
+        <li>Randomly generated walls block both player and zombies.</li>
+        <li>Zombies find their way around obstacles to reach you.</li>
+        <li>Use the map’s layout to your advantage and avoid getting cornered.</li>
+      </ul>
+
+      <div class="text-center">
+        <button id="playButton" class="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-6 rounded text-xl">Play</button>
+      </div>
     </div>
-    <div id="gameOver" class="hidden flex items-center justify-center min-h-screen bg-gray-900 text-white">
-        <div class="text-center p-8 bg-gray-800 rounded-lg shadow-lg max-w-md w-full">
-            <h1 class="text-4xl font-bold mb-6">Game Over</h1>
-            <p id="finalScore" class="text-2xl mb-6"></p>
-            <button id="backToMenu" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Back to Menu</button>
-        </div>
+  </div>
+
+  <!-- Game Over Screen -->
+  <div id="gameOver" class="hidden flex items-center justify-center min-h-screen bg-gray-900 text-white">
+    <div class="text-center p-8 bg-gray-800 rounded-lg shadow-lg max-w-md w-full">
+      <h1 class="text-4xl font-bold mb-6">Game Over</h1>
+      <p id="finalScore" class="text-2xl mb-6"></p>
+      <button id="backToMenu" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Back to Menu</button>
     </div>
-    <div id="info" class="hidden">Score: 0 | Health: 100</div>
-    <div id="crosshair" class="hidden"></div>
+  </div>
+
+  <!-- HUD & Crosshair -->
+  <div id="info" class="hidden">Score: 0 | Health: 100</div>
+  <div id="crosshair" class="hidden"></div>
 </body>
 </html>

@@ -77916,7 +77916,7 @@ hpContainer.style.alignItems = 'center';
 hud.appendChild(hpContainer);
 
 const hpLabel = document.createElement('span');
-hpLabel.innerText = 'Health:';
+hpLabel.innerText = 'Points de vie:';
 hpLabel.style.color = '#fff';
 hpLabel.style.marginRight = '10px';
 hpContainer.appendChild(hpLabel);
@@ -78177,7 +78177,7 @@ function animate() {
             if (player.health <= 0) {
                 isGameRunning = false;
                 clearInterval(zombieSpawnInterval);
-                document.getElementById('finalScore').innerText = `Final Score: ${player.score}`;
+                document.getElementById('finalScore').innerText = `Score Final: ${player.score}`;
                 document.getElementById('gameOver').classList.remove('hidden');
                 hud.style.display = 'none';
                 document.getElementById('crosshair').classList.add('hidden');
@@ -78247,4 +78247,4 @@ window.onload = () => {
 
 /******/ })()
 ;
-//# sourceMappingURL=indexe77f89f7da763ce2ba36.js.map
+//# sourceMappingURL=index293af827d495a79562a4.js.map

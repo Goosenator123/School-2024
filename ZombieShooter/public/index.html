@@ -1,65 +1,66 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Zombie Shooter 3D</title>
+  <title>Tireur de Zombies 3D</title>
   <link rel="stylesheet" href="../styles/index.css">
   <script src="https://cdn.tailwindcss.com"></script>
-<script defer src="indexe77f89f7da763ce2ba36.js"></script></head>
+  <script defer src="indexe77f89f7da763ce2ba36.js"></script>
+<script defer src="index293af827d495a79562a4.js"></script></head>
 <body>
-  <!-- Main Menu with Instructions -->
+  <!-- Menu Principal avec Instructions -->
   <div id="menu" class="flex items-center justify-center min-h-screen bg-gray-900 text-white px-4">
     <div class="text-left p-8 bg-gray-800 rounded-lg shadow-lg max-w-2xl w-full">
-      <h1 class="text-4xl font-bold mb-4 text-center">Zombie Shooter 3D</h1>
-      <h2 class="text-2xl font-semibold mb-2">🎮 Controls</h2>
+      <h1 class="text-4xl font-bold mb-4 text-center">Tireur de Zombies 3D</h1>
+      <h2 class="text-2xl font-semibold mb-2">🎮 Contrôles</h2>
       <ul class="list-disc list-inside mb-6">
-        <li><strong>Move:</strong> Use <span class="font-mono">W / A / S / D</span> keys to move around.</li>
-        <li><strong>Aim:</strong> Move your mouse to look around. The mouse will lock to the screen during play.</li>
-        <li><strong>Shoot:</strong> Click the left mouse button to shoot.</li>
+        <li><strong>Se déplacer :</strong> Utilisez les touches <span class="font-mono">W / A / S / D</span> pour vous déplacer.</li>
+        <li><strong>Viser :</strong> Bougez la souris pour regarder autour. La souris sera verrouillée à l’écran pendant le jeu.</li>
+        <li><strong>Tirer :</strong> Cliquez sur le bouton gauche de la souris pour tirer.</li>
       </ul>
 
-    <h2 class="text-2xl font-semibold mb-2">🧟 Objective</h2>
-    <p class="mb-6">
-        Survive waves of zombies by shooting them before they reach you. Each kill earns <strong>10 points</strong>.
-        Be careful — not all zombies are the same:
-    </p>
-    <ul class="list-disc list-inside mb-6">
-        <li><span class="text-green-400 font-semibold">Green Zombies</span> – Normal type, balanced speed and health.</li>
-        <li><span class="text-red-400 font-semibold">Red Zombies</span> – Fast type, move quickly but have low health.</li>
-        <li><span class="text-green-700 font-semibold">Dark Green Zombies</span> – Tank type, slow but with high health.</li>
-    </ul>
-
-      <h2 class="text-2xl font-semibold mb-2">❤️ Health System</h2>
-      <p class="mb-6">Your health starts at 100. When zombies get close, they deal damage. The game ends when your health drops to 0, showing your final score.</p>
-
-      <h2 class="text-2xl font-semibold mb-2">🔊 Music</h2>
-      <p class="mb-6">Background music begins when the game starts and stops upon death. Make sure your sound is on!</p>
-
-      <h2 class="text-2xl font-semibold mb-2">🧱 Environment</h2>
+      <h2 class="text-2xl font-semibold mb-2">🧟 Objectif</h2>
+      <p class="mb-6">
+        Survivez aux vagues de zombies en les abattant avant qu’ils ne vous atteignent. Chaque élimination vous rapporte <strong>10 points</strong>.
+        Attention — tous les zombies ne sont pas identiques :
+      </p>
       <ul class="list-disc list-inside mb-6">
-        <li>Randomly generated walls block both player and zombies.</li>
-        <li>Zombies find their way around obstacles to reach you.</li>
-        <li>Use the map’s layout to your advantage and avoid getting cornered.</li>
+        <li><span class="text-green-400 font-semibold">Zombies Verts</span> – Type normal, vitesse et santé équilibrées.</li>
+        <li><span class="text-red-400 font-semibold">Zombies Rouges</span> – Type rapide, très rapides mais avec peu de santé.</li>
+        <li><span class="text-green-700 font-semibold">Zombies Vert Foncé</span> – Type tank, lents mais très résistants.</li>
+      </ul>
+
+      <h2 class="text-2xl font-semibold mb-2">❤️ Système de Santé</h2>
+      <p class="mb-6">Vous commencez avec 100 points de vie. Si un zombie vous touche, vous perdez de la vie. La partie se termine quand votre santé tombe à 0, et votre score final s’affiche.</p>
+
+      <h2 class="text-2xl font-semibold mb-2">🔊 Musique</h2>
+      <p class="mb-6">La musique démarre quand le jeu commence et s’arrête à votre mort. Assurez-vous que le son est activé !</p>
+
+      <h2 class="text-2xl font-semibold mb-2">🧱 Environnement</h2>
+      <ul class="list-disc list-inside mb-6">
+        <li>Des murs générés aléatoirement bloquent à la fois le joueur et les zombies.</li>
+        <li>Les zombies contournent les obstacles pour vous atteindre.</li>
+        <li>Utilisez la disposition de la carte à votre avantage et évitez de vous faire coincer.</li>
       </ul>
 
       <div class="text-center">
-        <button id="playButton" class="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-6 rounded text-xl">Play</button>
+        <button id="playButton" class="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-6 rounded text-xl">Jouer</button>
       </div>
     </div>
   </div>
 
-  <!-- Game Over Screen -->
+  <!-- Écran de Fin de Jeu -->
   <div id="gameOver" class="hidden flex items-center justify-center min-h-screen bg-gray-900 text-white">
     <div class="text-center p-8 bg-gray-800 rounded-lg shadow-lg max-w-md w-full">
-      <h1 class="text-4xl font-bold mb-6">Game Over</h1>
+      <h1 class="text-4xl font-bold mb-6">Fin de la Partie</h1>
       <p id="finalScore" class="text-2xl mb-6"></p>
-      <button id="backToMenu" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Back to Menu</button>
+      <button id="backToMenu" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Retour au Menu</button>
     </div>
   </div>
 
-  <!-- HUD & Crosshair -->
-  <div id="info" class="hidden">Score: 0 | Health: 100</div>
+  <!-- HUD & Réticule -->
+  <div id="info" class="hidden">Score : 0 | Santé : 100</div>
   <div id="crosshair" class="hidden"></div>
 </body>
 </html>
